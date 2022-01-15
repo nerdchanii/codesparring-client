@@ -1,0 +1,30 @@
+.Topper {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  * {
+    min-height: 5%;
+    color: black;
+    text-decoration: none;
+    font-size: 2rem;
+    // align-items: center;
+    margin: 2px;
+    font-weight: bold;
+    font-family: 'arial';
+    text-align: center;
+  }
+  h1 {
+    font-size: 1em;
+  }
+  nav {
+    display: flex;
+    justify-content: space-around;
+  }
+  button {
+    border: none;
+    background: none;
+    font-size: 2rem;
+    font-weight: bold;
+  }
+}
