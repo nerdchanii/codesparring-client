@@ -8,7 +8,7 @@ const Home = () => {
     <div className="Home">
       <div className="Left">
         <div className="Section">
-          <LeaderBoard />/
+          <LeaderBoard />
         </div>
         <div className="Section">
           <Chat />

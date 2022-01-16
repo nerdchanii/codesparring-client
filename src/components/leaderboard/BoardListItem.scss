@@ -1,0 +1,74 @@
+.BoardListItem {
+  min-height: 50px;
+  display: flex;
+  font-size: 1.2rem;
+  * {
+    display: inline;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .Ranking {
+    flex: 1;
+  }
+  .NickName {
+    flex: 2;
+  }
+  .point {
+    flex: 1;
+  }
+  .POW {
+    flex: 1;
+  }
+  & + & {
+    border-top: 1px solid black;
+  }
+}
+
+.BoardHeader {
+  display: flex;
+  min-height: 50px;
+  font-size: 1.4rem;
+  margin-bottom: 2px;
+  align-items: center;
+  font-weight: bold;
+  * {
+    text-align: center;
+    display: inline;
+    justify-content: center;
+    align-items: center;
+  }
+  .Ranking {
+    flex: 1;
+  }
+  .NickName {
+    flex: 2;
+  }
+  .point {
+    flex: 1;
+  }
+  .POW {
+    flex: 1;
+  }
+}
+
+.BoardList {
+  // flex: 1;
+  // border-top: 5px solid lightgray;
+  margin-bottom: 10px;
+  display: flex;
+  overflow-y: scroll;
+  scrollbar-color: white;
+  scrollbar-track-color: white;
+  flex-direction: column;
+  justify-content: space-between;
+  // align-items: center;
+  max-height: 100%;
+  li {
+    align-items: center;
+    flex: 1;
+  }
+}
+.BoardList::-webkit-scrollbar {
+  display: none;
+}
