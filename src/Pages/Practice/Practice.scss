@@ -1,0 +1,22 @@
+.Practice {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100%;
+
+  .left-side {
+    max-height: 100vh;
+    border: 1px solid green;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    .section {
+      min-height: 40vh;
+      max-height: 45vh;
+      border: black solid 1px;
+      border-radius: 10px;
+      padding: 10px;
+      margin: 5px;
+    }
+  }
+}
