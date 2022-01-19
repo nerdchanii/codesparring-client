@@ -7,7 +7,7 @@ const BoardListItem = (props) => {
   const { ranking, nickName, point, POW } = props;
 
   return (
-    <li className="BoardListItem" key={ranking}>
+    <li className="BoardListItem">
       <div className="Ranking">{ranking}</div>
       <div className="NickName">{nickName}</div>
       <div className="point">{point}</div>
@@ -150,6 +150,7 @@ const BoardList = () => {
           nickName={user.nickName}
           point={user.point}
           POW={user.POW}
+          key={user.id}
         />
       ))}
     </ul>
