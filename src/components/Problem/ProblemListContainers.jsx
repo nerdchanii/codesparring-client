@@ -5,7 +5,7 @@ const ProblemListCotainers = () => {
   return (
     <div className="ProblemListContainers">
       <div className="section-title">Problem List</div>
-      <div>
+      <div className="section-ProblemList">
         <ProblemList />
       </div>
     </div>
