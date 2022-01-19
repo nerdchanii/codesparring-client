@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 // import { useParams } from 'react-router-dom';
 import ProblemHeader from './ProblemHeader';
 import ProblemBody from './ProblemBody';
-
+import './Problem.scss';
 const ProblemContainer = () => {
   // const { problemNumber } = useParams();
   const [loading, setLoading] = useState(false);
@@ -56,7 +56,7 @@ const ProblemContainer = () => {
   if (!data) return <div>null</div>;
   if (loading) return <div>...loading</div>;
   return (
-    <div>
+    <div className="ProblemContainer">
       <ProblemHeader data={data} />
       <ProblemBody data={data.problemData} />
     </div>

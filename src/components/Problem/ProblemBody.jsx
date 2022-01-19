@@ -1,4 +1,5 @@
 import React from 'react';
+import './Problem.scss';
 
 const TestCase = (props) => {
   const { input, output } = props;
@@ -15,28 +16,43 @@ const ProblemBody = (props) => {
   const { problemDescription, requirement, testcase } = data;
 
   return (
-    <div>
-      <p>문제설명</p>
-      <p>{problemDescription}</p>
-      <p>제안사항</p>
-      <p>{requirement}</p>
-      <table>
-        <thead>
-          <tr>
-            <th>인풋</th>
-            <th>아웃풋</th>
-          </tr>
-        </thead>
-        <tbody>
-          {testcase.map((eachCase, idx) => (
-            <TestCase
-              key={idx}
-              input={eachCase.input}
-              output={eachCase.ouput}
-            />
-          ))}
-        </tbody>
-      </table>
+    <div className="ProblemBody">
+      <div className="Problem-section">
+        <p className="Problem-section-title">문제설명</p>
+        <p className="Problem-section-body">{problemDescription}</p>
+      </div>
+      <div className="Problem-section">
+        <p className="Problem-section-title">제안사항</p>
+        <p className="Problem-section-body">{requirement}</p>
+      </div>
+      <div className="Problem-section">
+        <div className="Problem-section">
+          <p className="Problem-section-title">테스트 케이스</p>
+          <table className="Problem-section-table">
+            <thead className="Problem-section-table-head">
+              <tr>
+                <th>인풋</th>
+                <th>아웃풋</th>
+              </tr>
+            </thead>
+            <tbody className="Problem-section-table-body">
+              {testcase.map((eachCase, idx) => (
+                <TestCase
+                  key={idx}
+                  input={eachCase.input}
+                  output={eachCase.output}
+                />
+              ))}
+            </tbody>
+          </table>
+        </div>
+        {testcase.map((eachCase, idx) => (
+          <div key={idx}>
+            <div className="Problem-section-title"># 입출력예시 {idx + 1}</div>
+            <div className="Problem-section-body">{eachCase.description}</div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

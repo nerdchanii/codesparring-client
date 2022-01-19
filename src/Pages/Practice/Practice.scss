@@ -5,7 +5,6 @@
 
   .left-side {
     max-height: 100vh;
-    border: 1px solid green;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -17,6 +16,10 @@
       border-radius: 10px;
       padding: 10px;
       margin: 5px;
+      // overflow: scroll;
     }
+    // .section::-webkit-scrollbar {
+    // display: none;
+    // }
   }
 }

@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
-import './ProblemList.scss';
 import { loadding } from '../../state/loading';
 import { useRecoilState } from 'recoil';
 import { Link } from 'react-router-dom';
+import './Problem.scss';
 
-const ProblemHeaders = () => {
+const ProblemListHeader = () => {
   return (
-    <div className="ProblemHeaders">
+    <div className="ProblemListHeader">
       <div className="problem-number">문제번호</div>
       <div className="problem-level">레벨</div>
       <div className="problem-title">문제제목</div>
@@ -57,6 +57,18 @@ const ProblemList = () => {
           { id: 7, level: 5, title: '7번문제', problemType: '구현' },
           { id: 8, level: 2, title: '8번문제', problemType: '구현' },
           { id: 9, level: 9, title: '9번 문제', problemType: '문제종류' },
+          { id: 10, level: 9, title: '10번 문제', problemType: '문제종류' },
+          { id: 11, level: 9, title: '11번 문제', problemType: '문제종류' },
+          { id: 12, level: 9, title: '12번 문제', problemType: '문제종류' },
+          { id: 13, level: 9, title: '13번 문제', problemType: '문제종류' },
+          { id: 14, level: 9, title: '14번 문제', problemType: '문제종류' },
+          { id: 15, level: 9, title: '15번 문제', problemType: '문제종류' },
+          { id: 16, level: 9, title: '16번 문제', problemType: '문제종류' },
+          { id: 17, level: 9, title: '17번 문제', problemType: '문제종류' },
+          { id: 18, level: 9, title: '18번 문제', problemType: '문제종류' },
+          { id: 19, level: 9, title: '19번 문제', problemType: '문제종류' },
+          { id: 20, level: 9, title: '20번 문제', problemType: '문제종류' },
+          { id: 21, level: 9, title: '21번 문제', problemType: '문제종류' },
         ]);
         console.log(response);
         setProblemItems(response);
@@ -76,14 +88,14 @@ const ProblemList = () => {
     return <p> 데이터가 없어유...</p>;
   }
   return (
-    <div>
-      <ProblemHeaders />
-      <ul>
+    <>
+      <ProblemListHeader />
+      <ul className="ProblemListItem-ul">
         {problemItems.map((problem) => (
           <ProblemListItem problem={problem} key={problem.id} />
         ))}
       </ul>
-    </div>
+    </>
   );
 };
 

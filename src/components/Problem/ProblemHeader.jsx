@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import './Problem.scss';
 
 const ProblemHeader = ({ data }) => {
   // const { data } = props;
@@ -6,11 +7,11 @@ const ProblemHeader = ({ data }) => {
   const navigate = useNavigate();
 
   return (
-    <div>
-      <div>
+    <div className="ProblemHeader">
+      <div className="Problem-title">
         {id}, {title}, lv.{level}
       </div>
-      <div>
+      <div className="backButton">
         <button
           onClick={() => {
             navigate('/practice');

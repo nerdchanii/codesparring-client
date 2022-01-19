@@ -1,5 +1,5 @@
 import ProblemList from './ProblemList';
-import './ProblemList.scss';
+import './Problem.scss';
 
 const ProblemListCotainers = () => {
   return (
