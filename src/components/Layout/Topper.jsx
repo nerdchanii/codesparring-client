@@ -13,10 +13,10 @@ const Topper = () => {
         <Link to="/">codesparring</Link>
       </h1>
       <nav>
+        <Link to="/Notice">Notice</Link>
         <Link to="/leaderboard">LeaderBoard</Link>
-        <Link to="/practice">Practice</Link>
         <Link to="/sparring">Sparring</Link>
-        <Link to="/chat">Chat</Link>
+        <Link to="/practice">Practice</Link>
         <button
           onClick={() => {
             console.log('click');

@@ -5,11 +5,16 @@
   // margin-bottom: 10px;
   max-height: 5vh;
   min-height: 5vh;
+  h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   * {
     align-items: center;
     color: black;
     text-decoration: none;
-    font-size: 2rem;
+    font-size: 1.5rem;
     margin: 2px;
     font-weight: bold;
     font-family: 'arial';
@@ -23,7 +28,7 @@
   button {
     border: none;
     background: none;
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: bold;
   }
 }
