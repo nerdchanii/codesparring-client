@@ -13,7 +13,7 @@ const Topper = () => {
         <Link to="/">codesparring</Link>
       </h1>
       <nav>
-        <Link to="/Notice">Notice</Link>
+        <Link to="/notice">Notice</Link>
         <Link to="/leaderboard">LeaderBoard</Link>
         <Link to="/sparring">Sparring</Link>
         <Link to="/practice">Practice</Link>

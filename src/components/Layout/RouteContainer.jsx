@@ -1,5 +1,4 @@
 import { Route, Routes } from 'react-router-dom';
-import Chat from '../../Pages/Chat/Chat';
 import Game from '../../Pages/Game/Game';
 import Home from '../../Pages/Home/Home';
 import MyAccount from '../../Pages/MyAccount';
@@ -11,11 +10,11 @@ const RouteContainer = () => {
     <div className="RouteContainer">
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/notice/*" element={'notice'} />
         <Route path="/leaderboard/*" element={<LeaderBoard />} />
-        <Route path="/chat/*" element={<Chat />} />
-        <Route path="/practice/*" element={<Practice />} />
         <Route path="/sparring/*" element={<Game />} />
-        <Route path="/muaccount/*" element={<MyAccount />} />
+        <Route path="/practice/*" element={<Practice />} />
+        <Route path="/myaccount/*" element={<MyAccount />} />
       </Routes>
     </div>
   );
