@@ -1,7 +1,7 @@
 import LeaderBoard from '../../components/leaderboard/Leaderboard';
 import Chat from '../Chat/Chat';
 import './Home.scss';
-import Game from './Game/Game';
+import Game from '../Game/Game';
 
 const Home = () => {
   return (
