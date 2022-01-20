@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { loggin } from '../../state/login';
+import { isLogin } from '../../state/login';
 import { useRecoilValue } from 'recoil';
 import './Topper.scss';
 
 const Topper = () => {
-  const isLogin = useRecoilValue(loggin);
+  const logInState = useRecoilValue(isLogin);
 
   return (
     <div className="Topper">
@@ -24,7 +24,7 @@ const Topper = () => {
         >
           Settings
         </button>
-        {isLogin ? (
+        {logInState ? (
           <Link to="/muaccount">My Account</Link>
         ) : (
           <button
