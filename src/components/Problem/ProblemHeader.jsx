@@ -9,7 +9,7 @@ const ProblemHeader = ({ data }) => {
   return (
     <div className="ProblemHeader">
       <div className="Problem-title">
-        {id}, {title}, lv.{level}
+        {id}. {title}(lv.{level})
       </div>
       <div className="backButton">
         <button
