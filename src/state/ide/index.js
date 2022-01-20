@@ -1,17 +1,32 @@
 import { atom, selector } from 'recoil';
+const IDE_STATE = 'ideState';
+const LANG_EXT_KEY = 'langExt';
+export const LANG_TYPE = {
+  CPP: 'cpp',
+  PYTHON: 'python',
+  JAVA: 'java',
+  JS: 'javascript',
+};
+
+const LANG_EXT = {
+  CPP: 'cpp',
+  PYTHON: 'py',
+  JAVA: 'java',
+  JS: 'js',
+};
 
 export const ideState = atom({
-  key: 'todoListState',
+  key: IDE_STATE,
   default: {
     keybind: 'vscode',
     theme: 'monokai',
     fontSize: 14,
-    lang: 'cpp',
+    lang: LANG_TYPE.CPP,
   },
 });
 
 export const langExt = selector({
-  key: 'langext',
+  key: LANG_EXT_KEY,
   get: ({ get }) => {
     const settings = get(ideState);
     const { lang } = settings;
@@ -22,14 +37,14 @@ export const langExt = selector({
 
 function setExt(lang) {
   switch (lang) {
-    case 'cpp':
-      return 'cpp';
-    case 'python':
-      return 'py';
-    case 'javascript':
-      return 'js';
-    case 'java':
-      return '.java';
+    case LANG_TYPE.CPP:
+      return LANG_EXT.CPP;
+    case LANG_TYPE.PYTHON:
+      return LANG_EXT.PYTHON;
+    case LANG_TYPE.JS:
+      return LANG_EXT.JS;
+    case LANG_TYPE.JAVA:
+      return LANG_EXT.JAVA;
     default:
       return lang;
   }
