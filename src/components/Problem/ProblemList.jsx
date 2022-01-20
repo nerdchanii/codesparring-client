@@ -79,7 +79,7 @@ const ProblemList = () => {
       }
     };
     fectchData();
-  }, [setListLoadding, setProblemItems]);
+  }, []);
 
   if (listLoadding) {
     return <p> ...loadding</p>;
