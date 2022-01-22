@@ -1,0 +1,16 @@
+[
+  {
+    "id": 2,
+    "title": "공지2",
+    "body": "Cillum ipsum esse incididunt minim aliqua amet in. Pariatur sit id qui mollit adipisicing ullamco reprehenderit esse enim amet est consectetur eiusmod. Consectetur exercitation enim nisi reprehenderit dolore incididunt aliquip minim excepteur cupidatat. Commodo occaecat cupidatat irure aute veniam non deserunt officia magna proident officia officia.",
+    "label": ["update", "extend", "중요", "긴급"],
+    "writer": "nerdchanii"
+  },
+  {
+    "id": 1,
+    "title": "공지1",
+    "body": "Cillum ipsum esse incididunt minim aliqua amet in. Pariatur sit id qui mollit adipisicing ullamco reprehenderit esse enim amet est consectetur eiusmod. Consectetur exercitation enim nisi reprehenderit dolore incididunt aliquip minim excepteur cupidatat. Commodo occaecat cupidatat irure aute veniam non deserunt officia magna proident officia officia.",
+    "label": ["update", "extend", "중요", "긴급"],
+    "writer": "nerdchanii"
+  }
+]
