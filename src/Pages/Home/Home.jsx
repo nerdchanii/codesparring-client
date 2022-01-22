@@ -1,8 +1,8 @@
 import LeaderBoard from '../../components/leaderboard/Leaderboard';
 import Chat from '../Chat/Chat';
 import './Home.scss';
-import Game from '../Game/Game';
-
+import Sparring from '../Sparring/Sparring';
+import Notice from '../../components/Notice/Notice';
 const Home = () => {
   return (
     <div className="Home">
@@ -16,7 +16,10 @@ const Home = () => {
       </div>
       <div className="Right">
         <div className="Section">
-          <Game />
+          <Sparring />
+        </div>
+        <div className="Section">
+          <Notice />
         </div>
       </div>
     </div>
