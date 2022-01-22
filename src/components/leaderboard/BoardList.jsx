@@ -2,6 +2,7 @@ import { useRecoilState } from 'recoil';
 import { loadding } from '../../state/loading';
 import { useCallback, useEffect, useState } from 'react';
 import './BoardListItem.scss';
+import BoardListHeader from './BoardListHeader';
 // POW = Prolbem of Week
 const BoardListItem = (props) => {
   const { ranking, nickName, point, POW } = props;
@@ -141,17 +142,20 @@ const BoardList = () => {
     return <h1>정보가 없습니다</h1>;
   }
   return (
-    <ul className="BoardList">
-      {rankList.map((user) => (
-        <BoardListItem
-          ranking={user.id}
-          nickName={user.nickName}
-          point={user.point}
-          POW={user.POW}
-          key={user.id}
-        />
-      ))}
-    </ul>
+    <>
+      <BoardListHeader />
+      <ul className="BoardList">
+        {rankList.map((user) => (
+          <BoardListItem
+            ranking={user.id}
+            nickName={user.nickName}
+            point={user.point}
+            POW={user.POW}
+            key={user.id}
+          />
+        ))}
+      </ul>
+    </>
   );
 };
 

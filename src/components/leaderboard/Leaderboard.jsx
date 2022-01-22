@@ -1,11 +1,10 @@
-import BoardHeader from './BoardHeader';
 import BoardList from './BoardList';
 import './LeaderBoard.scss';
 
 const LeaderBoard = () => {
   return (
     <div className="LeaderBoard">
-      <BoardHeader />
+      <div className="BoardHeader">LeaderBoard</div>
       <BoardList />
     </div>
   );

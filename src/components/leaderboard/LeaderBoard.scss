@@ -5,4 +5,16 @@
   flex-direction: column;
   margin-right: 0.5rem;
   margin-left: 0.5rem;
+  overflow-y: hidden;
+}
+
+.BoardHeader {
+  color: #2f9272;
+  font-weight: bold;
+  font-size: 1.5em;
+
+  border-bottom: 1px solid black;
+  padding-bottom: 0.5em;
+  max-height: fit-content;
+  margin-top: 0.5em;
 }

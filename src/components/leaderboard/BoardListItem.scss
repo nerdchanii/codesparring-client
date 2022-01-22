@@ -1,7 +1,7 @@
 .BoardListItem {
   min-height: 50px;
   display: flex;
-  font-size: 1.2rem;
+  font-size: 1em;
   * {
     display: inline;
     justify-content: center;
@@ -25,13 +25,15 @@
   }
 }
 
-.BoardHeader {
+.BoardListHeader {
   display: flex;
-  min-height: 50px;
-  font-size: 1.4rem;
-  margin-bottom: 2px;
-  align-items: center;
+  min-height: 2em;
+  font-size: 1em;
   font-weight: bold;
+  align-items: center;
+
+  margin-bottom: 2px;
+  border-bottom: 2px solid black;
   * {
     text-align: center;
     display: inline;
