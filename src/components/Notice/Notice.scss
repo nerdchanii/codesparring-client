@@ -1,0 +1,66 @@
+.Notice {
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-left: 1em;
+}
+.Notice {
+  .NoticeHeader {
+    color: #2f9272;
+    border-bottom: 1px solid black;
+    padding-bottom: 0.5em;
+    max-height: fit-content;
+    font-weight: bold;
+    font-size: 1.5em;
+    margin-top: 0.5em;
+  }
+  .NoticeBoardList {
+    margin-top: 1em;
+
+    article {
+      margin-left: 1em;
+      margin-right: 1em;
+    }
+    .item-title {
+      // border: 1px solid red;
+      margin-top: 1em;
+      font-size: 1.2em;
+
+      .item-label {
+        font-size: 0.7em;
+        justify-content: flex-end;
+        color: rgb(0, 0, 0, 0.9);
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+
+        .each-label {
+          padding-left: 0.5em;
+          padding-right: 0.5em;
+          margin-left: 0.5em;
+          margin-right: 0.5em;
+          background: #2f927220;
+        }
+      }
+    }
+    .item-body {
+      font-size: 1em;
+      margin-bottom: 1em;
+    }
+
+    footer {
+      .item-writer {
+        text-align: right;
+        margin-right: 1em;
+      }
+    }
+
+    flex: 1;
+    max-height: 100%;
+    font-size: 1em;
+    overflow: scroll;
+  }
+  .NoticeBoardList ::-webkit-scrollbar {
+    display: none;
+  }
+}

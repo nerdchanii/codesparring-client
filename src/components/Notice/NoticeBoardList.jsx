@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { BiLabel } from 'react-icons/bi';
+import './Notice.scss';
 
 const NoticeBoardListItem = (props) => {
   const { id, label, title, body, writer } = props;
@@ -7,19 +8,24 @@ const NoticeBoardListItem = (props) => {
   return (
     <article className="NoticeBoardItem">
       <header className="item-title">
-        {id}: {title}
-      </header>
-      <div className="item-body"> {body}</div>
-      <footer className="item-footer">
-        <div className="item-writer">wrtie by : {writer}</div>
+        <div>
+          {id}: {title}
+        </div>
         <div className="item-label">
-          <BiLabel />
           {label.map((eachLabel, idx) => (
             <span className="each-label" key={idx}>
+              <BiLabel />
               {eachLabel}
             </span>
           ))}
         </div>
+      </header>
+      <details>
+        <summary>자세히</summary>
+        <div className="item-body"> {body}</div>
+      </details>
+      <footer className="item-footer">
+        <div className="item-writer">wrtie by : {writer}</div>
       </footer>
     </article>
   );
@@ -67,7 +73,7 @@ const NoticeBoardList = () => {
     return <div>...loadding...</div>;
   }
   return (
-    <div>
+    <div className="NoticeBoardList">
       {notices.map((item) => (
         <NoticeBoardListItem
           key={item.id}

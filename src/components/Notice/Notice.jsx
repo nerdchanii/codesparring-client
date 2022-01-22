@@ -4,7 +4,7 @@ import NoticeBoardList from './NoticeBoardList';
 
 const Notice = () => {
   return (
-    <div>
+    <div className="Notice">
       <NoticeBoardHeader />
       <NoticeBoardList />
     </div>
