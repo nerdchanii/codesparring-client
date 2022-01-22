@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import Game from '../../Pages/Game/Game';
+import Sparring from '../../Pages/Sparring/Sparring';
 import Home from '../../Pages/Home/Home';
 import MyAccount from '../../Pages/MyAccount';
 import Practice from '../../Pages/Practice/Practice';
@@ -13,7 +13,7 @@ const RouteContainer = () => {
         <Route path="/" element={<Home />} />
         <Route path="/notice/*" element={<Notice />} />
         <Route path="/leaderboard/*" element={<LeaderBoard />} />
-        <Route path="/sparring/*" element={<Game />} />
+        <Route path="/sparring/*" element={<Sparring />} />
         <Route path="/practice/*" element={<Practice />} />
         <Route path="/myaccount/*" element={<MyAccount />} />
       </Routes>

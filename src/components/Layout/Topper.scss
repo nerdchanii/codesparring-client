@@ -3,16 +3,22 @@
   grid-template-columns: 1fr 5fr;
   // margin-top: 5px;
   // margin-bottom: 10px;
-  max-height: 5vh;
+  // max-height: 5vh;
   min-height: 5vh;
   h1 {
+    color: #2f9272;
     display: flex;
     align-items: center;
     justify-content: center;
+    color: white;
+    a {
+      color: #2f9272;
+      text-shadow: rgba(0, 0, 0, 0.25) 0px 4px 4px;
+    }
   }
   * {
     align-items: center;
-    color: black;
+    color: none;
     text-decoration: none;
     font-size: 1.5rem;
     margin: 2px;

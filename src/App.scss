@@ -1,6 +1,6 @@
 .App {
-  height: 100%;
-  margin: 5px 5px 5px 5px;
+  max-height: inherit;
+  min-height: inherit;
   display: flex;
   flex-direction: column;
 }
@@ -11,13 +11,13 @@
   }
   & :active {
     text-decoration: none;
-    color: black;
+    color: none;
   }
   & :hover {
     text-decoration: none;
   }
   & :visited {
-    color: black;
+    // color: black;
     text-decoration: none;
   }
 }
