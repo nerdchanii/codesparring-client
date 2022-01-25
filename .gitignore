@@ -5,6 +5,10 @@
 /.pnp
 .pnp.js
 
+
+# secret
+/src/contants/secret/*
+
 # testing
 /coverage
 
