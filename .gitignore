@@ -7,7 +7,7 @@
 
 
 # secret
-/src/contants/secret/*
+/src/constants/secret
 
 # testing
 /coverage
