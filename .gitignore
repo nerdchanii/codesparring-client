@@ -5,6 +5,7 @@
 /.pnp
 .pnp.js
 
+/tsconfig.json
 
 # secret
 /src/constants/secret
