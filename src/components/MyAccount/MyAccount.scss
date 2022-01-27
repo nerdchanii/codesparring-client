@@ -1,0 +1,62 @@
+.MyAccount {
+  max-width: 100%;
+  min-width: 50%;
+  min-height: 300px;
+  .MyAccount-Topper {
+    border-bottom: 2px solid #2f9272;
+    display: flex;
+    font-size: 1.5em;
+    color: #2f9272;
+    font-weight: bolder;
+    .MyAccount-Header {
+      flex: 1;
+    }
+  }
+
+  .MyAccount-Body {
+    min-height: 200px;
+
+    // input {
+    //   border: none;
+    // }
+    // input ::focus-visible {
+    //   outline-style: none;
+    // }
+    margin-top: 1rem;
+    .UserProfile {
+      min-height: inherit;
+      display: flex;
+      flex-direction: row;
+      margin-left: 1em;
+      .imgContainer {
+        display: flex;
+        flex-direction: column;
+        img {
+          border-radius: 50%;
+          max-height: 200px;
+        }
+      }
+      .textContainer {
+        min-height: inherit;
+        margin-left: 1em;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        .nickname,
+        .email,
+        .rank,
+        .points {
+          font-size: 1.2em;
+          font-weight: bold;
+          span {
+            margin-left: 1em;
+
+            // offset: -5px -55px;
+          }
+        }
+      }
+    }
+
+    // flex: ;
+  }
+}

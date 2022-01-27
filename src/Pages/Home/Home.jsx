@@ -3,6 +3,7 @@ import Chat from '../Chat/Chat';
 import './Home.scss';
 import Sparring from '../Sparring/Sparring';
 import Notice from '../../components/Notice/Notice';
+import MyAccount from '../../components/MyAccount/MyAccount';
 const Home = () => {
   return (
     <div className="Home">
@@ -11,7 +12,7 @@ const Home = () => {
           <LeaderBoard />
         </div>
         <div className="Section">
-          <Chat />
+          <MyAccount />
         </div>
       </div>
       <div className="Right">
