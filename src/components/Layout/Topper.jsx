@@ -39,10 +39,11 @@ const Topper = () => {
           Settings
         </button>
         {logInState ? (
-          <Link to="/myaccount">My Account</Link>
+          <Link to="/mypage">My Account</Link>
         ) : (
           <button onClick={onClickLogin}>Login</button>
         )}
+
         {showLoginModal ? (
           <LoginBoxContainer click={toggleShowLoginModal} />
         ) : (
