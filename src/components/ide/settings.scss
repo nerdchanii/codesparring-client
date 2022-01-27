@@ -1,0 +1,29 @@
+.SettingContainer {
+  font-size: 1em;
+  font-weight: 400;
+  position: absolute;
+  z-index: 1;
+  background: #2f9272cf;
+  display: flex;
+  flex-direction: column;
+  transform: translate(-30%, 0%);
+
+  div {
+    box-sizing: border-box;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    label {
+      margin-left: 1em;
+      text-align: left;
+    }
+  }
+  .buttonContainer {
+    display: flex;
+    justify-content: flex-end;
+    button {
+      margin-left: 1em;
+      background: none;
+    }
+  }
+}

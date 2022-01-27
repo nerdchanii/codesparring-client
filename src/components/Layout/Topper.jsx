@@ -4,11 +4,12 @@ import { isLogin } from '../../state/login';
 import { useRecoilValue } from 'recoil';
 import './Topper.scss';
 import LoginBoxContainer from './Topper/LoginBoxContainer';
+import SettingContainer from '../ide/SettingsContainer';
 
 const Topper = () => {
   const logInState = useRecoilValue(isLogin);
   const [showLoginModal, setShowLoginModal] = useState(false);
-
+  const [openSetting, setOpenSetting] = useState(false);
   const onClickLogin = () => {
     if (logInState !== false) {
       console.log('err');
@@ -31,13 +32,20 @@ const Topper = () => {
         <Link to="/leaderboard">LeaderBoard</Link>
         <Link to="/sparring">Sparring</Link>
         <Link to="/practice">Practice</Link>
-        <button
-          onClick={() => {
-            console.log('click');
-          }}
-        >
-          Settings
-        </button>
+        <div>
+          <button
+            onClick={() => {
+              setOpenSetting(true);
+            }}
+          >
+            settings
+          </button>
+          {openSetting ? (
+            <SettingContainer setshowing={setOpenSetting} />
+          ) : (
+            <></>
+          )}
+        </div>
         {logInState ? (
           <Link to="/mypage">My Account</Link>
         ) : (

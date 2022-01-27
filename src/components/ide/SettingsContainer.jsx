@@ -8,10 +8,12 @@ import {
   themeList,
   languageList,
 } from '../../constants/AceOption';
-
+import './settings.scss';
 import Select from './Select';
+import { AiOutlineClose } from 'react-icons/ai';
 
-const SettingContainer = () => {
+const SettingContainer = (props) => {
+  const { setshowing } = props;
   const [ideSetting, setIdeSettings] = useRecoilState(ideState);
   const { lang, fontSize, theme, keybind } = ideSetting;
 
@@ -24,31 +26,61 @@ const SettingContainer = () => {
   };
 
   return (
-    <div>
-      <Select
-        setType="keybind"
-        value={keybind}
-        options={keybindList}
-        handle={setHandle}
-      />
-      <Select
-        setType="fontSize"
-        value={fontSize}
-        options={fontSizeList}
-        handle={setHandle}
-      />
-      <Select
-        setType="theme"
-        value={theme}
-        options={themeList}
-        handle={setHandle}
-      />
-      <Select
-        setType="lang"
-        value={lang}
-        options={languageList}
-        handle={setHandle}
-      />
+    <div className="SettingContainer">
+      <div className="buttonContainer">
+        <button
+          onClick={() => {
+            setshowing(false);
+          }}
+        >
+          <AiOutlineClose />
+        </button>
+      </div>
+      <div>
+        <label>keybind</label>
+        <Select
+          id="keybind"
+          name="keybind"
+          setType="keybind"
+          value={keybind}
+          options={keybindList}
+          handle={setHandle}
+        />
+      </div>
+
+      <div>
+        <label>fontSize</label>
+        <Select
+          id="fontSize"
+          name="fontSize"
+          setType="fontSize"
+          value={fontSize}
+          options={fontSizeList}
+          handle={setHandle}
+        />
+      </div>
+      <div>
+        <label>theme</label>
+        <Select
+          id="theme"
+          name="theme"
+          setType="theme"
+          value={theme}
+          options={themeList}
+          handle={setHandle}
+        />
+      </div>
+      <div>
+        <label>lang</label>
+        <Select
+          id="lang"
+          name="lang"
+          setType="lang"
+          value={lang}
+          options={languageList}
+          handle={setHandle}
+        />
+      </div>
     </div>
   );
 };
