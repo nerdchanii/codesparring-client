@@ -1,9 +1,8 @@
 import LeaderBoard from '../../components/leaderboard/Leaderboard';
-import Chat from '../Chat/Chat';
 import './Home.scss';
-import Sparring from '../Sparring/Sparring';
 import Notice from '../../components/Notice/Notice';
 import MyAccount from '../../components/MyAccount/MyAccount';
+import Game from '../../components/Game/Game';
 const Home = () => {
   return (
     <div className="Home">
@@ -17,7 +16,7 @@ const Home = () => {
       </div>
       <div className="Right">
         <div className="Section">
-          <Sparring />
+          <Game />
         </div>
         <div className="Section">
           <Notice />

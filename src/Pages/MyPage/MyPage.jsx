@@ -16,7 +16,7 @@ const MyPage = () => {
   }
   return (
     <div className="MyPage">
-      <MyAccount />;
+      <MyAccount />
     </div>
   );
 };

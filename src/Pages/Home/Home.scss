@@ -1,4 +1,5 @@
 .Home {
+  flex: 1;
   display: grid;
   grid-template-columns: 1fr 1fr;
   max-height: inherit;
@@ -19,22 +20,3 @@
     // grid-template-rows: 1fr 1fr;
   }
 }
-//   .Section {
-//     flex: 1;
-//     padding: 1rem;
-//     width: auto;
-//     max-height: 40vh;
-//     min-height: 40vh;
-//     border: 1px solid green;
-//     border-radius: 20px;
-//     margin: 10px;
-//     // padding-top: 20px;
-//     // padding-left: 20px;
-//     // max-height: 100%;
-//   }
-
-//   .Right {
-//     width: 100%;
-//     height: 100%;
-//   }
-// }
