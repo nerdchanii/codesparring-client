@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import WaitingRoomHeader from './WaitingRoomHeader';
 import RoomList from './RoomList';
 import '../Game.scss';
@@ -25,7 +25,7 @@ const WaitingRoom = () => {
 
   useEffect(() => {
     fetchRoomList();
-  }, [loading]);
+  }, []);
 
   if (loading) {
     return (
