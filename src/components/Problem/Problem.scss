@@ -48,10 +48,9 @@
 }
 
 .ProblemHeader {
-  flex: 1;
   font-weight: bold;
   display: flex;
-
+  border-bottom: 1px solid #2f9272;
   .Problem-title {
     flex: 1;
     margin-bottom: 1rem;
@@ -60,7 +59,7 @@
     button {
       border: none;
       background: none;
-      color: green;
+      color: #2f9272;
       cursor: pointer;
     }
   }
