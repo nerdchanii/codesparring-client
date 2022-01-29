@@ -21,7 +21,7 @@ export const ideState = atom({
     keybind: 'vscode',
     theme: 'monokai',
     fontSize: 14,
-    lang: LANG_TYPE.CPP,
+    lang: LANG_TYPE.JS,
   },
 });
 
