@@ -1,0 +1,58 @@
+.WaitingRoomHeader {
+  color: #2f9272;
+  text-align: center;
+  font-weight: bolder;
+  font-size: 1.5em;
+}
+
+.RoomList {
+  display: flex;
+  flex-direction: column;
+  margin: 1em;
+  overflow: hidden;
+  max-height: 100%;
+  .ListHeader {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    text-align: center;
+    font-size: 1em;
+    font-weight: bold;
+    padding-bottom: 0.5em;
+    margin-bottom: 0.5em;
+    border-bottom: 2px solid #2f9272;
+  }
+
+  .RoomListItemContainer {
+    margin-bottom: 10px;
+    display: flex;
+    overflow-y: scroll;
+    scrollbar-color: white;
+    scrollbar-track-color: white;
+    flex-direction: column;
+    justify-content: space-between;
+
+    // align-items: center;
+    max-height: 100%;
+    .MouseOver {
+      background-color: #2f9272aa;
+    }
+    .RoomListItem .ItemLinkWrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      align-items: center;
+      text-align: center;
+      font-size: 1.5em;
+      padding-bottom: 1em;
+      padding-top: 1em;
+      font-size: 1em;
+    }
+    .RoomListItem:hover {
+      color: #2f9272;
+      border: 1px solid #2f9272;
+      border-radius: 0.5em 0.5em 0.5em 0.5em;
+      a {
+        color: #2f9272;
+      }
+    }
+  }
+}
