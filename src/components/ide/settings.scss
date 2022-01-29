@@ -3,27 +3,30 @@
   font-weight: 400;
   position: absolute;
   z-index: 1;
-  background: #2f9272cf;
+  background: hsla(161, 51%, 38%, 0.812);
   display: flex;
   flex-direction: column;
-  transform: translate(-30%, 0%);
+  transform: translate(-30%, 30%);
+  padding: 0.5em;
 
-  div {
-    box-sizing: border-box;
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    label {
-      margin-left: 1em;
-      text-align: left;
-    }
-  }
   .buttonContainer {
     display: flex;
     justify-content: flex-end;
     button {
-      margin-left: 1em;
+      font-size: 1.2em;
+      font-size: 1em;
       background: none;
+    }
+  }
+  .options {
+    box-sizing: border-box;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    font-size: 1.2em;
+    label {
+      text-align: left;
+      color: white;
     }
   }
 }

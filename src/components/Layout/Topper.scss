@@ -1,44 +1,57 @@
 .Topper {
-  display: grid;
-  grid-template-columns: 1fr 5fr;
-  // margin-top: 5px;
-  // margin-bottom: 10px;
-  // max-height: 5vh;
-  min-height: 5vh;
+  padding-top: 0.5em;
+  display: flex;
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-bottom: 0.5em;
+  height: fit-content;
+  background: #2f9272aa;
   h1 {
-    color: #2f9272;
+    color: white;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
     a {
-      color: #2f9272;
-      text-shadow: rgba(0, 0, 0, 0.25) 0px 4px 4px;
+      color: white;
+      text-shadow: #2f9272aa 0px 4px 4px;
     }
   }
   * {
-    align-items: center;
-    color: none;
     text-decoration: none;
-    font-size: 1.5rem;
-    margin: 2px;
     font-weight: bold;
     font-family: 'arial';
     text-align: center;
   }
 
-  nav {
+  .NavigatorContainer {
+    flex: 3;
     display: flex;
-    justify-content: space-around;
+
+    font-size: 1.5em;
+    margin: 0em 1em;
+    justify-content: center;
+    align-items: center;
+    a {
+      box-sizing: border-box;
+      color: white;
+      margin: 0em 1em;
+    }
   }
+  .ButtonContainer {
+    flex: 1;
+    display: flex;
+    justify-content: space-evenly;
+  }
+
   button {
     border: none;
     background: none;
-    font-size: 1.5rem;
+    font-size: 1.5em;
     font-weight: bold;
-    svg {
-      width: 1.5rem;
-      height: 1.5rem;
-    }
+    color: white;
+    // svg {
+    //   width: 1.5em;
+    //   height: 1.5em;
+    // }
   }
 }

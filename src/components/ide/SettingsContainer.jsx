@@ -36,7 +36,7 @@ const SettingContainer = (props) => {
           <AiOutlineClose />
         </button>
       </div>
-      <div>
+      <div className="options">
         <label>keybind</label>
         <Select
           id="keybind"
@@ -48,7 +48,7 @@ const SettingContainer = (props) => {
         />
       </div>
 
-      <div>
+      <div className="options">
         <label>fontSize</label>
         <Select
           id="fontSize"
@@ -59,7 +59,7 @@ const SettingContainer = (props) => {
           handle={setHandle}
         />
       </div>
-      <div>
+      <div className="options">
         <label>theme</label>
         <Select
           id="theme"
@@ -70,7 +70,7 @@ const SettingContainer = (props) => {
           handle={setHandle}
         />
       </div>
-      <div>
+      <div className="options">
         <label>lang</label>
         <Select
           id="lang"
