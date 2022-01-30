@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Problem.scss';
 
 const TestCase = (props) => {
@@ -15,6 +15,9 @@ const ProblemBody = (props) => {
   const { data } = props;
   const { problemDescription, requirement, testcase } = data;
 
+  if (!data) {
+    <div>Error!</div>;
+  }
   return (
     <div className="ProblemBody">
       <div className="Problem-section">

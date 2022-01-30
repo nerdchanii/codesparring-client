@@ -12,7 +12,7 @@ const Practice = () => {
         <div className="section">
           <Routes>
             <Route path="" element={<ProblemListContainers />} />
-            <Route path=":param" element={<ProblemContainer />} />
+            <Route path=":id" element={<ProblemContainer />} />
           </Routes>
         </div>
         <div className="section">

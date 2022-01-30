@@ -1,3 +1,5 @@
+import { Box, CircularProgress } from '@mui/material';
+import axios from 'axios';
 import { useCallback, useEffect, useState } from 'react';
 // import { loadding } from '../../state/loading';
 // import { useRecoilState } from 'recoil';
@@ -35,47 +37,11 @@ const ProblemList = () => {
   const [loadding, setLoadding] = useState(false);
 
   const fetchData = useCallback(async () => {
-    const response = await Promise.resolve([
-      {
-        id: 1,
-        level: 1,
-        title: '입력된 수 더하기',
-        problemType: '구현',
-      },
-      { id: 2, level: 2, title: '해시브라운해쉬', problemType: '구현' },
-      { id: 3, level: 2, title: '가운데 숫자넣기', problemType: '구현' },
-      { id: 4, level: 3, title: '풀 스택 배낭', problemType: '그리디' },
-      {
-        id: 5,
-        level: 4,
-        title: '어느길로 가지?',
-        problemType: 'A*알고리즘',
-      },
-      { id: 6, level: 5, title: '6번 문제', problemType: '구현' },
-      { id: 7, level: 5, title: '7번문제', problemType: '구현' },
-      { id: 8, level: 2, title: '8번문제', problemType: '구현' },
-      { id: 9, level: 9, title: '9번 문제', problemType: '문제종류' },
-      { id: 10, level: 9, title: '10번 문제', problemType: '문제종류' },
-      { id: 11, level: 9, title: '11번 문제', problemType: '문제종류' },
-      { id: 12, level: 9, title: '12번 문제', problemType: '문제종류' },
-      { id: 13, level: 9, title: '13번 문제', problemType: '문제종류' },
-      { id: 14, level: 9, title: '14번 문제', problemType: '문제종류' },
-      { id: 15, level: 9, title: '15번 문제', problemType: '문제종류' },
-      { id: 16, level: 9, title: '16번 문제', problemType: '문제종류' },
-      { id: 17, level: 9, title: '17번 문제', problemType: '문제종류' },
-      { id: 18, level: 9, title: '18번 문제', problemType: '문제종류' },
-      { id: 19, level: 9, title: '19번 문제', problemType: '문제종류' },
-      { id: 20, level: 9, title: '20번 문제', problemType: '문제종류' },
-      { id: 21, level: 9, title: '21번 문제', problemType: '문제종류' },
-    ]);
-
-    setProblemItems(response);
-  }, []);
-
-  useEffect(() => {
     setLoadding(true);
     try {
-      fetchData();
+      const response = await axios.get('/api/problem');
+      const data = response.data;
+      setProblemItems(data);
     } catch (e) {
       console.log(e);
     } finally {
@@ -83,8 +49,23 @@ const ProblemList = () => {
     }
   }, []);
 
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   if (loadding) {
-    return <p> ...loadding</p>;
+    return (
+      <Box
+        sx={{
+          display: 'block',
+          height: '100%',
+          justifyContent: 'center',
+          alignItem: 'center',
+        }}
+      >
+        <CircularProgress sx={{ color: '#2f9272' }} />
+      </Box>
+    );
   }
   if (!problemItems) {
     return <p> 데이터가 없어유...</p>;
