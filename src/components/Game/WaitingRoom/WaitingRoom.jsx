@@ -12,7 +12,7 @@ const WaitingRoom = () => {
   const fetchRoomList = useCallback(async () => {
     setLoading(true);
     try {
-      const mock = await axios.get('/api/game/lists');
+      const mock = await axios.get('/api/game/list');
       const response = mock.data;
 
       setgameRoom(response);
