@@ -28,7 +28,6 @@ const ProblemContainer = () => {
 
   useEffect(() => {
     fetchData();
-    console.log(data);
   }, []);
 
   if (loading) {
