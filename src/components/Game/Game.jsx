@@ -1,4 +1,3 @@
-import './Game.scss';
 import WaitingRoom from './WaitingRoom/WaitingRoom';
 import InGameRoom from './InGameRoom/InGameRoom';
 import { Route, Routes } from 'react-router-dom';
