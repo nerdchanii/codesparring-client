@@ -5,7 +5,9 @@
 /.pnp
 .pnp.js
 
+# envroment
 /tsconfig.json
+.vscode
 
 # secret
 /src/constants/secret
