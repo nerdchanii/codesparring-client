@@ -3,6 +3,7 @@ import { Navigate } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 import MyAccount from '../../components/MyAccount/MyAccount';
 import { isLogin } from '../../state/login';
+import LeaveAccount from './LeaveAccount';
 import './MyPage.scss';
 
 const MyPage = () => {
@@ -17,6 +18,7 @@ const MyPage = () => {
   return (
     <div className="MyPage">
       <MyAccount />
+      <LeaveAccount />
     </div>
   );
 };
