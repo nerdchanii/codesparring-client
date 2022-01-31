@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useCallback, useEffect, useState } from 'react';
 import WaitingRoomHeader from './WaitingRoomHeader';
 import RoomList from './RoomList';
-import '../Game.scss';
+import './WaitingRoom.scss';
 import { CircularProgress } from '@mui/material';
 import { Box } from '@mui/system';
 

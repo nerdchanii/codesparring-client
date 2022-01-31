@@ -1,4 +1,4 @@
-import '../Game.scss';
+import './WaitingRoom.scss';
 import { Link } from 'react-router-dom';
 
 const RoomListItem = (props) => {
