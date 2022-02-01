@@ -4,7 +4,7 @@ import './InGame.scss';
 
 const InGameProblemContianer = ({ data }) => {
   return (
-    <div>
+    <div className="InGameProblemContainer">
       <ProblemBody data={data} />
     </div>
   );

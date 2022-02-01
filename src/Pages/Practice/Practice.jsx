@@ -2,7 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import IdeContainer from '../../components/ide/IdeContainer';
 import ProblemContainer from '../../components/Problem/ProblemContainer';
 import ProblemListContainers from '../../components/Problem/ProblemListContainers';
-import Chat from '../Chat/Chat';
+import Chat from '../../components/Chat/Chat';
 import './Practice.scss';
 
 const Practice = () => {

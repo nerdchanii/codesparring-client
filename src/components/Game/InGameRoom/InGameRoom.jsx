@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import Chat from '../../../Pages/Chat/Chat';
+import Chat from '../../Chat/Chat';
 import InGameHeader from './InGameHeader';
 import InGameUserListContainer from './InGameUserListContainer';
 import InGameProblemContianer from './InGameProblemContianer';
@@ -69,12 +69,16 @@ const InGameRoom = () => {
   }
   if (roomInfo) {
     return (
-      <>
-        <InGameHeader title={roomInfo.title} level={roomInfo.level} />
-        <InGameUserListContainer />
-        <InGameProblemContianer data={roomInfo.data} />
-        <Chat />
-      </>
+      <div className="InGameRoom">
+        <div className="InGameQuest">
+          <InGameHeader title={roomInfo.title} level={roomInfo.level} />
+          <InGameUserListContainer />
+          <InGameProblemContianer data={roomInfo.data} />
+        </div>
+        <div className="InGameChat">
+          <Chat />
+        </div>
+      </div>
     );
   }
 };
