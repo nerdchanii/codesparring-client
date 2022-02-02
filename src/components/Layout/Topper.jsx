@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { isLogin } from '../../state/login';
 import { useRecoilState } from 'recoil';
+import { isLogin } from '../../state/login';
 import './Topper.scss';
 import LoginBoxContainer from './Topper/LoginBoxContainer';
 import SettingContainer from '../ide/SettingsContainer';
 
-const Topper = () => {
+function Topper() {
   const [loginState, setLoginState] = useRecoilState(isLogin);
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [openSetting, setOpenSetting] = useState(false);
@@ -54,14 +54,10 @@ const Topper = () => {
           <button onClick={onClickLogin}>Log in</button>
         )}
 
-        {showLoginModal ? (
-          <LoginBoxContainer click={toggleShowLoginModal} />
-        ) : (
-          <></>
-        )}
+        {showLoginModal ? <LoginBoxContainer click={toggleShowLoginModal} /> : <></>}
       </div>
     </div>
   );
-};
+}
 
 export default Topper;

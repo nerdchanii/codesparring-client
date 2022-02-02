@@ -1,18 +1,14 @@
+import React from 'react';
 import { useRecoilState } from 'recoil';
 // TODO
 // options에 들어갈 변수리스트 설정해야함
+import { AiOutlineClose } from 'react-icons/ai';
 import { ideState } from '../../state/ide';
-import {
-  keybindList,
-  fontSizeList,
-  themeList,
-  languageList,
-} from '../../constants/AceOption';
+import { keybindList, fontSizeList, themeList, languageList } from '../../constants/AceOption';
 import './settings.scss';
 import Select from './Select';
-import { AiOutlineClose } from 'react-icons/ai';
 
-const SettingContainer = (props) => {
+function SettingContainer(props) {
   const { setshowing } = props;
   const [ideSetting, setIdeSettings] = useRecoilState(ideState);
   const { lang, fontSize, theme, keybind } = ideSetting;
@@ -21,7 +17,7 @@ const SettingContainer = (props) => {
     const { name, value } = e.target;
     setIdeSettings({
       ...ideSetting,
-      [name]: name === 'fontSize' ? parseInt(value) : value,
+      [name]: value,
     });
   };
 
@@ -37,7 +33,7 @@ const SettingContainer = (props) => {
         </button>
       </div>
       <div className="options">
-        <label>keybind</label>
+        <div>keybind</div>
         <Select
           id="keybind"
           name="keybind"
@@ -49,7 +45,7 @@ const SettingContainer = (props) => {
       </div>
 
       <div className="options">
-        <label>fontSize</label>
+        <div>fontSize</div>
         <Select
           id="fontSize"
           name="fontSize"
@@ -60,7 +56,7 @@ const SettingContainer = (props) => {
         />
       </div>
       <div className="options">
-        <label>theme</label>
+        <div>theme</div>
         <Select
           id="theme"
           name="theme"
@@ -71,7 +67,7 @@ const SettingContainer = (props) => {
         />
       </div>
       <div className="options">
-        <label>lang</label>
+        <div>lang</div>
         <Select
           id="lang"
           name="lang"
@@ -83,6 +79,6 @@ const SettingContainer = (props) => {
       </div>
     </div>
   );
-};
+}
 
 export default SettingContainer;

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { GrStatusGoodSmall } from 'react-icons/gr';
 import './InGameUserList.scss';
-const UserListItem = ({ status, name }) => {
+
+function UserListItem({ status, name }) {
   const [circleColor, setCircleColor] = useState('black');
 
   useEffect(() => {
@@ -24,9 +25,9 @@ const UserListItem = ({ status, name }) => {
       {name}
     </li>
   );
-};
+}
 
-const InGameUserListContainer = () => {
+function InGameUserListContainer() {
   const userList = [
     { nickname: 'nerdchanii', status: 'good' },
     { nickname: 'whos', status: 'good' },
@@ -37,15 +38,11 @@ const InGameUserListContainer = () => {
     <div className="InGameUserListContainer">
       <ul className="InGameUserList">
         {userList.map((item) => (
-          <UserListItem
-            key={item.nickname}
-            name={item.nickname}
-            status={item.status}
-          />
+          <UserListItem key={item.nickname} name={item.nickname} status={item.status} />
         ))}
       </ul>
     </div>
   );
-};
+}
 
 export default InGameUserListContainer;

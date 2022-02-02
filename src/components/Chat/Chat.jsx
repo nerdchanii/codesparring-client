@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { io } from 'socket.io-client';
 import ChatBody from './ChatBody';
@@ -6,11 +6,12 @@ import ChatHeader from './ChatHeader';
 import ChatLog from './ChatLog';
 import ChatInput from './ChatInput';
 import './Chat.scss';
+
 const END_POINT = 'http://localhost:5000';
-const TOKEN = 'TESTER ' + Math.floor(Math.random() * 10000);
+const TOKEN = `TESTER+${Math.floor(Math.random() * 10000).toString()}`;
 let socket;
 
-const Chat = () => {
+function Chat() {
   const { pathname } = useLocation();
 
   const [messages, setMessages] = useState([]);
@@ -29,7 +30,7 @@ const Chat = () => {
     socket.emit('join', pathname);
 
     socket.on('message', (message) => {
-      setMessages((messages) => [message, ...messages]);
+      setMessages((beforeMesseages) => [message, ...beforeMesseages]);
     });
 
     // socket.on('roomData', (data) => {
@@ -37,7 +38,6 @@ const Chat = () => {
     console.log(socket);
 
     return () => {
-      console.log('clean up for disconnect');
       socket.emit('leave');
       socket.disconnect();
       setMessages(null);
@@ -55,19 +55,16 @@ const Chat = () => {
   };
 
   if (!messages) return <></>;
-  if (messages) {
-    return (
-      <div className="Chat">
-        <ChatHeader
-          roomName={`[${pathname.replace('/', '').replaceAll('/', ':')}]`}
-        />
-        <ChatBody>
-          <ChatLog messages={messages} />
-          <ChatInput onSubmit={onSubmit} value={value} onChange={onChange} />
-        </ChatBody>
-      </div>
-    );
-  }
-};
+
+  return (
+    <div className="Chat">
+      <ChatHeader roomName={`[${pathname.replace('/', '').replaceAll('/', ':')}]`} />
+      <ChatBody>
+        <ChatLog messages={messages} />
+        <ChatInput onSubmit={onSubmit} value={value} onChange={onChange} />
+      </ChatBody>
+    </div>
+  );
+}
 
 export default Chat;

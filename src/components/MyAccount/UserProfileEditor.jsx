@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import Errpage from '../../Pages/Errpage/Errpage';
 
-const UserProfileEditor = ({ draftingUserInfo, edit, setDraftingUserInfo }) => {
+function UserProfileEditor({ draftingUserInfo, edit, setDraftingUserInfo }) {
   const onChange = useCallback(
     (e) => {
       setDraftingUserInfo({
@@ -26,13 +26,9 @@ const UserProfileEditor = ({ draftingUserInfo, edit, setDraftingUserInfo }) => {
   const onChangeImg = useCallback(
     (e) => {
       console.log(e.target.files[0]);
-      const file = new File(
-        [e.target.files[0]],
-        `${draftingUserInfo.nickName}.jpg`,
-        {
-          type: 'image/jpeg',
-        },
-      );
+      const file = new File([e.target.files[0]], `${draftingUserInfo.nickName}.jpg`, {
+        type: 'image/jpeg',
+      });
       setDraftingUserInfo({
         ...draftingUserInfo,
         [e.target.name]: URL.createObjectURL(file),
@@ -55,14 +51,16 @@ const UserProfileEditor = ({ draftingUserInfo, edit, setDraftingUserInfo }) => {
           <img src={draftingUserInfo.img} sizes="128" alt="userProfile" />
           {edit ? (
             <>
-              <label htmlFor="changeImage">📷이미지 변경</label>
-              <input
-                id="changeImage"
-                type="file"
-                name="img"
-                accept="image/*"
-                onChange={onChangeImg}
-              />
+              <label htmlFor="changeImage">
+                📷이미지 변경
+                <input
+                  id="changeImage"
+                  type="file"
+                  name="img"
+                  accept="image/*"
+                  onChange={onChangeImg}
+                />
+              </label>
             </>
           ) : (
             <></>
@@ -70,14 +68,16 @@ const UserProfileEditor = ({ draftingUserInfo, edit, setDraftingUserInfo }) => {
         </div>
         <div className="textContainer">
           <div className="nickname">
-            <label className="nicknameLabel">nickName:</label>
-
-            <input
-              disabled={!edit}
-              name="nickName"
-              value={draftingUserInfo.nickName}
-              onChange={onChange}
-            />
+            <label className="nicknameLabel" htmlFor="nickName">
+              <span>nickName:</span>
+              <input
+                id="nickName"
+                disabled={!edit}
+                name="nickName"
+                value={draftingUserInfo.nickName}
+                onChange={onChange}
+              />
+            </label>
           </div>
           <p className="email">
             email:
@@ -95,6 +95,6 @@ const UserProfileEditor = ({ draftingUserInfo, edit, setDraftingUserInfo }) => {
       </div>
     </form>
   );
-};
+}
 
 export default UserProfileEditor;

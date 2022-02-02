@@ -1,3 +1,4 @@
+import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Sparring from '../../Pages/Sparring/Sparring';
 import Home from '../../Pages/Home/Home';
@@ -6,7 +7,8 @@ import Practice from '../../Pages/Practice/Practice';
 import LeaderBoard from '../leaderboard/Leaderboard';
 import Notice from '../Notice/Notice';
 import './RouteContainer.scss';
-const RouteContainer = () => {
+
+function RouteContainer() {
   return (
     <div className="RouteContainer">
       <Routes>
@@ -19,5 +21,5 @@ const RouteContainer = () => {
       </Routes>
     </div>
   );
-};
+}
 export default RouteContainer;

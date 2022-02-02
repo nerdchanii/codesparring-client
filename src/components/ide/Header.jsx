@@ -1,8 +1,9 @@
+import React from 'react';
 import { useRecoilValue } from 'recoil';
 import { langExt } from '../../state/ide';
 import './Ide.scss';
 
-const Header = () => {
+function Header() {
   const ext = useRecoilValue(langExt);
   // console.log(ext);
 
@@ -10,7 +11,8 @@ const Header = () => {
     <div className="Header">
       <div className="FileName">
         <div>
-          solution.<span>{ext}</span>
+          solution.
+          <span>{ext}</span>
         </div>
       </div>
       <div className="Timer">
@@ -19,6 +21,6 @@ const Header = () => {
       </div>
     </div>
   );
-};
+}
 
 export default Header;

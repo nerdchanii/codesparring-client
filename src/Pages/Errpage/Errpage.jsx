@@ -1,5 +1,8 @@
-const Errpage = (props) => {
-  if (!props.log) {
+import React from 'react';
+
+function Errpage(props) {
+  const { log } = props;
+  if (!log) {
     return <h1>hi</h1>;
   }
   return (
@@ -7,10 +10,10 @@ const Errpage = (props) => {
       <h1>Error!</h1>
       <details>
         <summary>show log</summary>
-        <div>{props.log}</div>
+        <div>{log}</div>
       </details>
     </div>
   );
-};
+}
 
 export default Errpage;

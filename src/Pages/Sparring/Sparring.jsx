@@ -1,8 +1,9 @@
+import React from 'react';
 import IdeContainer from '../../components/ide/IdeContainer';
 import Game from '../../components/Game/Game';
 import './Sparring.scss';
 
-const Sparring = () => {
+function Sparring() {
   return (
     <div className="Sparring">
       <div className="left">
@@ -13,5 +14,5 @@ const Sparring = () => {
       </div>
     </div>
   );
-};
+}
 export default Sparring;

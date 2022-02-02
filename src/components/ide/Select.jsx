@@ -1,4 +1,6 @@
-const Select = (props) => {
+import React from 'react';
+
+function Select(props) {
   const { setType, value, options, handle } = props;
 
   return (
@@ -10,6 +12,6 @@ const Select = (props) => {
       ))}
     </select>
   );
-};
+}
 
 export default Select;

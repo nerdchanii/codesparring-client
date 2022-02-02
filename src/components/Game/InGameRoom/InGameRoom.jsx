@@ -1,13 +1,12 @@
 import React, { useCallback, useEffect, useState } from 'react';
+import { CircularProgress } from '@mui/material';
 import Chat from '../../Chat/Chat';
 import InGameHeader from './InGameHeader';
 import InGameUserListContainer from './InGameUserListContainer';
 import InGameProblemContianer from './InGameProblemContianer';
-import { CircularProgress } from '@mui/material';
 import './InGame.scss';
-import { Box } from '@mui/system';
 
-const InGameRoom = () => {
+function InGameRoom() {
   const [roomInfo, setRoomInfo] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -62,9 +61,9 @@ const InGameRoom = () => {
   }
   if (loading) {
     return (
-      <Box className="loading">
+      <div className="loading">
         <CircularProgress />
-      </Box>
+      </div>
     );
   }
   if (roomInfo) {
@@ -81,6 +80,6 @@ const InGameRoom = () => {
       </div>
     );
   }
-};
+}
 
 export default InGameRoom;

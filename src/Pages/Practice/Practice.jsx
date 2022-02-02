@@ -1,3 +1,4 @@
+import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import IdeContainer from '../../components/ide/IdeContainer';
 import ProblemContainer from '../../components/Problem/ProblemContainer';
@@ -5,7 +6,7 @@ import ProblemListContainers from '../../components/Problem/ProblemListContainer
 import Chat from '../../components/Chat/Chat';
 import './Practice.scss';
 
-const Practice = () => {
+function Practice() {
   return (
     <div className="Practice">
       <div className="left-side">
@@ -24,6 +25,6 @@ const Practice = () => {
       </div>
     </div>
   );
-};
+}
 
 export default Practice;

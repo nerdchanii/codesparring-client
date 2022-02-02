@@ -1,12 +1,13 @@
+import React, { useCallback, useEffect, useState } from 'react';
 import { Box, CircularProgress } from '@mui/material';
 import axios from 'axios';
-import { useCallback, useEffect, useState } from 'react';
 // import { loadding } from '../../state/loading';
 // import { useRecoilState } from 'recoil';
 import { Link } from 'react-router-dom';
+import env from '../../env';
 import './Problem.scss';
 
-const ProblemListHeader = () => {
+function ProblemListHeader() {
   return (
     <div className="ProblemListHeader">
       <div className="problem-number">문제번호</div>
@@ -15,8 +16,9 @@ const ProblemListHeader = () => {
       <div className="problem-type">문제분류</div>
     </div>
   );
-};
-const ProblemListItem = ({ problem }) => {
+}
+
+function ProblemListItem({ problem }) {
   const { id, level, problemType, title } = problem;
 
   return (
@@ -29,9 +31,9 @@ const ProblemListItem = ({ problem }) => {
       <div className="problem-type">{problemType}</div>
     </li>
   );
-};
+}
 
-const ProblemList = () => {
+function ProblemList() {
   // const [listLoadding, setListLoadding] = useRecoilState(loadding);
   const [problemItems, setProblemItems] = useState(null);
   const [loadding, setLoadding] = useState(false);
@@ -39,8 +41,8 @@ const ProblemList = () => {
   const fetchData = useCallback(async () => {
     setLoadding(true);
     try {
-      const response = await axios.get('/api/problem');
-      const data = response.data;
+      const response = await axios.get(`${env.api_url}/api/problem`);
+      const { data } = response;
       setProblemItems(data);
     } catch (e) {
       console.log(e);
@@ -80,6 +82,6 @@ const ProblemList = () => {
       </ul>
     </>
   );
-};
+}
 
 export default ProblemList;

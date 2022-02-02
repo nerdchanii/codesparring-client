@@ -1,13 +1,15 @@
-import { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 // import { useParams } from 'react-router-dom';
-import ProblemHeader from './ProblemHeader';
-import ProblemBody from './ProblemBody';
 import './Problem.scss';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { CircularProgress } from '@mui/material';
-import { Box } from '@mui/system';
-const ProblemContainer = () => {
+import ProblemHeader from './ProblemHeader';
+import ProblemBody from './ProblemBody';
+
+import env from '../../env';
+
+function ProblemContainer() {
   // const { problemNumber } = useParams();
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState(null);
@@ -16,9 +18,9 @@ const ProblemContainer = () => {
   const fetchData = useCallback(async () => {
     setLoading(true);
     try {
-      const response = await axios.get(`/api/problem/${id}`);
-      const data = response.data;
-      setData(data);
+      const response = await axios.get(`${env.api_url}/api/problem/${id}`);
+      const { responseData } = response;
+      setData(responseData);
     } catch (e) {
       console.log(e);
     } finally {
@@ -33,8 +35,8 @@ const ProblemContainer = () => {
   if (loading) {
     return (
       <div>
-        <Box
-          sx={{
+        <div
+          style={{
             display: 'block',
             height: '100%',
             justifyContent: 'center',
@@ -42,7 +44,7 @@ const ProblemContainer = () => {
           }}
         >
           <CircularProgress sx={{ color: '#2f9272' }} />
-        </Box>
+        </div>
       </div>
     );
   }
@@ -57,6 +59,6 @@ const ProblemContainer = () => {
       </div>
     );
   }
-};
+}
 
 export default ProblemContainer;

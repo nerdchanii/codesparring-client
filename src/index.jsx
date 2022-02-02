@@ -6,10 +6,6 @@ import reportWebVitals from './reportWebVitals';
 import { RecoilRoot } from 'recoil';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import NaverCallback from './components/Layout/Topper/NaverCallback';
-import axios from 'axios';
-
-//axios baseURL 추가
-axios.defaults.baseURL = 'http://localhost:5000';
 
 ReactDOM.render(
   <BrowserRouter>

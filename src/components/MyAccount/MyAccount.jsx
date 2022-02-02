@@ -1,27 +1,28 @@
 import React, { useCallback, useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+import { useRecoilValue } from 'recoil';
+import axios from 'axios';
 import MyAccountHeader from './MyAccountHeader';
 import UserProfile from './UserProfile';
-import { useLocation } from 'react-router-dom';
 import './MyAccount.scss';
-import { useRecoilValue } from 'recoil';
 import { isLogin } from '../../state/login';
-import axios from 'axios';
+import env from '../../env';
 
-const MyAccount = () => {
+function MyAccount() {
   const loginCheck = useRecoilValue(isLogin);
   const { pathname } = useLocation();
   const [user, setUser] = useState(null);
 
   const fetchUser = useCallback(async () => {
-    //TOO AccessToken 을 이용해서 조회할 수 있어야 하지 않을까 생각됨
-    //Acees token으로 식별자 받아서 해야하나?
-    const access_token = localStorage.getItem('com.naver.nid.access_token');
+    // TOO AccessToken 을 이용해서 조회할 수 있어야 하지 않을까 생각됨
+    // Acees token으로 식별자 받아서 해야하나?
+    const accessToken = localStorage.getItem('com.naver.nid.access_token');
     try {
-      const response = await axios.get(`/api/user?token=${access_token}`);
+      const response = await axios.get(`${env.api_url}/api/user?token=${accessToken}`);
       const data = JSON.parse(response.data);
       setUser(data);
     } catch (e) {
-      console.log(e); //비동기처리중 에러 발생시
+      console.log(e); // 비동기처리중 에러 발생시
     }
   }, []);
 
@@ -42,6 +43,6 @@ const MyAccount = () => {
       </div>
     </div>
   );
-};
+}
 
 export default MyAccount;

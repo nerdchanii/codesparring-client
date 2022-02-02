@@ -1,36 +1,29 @@
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useCallback, useEffect, useState } from 'react';
+import { CircularProgress } from '@mui/material';
 import WaitingRoomHeader from './WaitingRoomHeader';
 import RoomList from './RoomList';
 import './WaitingRoom.scss';
-import { CircularProgress } from '@mui/material';
-import { Box } from '@mui/system';
+import env from '../../../env';
 
-const WaitingRoom = () => {
+function WaitingRoom() {
   const [gameRooms, setgameRoom] = useState(null);
   const [loading, setLoading] = useState(false);
-  const fetchRoomList = useCallback(async () => {
-    setLoading(true);
-    try {
-      const mock = await axios.get('/api/game/list');
-      const response = mock.data;
-
-      setgameRoom(response);
-    } catch (e) {
-      console.log('error!!');
-    } finally {
-      setLoading(false);
-    }
-  }, []);
 
   useEffect(() => {
-    fetchRoomList();
+    // fetchRoomList();
+    setLoading(true);
+    axios
+      .get(`${env.api_url}/api/game/list`)
+      .then((response) => setgameRoom(response.data))
+      .catch(() => console.log('error'))
+      .then(() => setLoading(false));
   }, []);
 
   if (loading) {
     return (
-      <Box
-        sx={{
+      <div
+        style={{
           display: 'flex',
           flex: '1',
           justifyContent: 'center',
@@ -38,7 +31,7 @@ const WaitingRoom = () => {
         }}
       >
         <CircularProgress sx={{ color: '#2f9272' }} />
-      </Box>
+      </div>
     );
   }
   if (!loading) {
@@ -53,6 +46,6 @@ const WaitingRoom = () => {
       </>
     );
   }
-};
+}
 
 export default WaitingRoom;

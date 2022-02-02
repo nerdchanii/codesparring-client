@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
 import { BsFillLockFill, BsFillUnlockFill } from 'react-icons/bs';
-const EditButton = (props) => {
+
+function EditButton(props) {
   const { display, edit, toggle, draftingUserInfo } = props;
 
   const onSave = useCallback(async () => {
@@ -15,18 +16,20 @@ const EditButton = (props) => {
   }, []);
 
   if (!display) return <></>;
-  if (edit)
+  if (edit) {
     return (
       <button onClick={onSave}>
         <BsFillUnlockFill />
       </button>
     );
-  if (!edit)
+  }
+  if (!edit) {
     return (
       <button onClick={onEdit}>
         <BsFillLockFill />
       </button>
     );
-};
+  }
+}
 
 export default EditButton;

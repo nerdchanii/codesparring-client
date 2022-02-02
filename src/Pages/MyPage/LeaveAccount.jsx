@@ -1,22 +1,22 @@
 import { Button } from '@mui/material';
-import { Box } from '@mui/system';
 import { BiBlock } from 'react-icons/bi';
 import React, { useCallback, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { isLogin } from '../../state/login';
 import { useSetRecoilState } from 'recoil';
+import { isLogin } from '../../state/login';
+import env from '../../env';
 
-const LeaveAccount = () => {
+function LeaveAccount() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   // 후에 방식이 변경되어야 할 것
   const setLogin = useSetRecoilState(isLogin);
-  const onClickQuit = useCallback(async (e) => {
+  const onClickQuit = useCallback(async () => {
     setLoading(true);
     try {
       const token = localStorage.getItem('com.naver.nid.access_token');
-      const response = await axios.delete('/api/delete/user', {
+      const response = await axios.delete(`${env.api_url}/api/delete/user`, {
         headers: { Authorization: `${token}` },
       });
       if (response.data === true) {
@@ -33,7 +33,7 @@ const LeaveAccount = () => {
   }, []);
 
   return (
-    <Box>
+    <div>
       <Button
         startIcon={<BiBlock />}
         size="large"
@@ -44,8 +44,8 @@ const LeaveAccount = () => {
       >
         탈퇴하기
       </Button>
-    </Box>
+    </div>
   );
-};
+}
 
 export default LeaveAccount;

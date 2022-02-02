@@ -1,7 +1,8 @@
+import React from 'react';
 import ProblemList from './ProblemList';
 import './Problem.scss';
 
-const ProblemListCotainers = () => {
+function ProblemListCotainers() {
   return (
     <div className="ProblemListContainers">
       <div className="section-title">Problem List</div>
@@ -10,6 +11,6 @@ const ProblemListCotainers = () => {
       </div>
     </div>
   );
-};
+}
 
 export default ProblemListCotainers;

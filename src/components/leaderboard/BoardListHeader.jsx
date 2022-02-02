@@ -1,5 +1,7 @@
+import React from 'react';
 import './BoardListItem.scss';
-const BoardListHeader = () => {
+
+function BoardListHeader() {
   return (
     <div className="BoardListHeader">
       <div className="Ranking">Ranking</div>
@@ -8,6 +10,6 @@ const BoardListHeader = () => {
       <div className="POW">POW</div>
     </div>
   );
-};
+}
 
 export default BoardListHeader;

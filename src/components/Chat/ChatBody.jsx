@@ -1,10 +1,9 @@
 import React from 'react';
 
-const ChatBody = ({ children }) => {
+function ChatBody({ children }) {
   if (!children) return <></>;
-  if (children) {
-    return <div className="ChatBody">{children}</div>;
-  }
-};
+
+  return <div className="ChatBody">{children}</div>;
+}
 
 export default ChatBody;

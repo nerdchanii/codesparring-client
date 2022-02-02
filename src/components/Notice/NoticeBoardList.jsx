@@ -1,16 +1,17 @@
 import axios from 'axios';
 import React, { useCallback, useEffect, useState } from 'react';
 import { BiLabel } from 'react-icons/bi';
+import env from '../../env';
 import './Notice.scss';
 
-const NoticeBoardListItem = (props) => {
+function NoticeBoardListItem(props) {
   const { id, label, title, body, writer } = props;
 
   return (
     <article className="NoticeBoardItem">
       <header className="item-title">
         <div>
-          {id}: {title}
+          {id}:{title}
         </div>
         <div className="item-label">
           {label.map((eachLabel, idx) => (
@@ -26,18 +27,18 @@ const NoticeBoardListItem = (props) => {
         <div className="item-body"> {body}</div>
       </details>
       <footer className="item-footer">
-        <div className="item-writer">wrtie by : {writer}</div>
+        <div className="item-writer">wrtie by :{writer}</div>
       </footer>
     </article>
   );
-};
+}
 
-const NoticeBoardList = () => {
+function NoticeBoardList() {
   const [loading, setLoading] = useState(false);
   const [notices, setNotices] = useState(null);
   const fetchData = useCallback(async () => {
-    const response = await axios.get('/api/notice');
-    const data = response.data;
+    const response = await axios.get(`${env.api_url}/api/notice`);
+    const { data } = response;
     setNotices(data);
   }, []);
 
@@ -72,6 +73,6 @@ const NoticeBoardList = () => {
       ))}
     </div>
   );
-};
+}
 
 export default NoticeBoardList;

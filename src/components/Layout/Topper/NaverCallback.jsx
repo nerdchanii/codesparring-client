@@ -2,9 +2,9 @@ import React, { useCallback, useEffect } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import { useRecoilState, useSetRecoilState } from 'recoil';
 import { isLogin, naverAcessToken } from '../../../state/login';
-import { naverLoginConfig } from '../../../constants/secret/naverloginConfig';
+import naverLoginConfig from '../../../constants/secret/naverloginConfig';
 
-const NaverCallback = (props) => {
+function NaverCallback() {
   const [loginState, setLoginState] = useRecoilState(isLogin);
   const setAccessToken = useSetRecoilState(naverAcessToken);
   const location = useLocation();
@@ -32,10 +32,7 @@ const NaverCallback = (props) => {
         const id = naverLogin.user.getId();
         console.log(id);
         switch (true) {
-          case email !== null &&
-            email !== undefined &&
-            nickName !== null &&
-            nickName !== undefined:
+          case email !== null && email !== undefined && nickName !== null && nickName !== undefined:
             console.log(email, nickName);
             setLoginState(true);
             break;
@@ -59,12 +56,12 @@ const NaverCallback = (props) => {
   }, []);
 
   if (!loginState) {
-    //TODO
+    // TODO
     return <div>리다이랙트 시킬까</div>;
   }
   if (loginState) {
-    return <Navigate to="/" replace={true} />;
+    return <Navigate to="/" replace />;
   }
-};
+}
 
 export default NaverCallback;

@@ -1,14 +1,18 @@
 import React from 'react';
 
-const ChatLogItem = ({ item }) => {
+function ChatLogItem(props) {
+  const { item } = props;
+  const { user, message } = item;
   return (
     <div className="ChatLogItem">
-      <div className="Username">{item.user}</div>
-      <div className="UserMessage">{item.message}</div>
+      <div className="Username">{user}</div>
+      <div className="UserMessage">{message}</div>
     </div>
   );
-};
-const ChatLog = ({ messages }) => {
+}
+
+function ChatLog(props) {
+  const { messages } = props;
   return (
     <div className="ChatLog">
       {messages.map((item, idx) => (
@@ -16,6 +20,6 @@ const ChatLog = ({ messages }) => {
       ))}
     </div>
   );
-};
+}
 
 export default ChatLog;

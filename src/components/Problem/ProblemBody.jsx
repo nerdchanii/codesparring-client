@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './Problem.scss';
 
-const TestCase = (props) => {
+function TestCase(props) {
   const { input, output } = props;
   return (
     <tr>
@@ -9,9 +9,9 @@ const TestCase = (props) => {
       <td>{output}</td>
     </tr>
   );
-};
+}
 
-const ProblemBody = (props) => {
+function ProblemBody(props) {
   const { data } = props;
   const { problemDescription, requirement, testcase } = data;
 
@@ -40,24 +40,23 @@ const ProblemBody = (props) => {
             </thead>
             <tbody className="Problem-section-table-body">
               {testcase.map((eachCase, idx) => (
-                <TestCase
-                  key={idx}
-                  input={eachCase.input}
-                  output={eachCase.output}
-                />
+                <TestCase key={idx} input={eachCase.input} output={eachCase.output} />
               ))}
             </tbody>
           </table>
         </div>
         {testcase.map((eachCase, idx) => (
           <div key={idx}>
-            <div className="Problem-section-title"># 입출력예시 {idx + 1}</div>
+            <div className="Problem-section-title">
+              # 입출력예시
+              {idx + 1}
+            </div>
             <div className="Problem-section-body">{eachCase.description}</div>
           </div>
         ))}
       </div>
     </div>
   );
-};
+}
 
 export default ProblemBody;

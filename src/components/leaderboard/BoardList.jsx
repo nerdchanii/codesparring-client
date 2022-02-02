@@ -1,11 +1,12 @@
+import React, { useCallback, useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
+import axios from 'axios';
 import { loadding } from '../../state/loading';
-import { useCallback, useEffect, useState } from 'react';
 import './BoardListItem.scss';
 import BoardListHeader from './BoardListHeader';
-import axios from 'axios';
+import env from '../../env';
 // POW = Prolbem of Week
-const BoardListItem = (props) => {
+function BoardListItem(props) {
   const { ranking, nickName, point, POW } = props;
 
   return (
@@ -16,16 +17,16 @@ const BoardListItem = (props) => {
       <div className="POW">{POW}</div>
     </li>
   );
-};
+}
 
-const BoardList = () => {
+function BoardList() {
   // const { LeaderBoard } = loadding;
   // api로 뱅열 만만들들어내야함
   const [rankLoadding, setRankLoadding] = useRecoilState(loadding);
   const [rankList, setRankList] = useState(null);
   const fetchData = useCallback(async () => {
-    const response = await axios.get('api/ranklist');
-    const data = response.data;
+    const response = await axios(`${env.api_url}/api/ranklist`);
+    const { data } = response;
     setRankList(data);
   }, []);
 
@@ -62,6 +63,6 @@ const BoardList = () => {
       </ul>
     </>
   );
-};
+}
 
 export default BoardList;

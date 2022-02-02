@@ -1,10 +1,12 @@
+import React from 'react';
 import { useRecoilValue } from 'recoil';
 import Errpage from '../../Pages/Errpage/Errpage';
 import { isLogin } from '../../state/login';
 import './MyAccount.scss';
-const UserProfile = ({ user }) => {
+
+function UserProfile({ user }) {
   const loginCheck = useRecoilValue(isLogin);
-  if (!loginCheck)
+  if (!loginCheck) {
     return (
       <div
         style={{
@@ -17,6 +19,7 @@ const UserProfile = ({ user }) => {
         먼저 로그인해주세요!
       </div>
     );
+  }
   if (!user) {
     return (
       <div>
@@ -49,6 +52,6 @@ const UserProfile = ({ user }) => {
       </div>
     </div>
   );
-};
+}
 
 export default UserProfile;

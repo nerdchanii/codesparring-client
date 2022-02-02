@@ -1,7 +1,8 @@
+import React from 'react';
 import './WaitingRoom.scss';
 import { Link } from 'react-router-dom';
 
-const RoomListItem = (props) => {
+function RoomListItem(props) {
   const { RoomId, title, inRoom, level } = props;
 
   return (
@@ -10,12 +11,12 @@ const RoomListItem = (props) => {
         <div className="RoomNumber">{RoomId}</div>
         <div className="RoomTitle">{title}</div>
         <div className="level">{level}</div>
-        <div className="inRoom">{inRoom}/4</div>
+        <div className="inRoom">{inRoom}</div>
       </Link>
     </li>
   );
-};
-const RoomList = ({ gameRooms }) => {
+}
+function RoomList({ gameRooms }) {
   if (gameRooms) {
     return (
       <div className="RoomList">
@@ -39,6 +40,6 @@ const RoomList = ({ gameRooms }) => {
       </div>
     );
   }
-};
+}
 
 export default RoomList;

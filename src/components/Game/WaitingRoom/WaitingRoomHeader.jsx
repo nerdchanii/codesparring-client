@@ -1,12 +1,12 @@
 import React from 'react';
 import './WaitingRoom.scss';
 
-const WaitingRoomHeader = () => {
+function WaitingRoomHeader() {
   return (
     <div className="WaitingRoomHeader">
       <div>RoomList</div>
     </div>
   );
-};
+}
 
 export default WaitingRoomHeader;

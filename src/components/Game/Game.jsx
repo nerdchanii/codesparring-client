@@ -1,8 +1,9 @@
+import React from 'react';
+import { Route, Routes } from 'react-router-dom';
 import WaitingRoom from './WaitingRoom/WaitingRoom';
 import InGameRoom from './InGameRoom/InGameRoom';
-import { Route, Routes } from 'react-router-dom';
 
-const Game = () => {
+function Game() {
   return (
     <>
       <Routes>
@@ -11,6 +12,6 @@ const Game = () => {
       </Routes>
     </>
   );
-};
+}
 
 export default Game;

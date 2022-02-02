@@ -1,13 +1,14 @@
+import React from 'react';
 import './Footer.scss';
 
-const Footer = () => {
+function Footer() {
   return (
     <footer className="Footer">
-      <a target={'_blank'} href="https://github.com/nerdchanii">
+      <a target="_blank" href="https://github.com/nerdchanii" rel="noreferrer">
         GO TO CONTRIBUTE!➡️
       </a>
     </footer>
   );
-};
+}
 
 export default Footer;
