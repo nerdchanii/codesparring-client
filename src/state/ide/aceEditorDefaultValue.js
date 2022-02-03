@@ -1,5 +1,6 @@
 import { selector } from 'recoil';
 import { ideState, LANG_TYPE } from '.';
+
 const ACE_EDITOR_DEFAULT_VALUE = 'aceEditorDefaultValue';
 const DEFAULT_VALUE = {
   CPP: `#include <string>
@@ -26,18 +27,8 @@ return result`,
 }`,
 };
 
-export const aceEditorDefaultValue = selector({
-  key: ACE_EDITOR_DEFAULT_VALUE,
-  get: ({ get }) => {
-    const settings = get(ideState);
-    const { lang } = settings;
-
-    return setValue(lang);
-  },
-});
-
-function setValue(language_type) {
-  switch (language_type) {
+function setValue(languageType) {
+  switch (languageType) {
     case LANG_TYPE.CPP:
       return DEFAULT_VALUE.CPP;
     case LANG_TYPE.PYTHON:
@@ -50,3 +41,15 @@ function setValue(language_type) {
       return '';
   }
 }
+
+const aceEditorDefaultValue = selector({
+  key: ACE_EDITOR_DEFAULT_VALUE,
+  get: ({ get }) => {
+    const settings = get(ideState);
+    const { lang } = settings;
+
+    return setValue(lang);
+  },
+});
+
+export default aceEditorDefaultValue;

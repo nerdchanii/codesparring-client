@@ -1,4 +1,5 @@
 import { atom, selector } from 'recoil';
+
 const IDE_STATE = 'ideState';
 const LANG_EXT_KEY = 'langExt';
 export const LANG_TYPE = {
@@ -15,6 +16,20 @@ const LANG_EXT = {
   JS: 'js',
 };
 
+function setExt(lang) {
+  switch (lang) {
+    case LANG_TYPE.CPP:
+      return LANG_EXT.CPP;
+    case LANG_TYPE.PYTHON:
+      return LANG_EXT.PYTHON;
+    case LANG_TYPE.JS:
+      return LANG_EXT.JS;
+    case LANG_TYPE.JAVA:
+      return LANG_EXT.JAVA;
+    default:
+      return lang;
+  }
+}
 export const ideState = atom({
   key: IDE_STATE,
   default: {
@@ -34,18 +49,3 @@ export const langExt = selector({
     return setExt(lang);
   },
 });
-
-function setExt(lang) {
-  switch (lang) {
-    case LANG_TYPE.CPP:
-      return LANG_EXT.CPP;
-    case LANG_TYPE.PYTHON:
-      return LANG_EXT.PYTHON;
-    case LANG_TYPE.JS:
-      return LANG_EXT.JS;
-    case LANG_TYPE.JAVA:
-      return LANG_EXT.JAVA;
-    default:
-      return lang;
-  }
-}

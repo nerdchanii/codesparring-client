@@ -1,4 +1,5 @@
 import { atom } from 'recoil';
+
 const IS_LOGIN = 'isLogin';
 const NAVER_ACESS_TOKEN = 'naverAccessToken';
 
