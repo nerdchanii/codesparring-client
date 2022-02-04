@@ -1,14 +1,12 @@
 import React from 'react';
 import AceEditor from 'react-ace';
 import 'ace-builds/webpack-resolver';
-// recoil &state
-import { useRecoilValue } from 'recoil';
-import { ideState } from '../../state/ide/index';
+
 import './Ide.scss';
 import 'brace/ext/language_tools';
 
-function Editor({ value, onChange }) {
-  const { keybind, lang, theme, fontSize } = useRecoilValue(ideState);
+function Editor(props) {
+  const { keybind, lang, theme, fontSize, value, onChange } = props;
 
   return (
     <AceEditor

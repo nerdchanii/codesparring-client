@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useSetRecoilState } from 'recoil';
+import testCaseState from '../../state/problem/testCaseState';
 import './Problem.scss';
 
 function TestCase(props) {
   const { input, output } = props;
+
   return (
     <tr>
       <td>{input}</td>
@@ -14,6 +17,14 @@ function TestCase(props) {
 function ProblemBody(props) {
   const { data } = props;
   const { problemDescription, requirement, testcase } = data;
+  const setTestCaseState = useSetRecoilState(testCaseState);
+
+  useEffect(() => {
+    setTestCaseState(testcase);
+    return () => {
+      setTestCaseState(null);
+    };
+  }, []);
 
   if (!data) {
     <div>Error!</div>;
