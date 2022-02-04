@@ -20,7 +20,7 @@ function Chat() {
 
   // TODO: token 추가해야함
 
-  // path에 맞는 룸을 연결시키기 위함
+  // pathname 에 맞는 룸을 연결시키기 위함
   useEffect(() => {
     socket = io(END_POINT, {
       auth: {
@@ -30,7 +30,11 @@ function Chat() {
     socket.emit('join', pathname);
 
     socket.on('message', (message) => {
-      setMessages((beforeMesseages) => [message, ...beforeMesseages]);
+      if (messages.length === 0) {
+        setMessages([message]);
+      } else {
+        setMessages([message, ...messages]);
+      }
     });
 
     // socket.on('roomData', (data) => {
