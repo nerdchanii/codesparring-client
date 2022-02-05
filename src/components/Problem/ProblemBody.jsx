@@ -27,7 +27,7 @@ function ProblemBody(props) {
   }, []);
 
   if (!data) {
-    <div>Error!</div>;
+    return <div>Error!</div>;
   }
   return (
     <div className="ProblemBody">

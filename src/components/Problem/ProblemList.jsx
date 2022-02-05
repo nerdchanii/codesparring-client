@@ -41,7 +41,7 @@ function ProblemList() {
   const fetchData = useCallback(async () => {
     setLoadding(true);
     try {
-      const response = await axios.get(`${env.api_url}/api/problem`);
+      const response = await axios.get(`${env.API_URL}/api/problem`);
       const { data } = response;
       setProblemItems(data);
     } catch (e) {

@@ -16,7 +16,7 @@ function LeaveAccount() {
     setLoading(true);
     try {
       const token = localStorage.getItem('com.naver.nid.access_token');
-      const response = await axios.delete(`${env.api_url}/api/delete/user`, {
+      const response = await axios.delete(`${env.API_URL}/api/delete/user`, {
         headers: { Authorization: `${token}` },
       });
       if (response.data === true) {
