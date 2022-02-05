@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useEffect } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 import axios from 'axios';
@@ -18,7 +18,7 @@ function MyAccount() {
     // Acees token으로 식별자 받아서 해야하나?
     const accessToken = localStorage.getItem('com.naver.nid.access_token');
     try {
-      const response = await axios.get(`${env.api_url}/api/user?token=${accessToken}`);
+      const response = await axios.get(`${env.API_URL}/api/user?token=${accessToken}`);
       const data = JSON.parse(response.data);
       setUser(data);
     } catch (e) {

@@ -37,7 +37,7 @@ function NoticeBoardList() {
   const [loading, setLoading] = useState(false);
   const [notices, setNotices] = useState(null);
   const fetchData = useCallback(async () => {
-    const response = await axios.get(`${env.api_url}/api/notice`);
+    const response = await axios.get(`${env.API_URL}/api/notice`);
     const { data } = response;
     setNotices(data);
   }, []);

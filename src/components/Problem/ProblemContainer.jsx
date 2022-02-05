@@ -18,9 +18,8 @@ function ProblemContainer() {
   const fetchData = useCallback(async () => {
     setLoading(true);
     try {
-      const response = await axios.get(`${env.api_url}/api/problem/${id}`);
-      const { responseData } = response;
-      setData(responseData);
+      const response = await axios.get(`${env.API_URL}/api/problem/${id}`);
+      setData(response.data);
     } catch (e) {
       console.log(e);
     } finally {

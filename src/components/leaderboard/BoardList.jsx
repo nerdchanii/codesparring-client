@@ -5,6 +5,7 @@ import { loadding } from '../../state/loading';
 import './BoardListItem.scss';
 import BoardListHeader from './BoardListHeader';
 import env from '../../env';
+
 // POW = Prolbem of Week
 function BoardListItem(props) {
   const { ranking, nickName, point, POW } = props;
@@ -25,7 +26,7 @@ function BoardList() {
   const [rankLoadding, setRankLoadding] = useRecoilState(loadding);
   const [rankList, setRankList] = useState(null);
   const fetchData = useCallback(async () => {
-    const response = await axios(`${env.api_url}/api/ranklist`);
+    const response = await axios(`${env.API_URL}/api/ranklist`);
     const { data } = response;
     setRankList(data);
   }, []);
