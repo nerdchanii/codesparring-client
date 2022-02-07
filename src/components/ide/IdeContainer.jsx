@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { useRecoilValue } from 'recoil';
 import axios from 'axios';
 import { ideState } from '../../state/ide/index';
@@ -9,44 +9,74 @@ import Output from './Output';
 import aceEditorDefaultValue from '../../state/ide/aceEditorDefaultValue';
 import './Ide.scss';
 import env from '../../env';
+import problemNumberState from '../../state/problem/problemNumberState';
 
-async function getPost(lang, value, input = '') {
-  const response = await axios.post(`${env.API_URL}/api/run`, {
-    lang,
-    code: value,
-    stdin: input,
-  }, {
-    headers: {
-      'Content-Type': 'application/json',
+async function getPost(lang, value, input = '', expectOutput = '') {
+  const response = await axios.post(
+    `${env.API_URL}/api/code/test`,
+    {
+      lang,
+      code: value,
+      stdin: input,
+      output: expectOutput,
     },
-  });
+    {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    },
+  );
   return response.data;
 }
 
 function IdeContainer() {
   const defaultValue = useRecoilValue(aceEditorDefaultValue);
   const testCase = useRecoilValue(testCaseState);
+  const problemNumber = useRecoilValue(problemNumberState);
   const { keybind, fontSize, theme, lang } = useRecoilValue(ideState);
   const [value, setValue] = useState(defaultValue);
   const [result, setResult] = useState([]);
-  const [expectedOutput, setExpectedOutput] = useState([]);
+
   const onChange = (e) => {
     setValue(e);
   };
-  useEffect(() => {
-    const wholeOutput = testCase.map((each) => each.output);
-    setExpectedOutput(wholeOutput);
-  }, [testCase]);
 
   const runTest = useCallback(async () => {
     if (testCase.length < 1) {
       const data = await getPost(lang, value);
-      setResult(data);
+      setResult([data]);
     } else {
-      const data = await Promise.all(testCase.map((eachCase) => getPost(lang, value, eachCase.input)));
+      const data = await Promise.all(
+        testCase.map((eachCase) => getPost(lang, value, eachCase.input, eachCase.output)),
+      );
+      if (typeof data === 'object') {
+        setResult([data]);
+      }
       setResult(data);
     }
   }, [lang, value, testCase]);
+
+  const onSubmit = useCallback(async () => {
+    const response = await axios.post(
+      `${env.API_URL}/api/code/submit`,
+      {
+        problemId: problemNumber,
+        lang,
+        code: value,
+      },
+      {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      },
+    );
+    if (typeof response.data === 'object') {
+      setResult([response.data]);
+    }
+    console.log(response);
+    setResult(response.data);
+  }, [lang, problemNumber, value]);
+
   return (
     <div className="IdeContainer">
       <Header />
@@ -58,7 +88,7 @@ function IdeContainer() {
         theme={theme}
         lang={lang}
       />
-      <Output runTest={runTest} result={result} expectedOut={expectedOutput} />
+      <Output runTest={runTest} onSubmit={onSubmit} result={result} />
     </div>
   );
 }
