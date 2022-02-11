@@ -30,21 +30,13 @@ function Chat() {
     socket.emit('join', pathname);
 
     socket.on('message', (message) => {
-      if (messages.length === 0) {
-        setMessages([message]);
-      } else {
-        setMessages([message, ...messages]);
-      }
+      setMessages((prev) => [message, ...prev]);
     });
-
-    // socket.on('roomData', (data) => {
-    // });
     console.log(socket);
-
     return () => {
       socket.emit('leave');
       socket.disconnect();
-      setMessages(null);
+      setMessages([]);
     };
   }, [pathname]);
 
