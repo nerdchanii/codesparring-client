@@ -15,7 +15,7 @@ function Editor(props) {
       mode={lang === 'cpp' ? 'c_cpp' : lang}
       keyboardHandler={keybind}
       theme={theme}
-      fontSize={fontSize}
+      fontSize={typeof fontSize === 'number' ? fontSize : Number(fontSize)}
       showGutter
       highlightActiveLine
       showPrintMargin={false}
