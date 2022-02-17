@@ -1,5 +1,5 @@
 .SettingContainer {
-  font-size: 1em;
+  font-size: 1rem;
   font-weight: 400;
   position: absolute;
   z-index: 1;
@@ -7,14 +7,14 @@
   display: flex;
   flex-direction: column;
   transform: translate(-30%, 30%);
-  padding: 0.5em;
+  padding: 0.5rem;
 
   .buttonContainer {
     display: flex;
     justify-content: flex-end;
     button {
-      font-size: 1.2em;
-      font-size: 1em;
+      font-size: 1.2rem;
+      font-size: 1rem;
       background: none;
     }
   }
@@ -23,7 +23,7 @@
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    font-size: 1.2em;
+    font-size: 1.2rem;
     label {
       text-align: left;
       color: white;
