@@ -8,14 +8,14 @@ import env from '../../env';
 
 // POW = Prolbem of Week
 function BoardListItem(props) {
-  const { ranking, nickName, point, POW } = props;
+  const { ranking, nickName, point, weeklyScore } = props;
 
   return (
     <li className="BoardListItem">
       <div className="Ranking">{ranking}</div>
       <div className="NickName">{nickName}</div>
       <div className="point">{point}</div>
-      <div className="POW">{POW}</div>
+      <div className="POW">{weeklyScore}</div>
     </li>
   );
 }
@@ -26,7 +26,7 @@ function BoardList() {
   const [rankLoadding, setRankLoadding] = useRecoilState(loadding);
   const [rankList, setRankList] = useState(null);
   const fetchData = useCallback(async () => {
-    const response = await axios(`${env.API_URL}/api/ranklist`);
+    const response = await axios(`${env.API_URL}/api/rank/list`);
     const { data } = response;
     setRankList(data);
   }, []);
@@ -57,7 +57,7 @@ function BoardList() {
             ranking={user.id}
             nickName={user.nickName}
             point={user.point}
-            POW={user.POW}
+            weeklyScore={user.weeklyScore}
             key={user.id}
           />
         ))}

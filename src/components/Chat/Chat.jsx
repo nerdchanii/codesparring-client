@@ -22,13 +22,25 @@ function Chat() {
 
   // pathname 에 맞는 룸을 연결시키기 위함
   useEffect(() => {
+    const practice = /^\/practice\//;
+    const game = /^\/sparring\//;
+    let room;
+    // practice room connect
+    if (practice.test(pathname)) {
+      room = pathname;
+    }
+    // game room connect
+    if (game.test(pathname)) {
+      console.log(pathname);
+      room = pathname;
+    }
+
     socket = io(END_POINT, {
       auth: {
         token: TOKEN,
       },
     });
-    socket.emit('join', pathname);
-
+    socket.emit('join', room);
     socket.on('message', (message) => {
       setMessages((prev) => [message, ...prev]);
     });
