@@ -5,7 +5,7 @@
   .MyAccount-Topper {
     border-bottom: 2px solid #2f9272;
     display: flex;
-    font-size: 1.5em;
+    font-size: 1.5rem;
     color: #2f9272;
     font-weight: bolder;
     .MyAccount-Header {
@@ -27,7 +27,7 @@
       min-height: inherit;
       display: flex;
       flex-direction: row;
-      margin-left: 1em;
+      margin-left: 1rem;
       .imgContainer {
         display: flex;
         flex-direction: column;
@@ -38,7 +38,7 @@
       }
       .textContainer {
         min-height: inherit;
-        margin-left: 1em;
+        margin-left: 1rem;
         display: flex;
         flex-direction: column;
         justify-content: space-around;
@@ -46,10 +46,10 @@
         .email,
         .rank,
         .points {
-          font-size: 1.2em;
+          font-size: 1.2rem;
           font-weight: bold;
           span {
-            margin-left: 1em;
+            margin-left: 1rem;
 
             // offset: -5px -55px;
           }

@@ -2,7 +2,7 @@
   color: #2f9272;
   text-align: center;
   font-weight: bolder;
-  font-size: 1.5em;
+  font-size: 1.5rem;
   margin: 1rem;
 
   .staticHeader {
@@ -69,7 +69,7 @@
 .RoomList {
   display: flex;
   flex-direction: column;
-  margin: 1em;
+  margin: 1rem;
   overflow: hidden;
   max-height: 100%;
 
@@ -77,10 +77,10 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     text-align: center;
-    font-size: 1em;
+    font-size: 1rem;
     font-weight: bold;
-    padding-bottom: 0.5em;
-    margin-bottom: 0.5em;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
     border-bottom: 2px solid #2f9272;
   }
 
@@ -105,16 +105,16 @@
       grid-template-columns: 1fr 1fr 1fr 1fr;
       align-items: center;
       text-align: center;
-      font-size: 1.5em;
-      padding-bottom: 1em;
-      padding-top: 1em;
-      font-size: 1em;
+      font-size: 1.5rem;
+      padding-bottom: 1rem;
+      padding-top: 1rem;
+      font-size: 1rem;
     }
 
     .RoomListItem:hover {
       color: #2f9272;
       border: 1px solid #2f9272;
-      border-radius: 0.5em 0.5em 0.5em 0.5em;
+      border-radius: 0.5em 0.5em 0.5em 0.5rem;
 
       a {
         color: #2f9272;
