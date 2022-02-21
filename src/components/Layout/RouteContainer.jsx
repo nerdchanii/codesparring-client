@@ -7,6 +7,7 @@ import Practice from '../../Pages/Practice/Practice';
 import LeaderBoard from '../leaderboard/Leaderboard';
 import Notice from '../Notice/Notice';
 import './RouteContainer.scss';
+import ProblemPage from '../../Pages/ProblemPage';
 
 function RouteContainer() {
   return (
@@ -18,6 +19,7 @@ function RouteContainer() {
         <Route path="/sparring/*" element={<Sparring />} />
         <Route path="/practice/*" element={<Practice />} />
         <Route path="/mypage/*" element={<MyPage />} />
+        <Route path="/problem/*" element={<ProblemPage />} />
       </Routes>
     </div>
   );
