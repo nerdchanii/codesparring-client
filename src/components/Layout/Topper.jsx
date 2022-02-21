@@ -36,6 +36,7 @@ function Topper() {
         <Link to="/leaderboard">LeaderBoard</Link>
         <Link to="/sparring">Sparring</Link>
         <Link to="/practice">Practice</Link>
+        <Link to="/problem">Problem</Link>
         {loginState ? <Link to="/mypage">My Account</Link> : <></>}
       </nav>
       <div className="ButtonContainer">

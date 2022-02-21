@@ -1,0 +1,173 @@
+.ProblemPage {
+  width: 70%;
+  padding: 1rem;
+  padding-bottom: 3rem;
+
+  .AddButtonContainer {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 0.5rem;
+
+    .AddButton {
+      background: #2f9272;
+      color: white;
+      border: #2f9272 1px solid;
+      border-radius: 0.5rem;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      // transition: all 0.2s ease;
+      // when clicked color should be white
+      transition: all 1ms;
+      &:active {
+        background: white;
+        color: #2f9272;
+        border: #2f9272 1px solid;
+      }
+    }
+  }
+}
+
+.ProblemAdd {
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+  padding-bottom: 2rem;
+  div {
+    font-weight: bold;
+  }
+
+  select {
+    flex: 1;
+    text-align: right;
+    padding-right: 0.5rem;
+    option {
+      text-align: right;
+    }
+  }
+  label {
+    display: flex;
+    flex-direction: column;
+    // border: 1px solid #2f9272;
+    div {
+      display: inline-block;
+      margin-bottom: 0.5rem;
+    }
+    input,
+    textarea {
+      flex: 1;
+      border: lightgray 1px solid;
+      padding: 0.5rem;
+      resize: none;
+    }
+
+    input :active {
+      border: 1px solid #2f927266;
+    }
+    textarea :active {
+      border: 1px solid #2f927266;
+    }
+  }
+  label + label {
+    margin-top: 1rem;
+  }
+  label + div {
+    margin-top: 1rem;
+  }
+  div + label {
+    margin-top: 1rem;
+  }
+  .ProblemAdd-metaData {
+    display: flex;
+
+    label {
+      flex: 1;
+    }
+    label + label {
+      margin-top: 0rem;
+      margin-left: 1rem;
+    }
+    .metaData-left {
+      flex: 1;
+    }
+    .metaData-right {
+      margin-left: 0.5rem;
+      display: flex;
+      flex-direction: row;
+      div {
+        display: block;
+        width: max-content;
+        padding-right: 0.5rem;
+      }
+    }
+  }
+  .backButtonContainer,
+  .submitButtonContainer {
+    display: flex;
+    justify-content: flex-end;
+
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    .backButton,
+    .submitButton {
+      background: #2f9272;
+      color: white;
+      border: #2f9272 1px solid;
+      border-radius: 0.5rem;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      // transition: all 0.2s ease;
+      // when clicked color should be white
+      transition: all 1ms;
+      &:active {
+        background: white;
+        color: #2f9272;
+        border: #2f9272 1px solid;
+      }
+    }
+  }
+  .ProblemAdd-title {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+    font-size: 1.5rem;
+  }
+}
+
+.testCaseContainer {
+  border: 3px solid #2f927266;
+  border-radius: 0.5rem;
+  .testCase-title {
+    position: relative;
+    width: max-content;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    transform: translate(0, -100%);
+    z-index: 1;
+    background-color: #ffffff;
+  }
+  padding: 0.5rem;
+  .testCase {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    div {
+      margin-bottom: 0.5rem;
+    }
+    label {
+      display: flex;
+      flex-direction: column;
+      width: 48%;
+      div {
+        margin-bottom: 0.5rem;
+      }
+    }
+    label + label {
+      margin-left: 0.5rem;
+      margin-top: 0rem;
+    }
+  }
+  & + & {
+    margin-top: 1.5rem;
+  }
+}

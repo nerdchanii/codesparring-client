@@ -3,7 +3,7 @@ import { Box, CircularProgress } from '@mui/material';
 import axios from 'axios';
 // import { loadding } from '../../state/loading';
 // import { useRecoilState } from 'recoil';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import env from '../../env';
 import './Problem.scss';
 
@@ -19,13 +19,16 @@ function ProblemListHeader() {
 }
 
 function ProblemListItem({ problem }) {
+  const { pathname } = useLocation();
   const { id, level, problemType, title } = problem;
-
+  useEffect(() => {
+    console.log(pathname);
+  }, []);
   return (
     <li className="ProblemListItem">
       <div className="problem-number">{id}</div>
       <div className="problem-level">{level}</div>
-      <Link to={`/practice/${id}`} className="problem-title">
+      <Link to={`${pathname}/${id}`} className="problem-title">
         {title}
       </Link>
       <div className="problem-type">{problemType}</div>
