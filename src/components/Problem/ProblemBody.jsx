@@ -8,8 +8,16 @@ function TestCase(props) {
 
   return (
     <tr>
-      <td>{input}</td>
-      <td>{output}</td>
+      <td>
+        {input.split('\n').map((line, idx) => (
+          <p key={idx}>{line}</p>
+        ))}
+      </td>
+      <td>
+        {output.split('\n').map((line, idx) => (
+          <p key={idx}>{line}</p>
+        ))}
+      </td>
     </tr>
   );
 }
@@ -21,6 +29,7 @@ function ProblemBody(props) {
 
   useEffect(() => {
     setTestCaseState(testcase);
+    console.log(testcase);
     return () => {
       setTestCaseState(null);
     };
