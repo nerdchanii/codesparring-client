@@ -1,26 +1,9 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React from 'react';
 import env from '../../env';
-
-const testCases = [1, 2, 3];
+import AddButton from './AddButton';
 
 function ProblemAdd({ back }) {
-  // set metaData
-  const [metaData, setMetaData] = useState({
-    title: '',
-    level: '',
-    description: '',
-  });
-  // const [form, setForm] = useState({});
-
-  // // set testCase
-  // const [testCase, setTestCase] = useState({});
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setMetaData({ ...metaData, [name]: value });
-  };
-
   // submit to server json data and redirect to problem page
   const submitAdd = async (event) => {
     event.preventDefault();
@@ -76,28 +59,28 @@ function ProblemAdd({ back }) {
       title: target.title.value,
       level: target.level.value,
       problemType: target.problemType.value,
-      data: {
-        description: target.problemDescription.value,
-        requirement: target.requirement.value.split('\n'),
-        testcase: [
-          {
-            input: target['testCase1-input'].value,
-            output: target['testCase1-output'].value,
-            description: target['testCase1-description'].value,
-          },
-          {
-            input: target['testCase2-input'].value,
-            output: target['testCase2-output'].value,
-            description: target['testCase2-description'].value,
-          },
-          {
-            input: target['testCase3-input'].value,
-            output: target['testCase3-output'].value,
-            description: target['testCase3-description'].value,
-          },
-        ],
-      },
+
+      description: target.problemDescription.value,
+      requirement: target.requirement.value.split('\n'),
+      testcase: [
+        {
+          input: target['testCase1-input'].value,
+          output: target['testCase1-output'].value,
+          description: target['testCase1-description'].value,
+        },
+        {
+          input: target['testCase2-input'].value,
+          output: target['testCase2-output'].value,
+          description: target['testCase2-description'].value,
+        },
+        {
+          input: target['testCase3-input'].value,
+          output: target['testCase3-output'].value,
+          description: target['testCase3-description'].value,
+        },
+      ],
     };
+
     const stringData = JSON.stringify(data);
     try {
       const response = await axios(`${env.API_URL}/api/problem/add`, {
@@ -119,11 +102,7 @@ function ProblemAdd({ back }) {
   // form to sumbit Problem Add data to server and redirect to problem page
   return (
     <div className="ProblemAdd">
-      <div className="backButtonContainer">
-        <button className="backButton" onClick={back}>
-          뒤로가기
-        </button>
-      </div>
+      <AddButton buttonClick={back} />
       <div className="ProblemAdd-title">문제 추가</div>
       <div className="ProblemAdd-form">
         <form onSubmit={submitAdd}>
@@ -153,20 +132,15 @@ function ProblemAdd({ back }) {
           </div>
           <label htmlFor="problemDescription">
             <div>문제 설명</div>
-            <textarea
-              name="problemDescription"
-              id="problemDescription"
-              rows="5"
-              onChange={handleChange}
-            />
+            <textarea name="problemDescription" id="problemDescription" rows="5" />
           </label>
           <label htmlFor="requirement">
             <div>조건</div>
-            <textarea name="requirement" id="requirement" rows="5" onChange={handleChange} />
+            <textarea name="requirement" id="requirement" rows="5" />
           </label>
 
           <div className="ProblemAdd-testCase">
-            {testCases.map((number) => (
+            {[1, 2, 3].map((number) => (
               <div className="testCaseContainer">
                 <div className="testCase-title">테스트 케이스{number}</div>
                 <div className="testCase">
@@ -176,7 +150,6 @@ function ProblemAdd({ back }) {
                       name={`testCase${number}-input`}
                       id={`testCase${number}-input`}
                       rows="3"
-                      onChange={handleChange}
                     />
                   </label>
                   <label htmlFor={`testCase${number}-output`}>
@@ -185,7 +158,6 @@ function ProblemAdd({ back }) {
                       name={`testCase${number}-output`}
                       id={`testCase${number}-output`}
                       rows="3"
-                      onChange={handleChange}
                     />
                   </label>
                   <label htmlFor={`testCase${number}-description`}>
@@ -194,7 +166,6 @@ function ProblemAdd({ back }) {
                       name={`testCase${number}-description`}
                       id={`testCase${number}-description`}
                       rows="3"
-                      onChange={handleChange}
                     />
                   </label>
                 </div>

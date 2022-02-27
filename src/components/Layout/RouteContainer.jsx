@@ -7,7 +7,7 @@ import Practice from '../../Pages/Practice/Practice';
 import LeaderBoard from '../leaderboard/Leaderboard';
 import Notice from '../Notice/Notice';
 import './RouteContainer.scss';
-import ProblemPage from '../../Pages/ProblemPage';
+import ProblemPage from '../../Pages/ProblemPage/ProblemPage';
 
 function RouteContainer() {
   return (
