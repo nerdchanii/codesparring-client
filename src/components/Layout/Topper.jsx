@@ -27,7 +27,7 @@ function Topper() {
     setShowLoginModal(!showLoginModal);
   };
   return (
-    <div className="Topper">
+    <header className="Topper">
       <h1>
         <Link to="/">codesparring</Link>
       </h1>
@@ -57,7 +57,7 @@ function Topper() {
 
         {showLoginModal ? <LoginBoxContainer click={toggleShowLoginModal} /> : <></>}
       </div>
-    </div>
+    </header>
   );
 }
 
