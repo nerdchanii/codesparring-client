@@ -40,20 +40,27 @@
     flex: 1;
   }
   .run {
-    background: green;
-    min-height: fit-content;
+    height: fit-content;
     padding: 10px;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
     .button {
-      background: none;
-      border: 1px solid white;
+      background: #2f9272;
+      border: 1px solid #2f9272;
+      border-radius: 0.5rem;
       color: white;
       font-weight: bold;
-      padding: 5px;
-      padding-left: 5px;
-      padding-right: 5px;
+      padding: 0.5rem 1rem;
+    }
+    .button:active {
+      box-shadow: #2f9272 1px 1px 1px 1px;
+      background: #fff;
+      border: 1.5px solid #2f9272;
+      border-radius: 0.5rem;
+      color: #2f9272;
+      font-weight: bold;
+      padding: 0.5rem 1rem;
     }
   }
 }
