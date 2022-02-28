@@ -10,10 +10,14 @@ int solution() {
     int answer = 0;
     return answer;
 }
+
+solution();
 `,
   PYTHON: `def solution():
-result = ''
-return result`,
+    result = ''
+    return result
+
+solution()`,
 
   JAVA: `class Solution {
   public int solution() {
@@ -24,7 +28,10 @@ return result`,
   JS: `function solution() {
   var answer = 0;
   return answer;
-}`,
+}
+
+solution();
+`,
 };
 
 function setValue(languageType) {
