@@ -1,15 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './Ide.scss';
 import Result from './Result';
 
 function Output(props) {
   const { onSubmit, result, runTest } = props;
-
-  useEffect(() => {
-    // TODO 지워야할 것
-    console.log('result:', result);
-  }, [result]);
-
   if (!result) {
     return null;
   }

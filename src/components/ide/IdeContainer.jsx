@@ -46,12 +46,10 @@ function IdeContainer() {
       const data = await getPost(lang, value);
       setResult([data]);
     } else {
-      const data = await Promise.all(
+      const response = await Promise.allSettled(
         testCase.map((eachCase) => getPost(lang, value, eachCase.input, eachCase.output)),
       );
-      if (typeof data === 'object') {
-        setResult([data]);
-      }
+      const data = response.map((eachCase) => eachCase.value);
       setResult(data);
     }
   }, [lang, value, testCase]);
@@ -73,7 +71,6 @@ function IdeContainer() {
     if (typeof response.data === 'object') {
       setResult([response.data]);
     }
-    console.log(response);
     setResult(response.data);
   }, [lang, problemNumber, value]);
 
