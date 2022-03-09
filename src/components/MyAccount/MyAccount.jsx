@@ -16,7 +16,7 @@ function MyAccount() {
   const fetchUser = useCallback(async () => {
     // TOO AccessToken 을 이용해서 조회할 수 있어야 하지 않을까 생각됨
     // Acees token으로 식별자 받아서 해야하나?
-    const accessToken = localStorage.getItem('com.naver.nid.access_token');
+    const accessToken = localStorage?.LOGIN_TOKEN;
     try {
       const response = await axios.get(`${env.API_URL}/api/user?token=${accessToken}`);
       const data = JSON.parse(response.data);
