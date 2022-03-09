@@ -1,11 +1,11 @@
 import React from 'react';
 import { useRecoilValue } from 'recoil';
 import Errpage from '../../Pages/Errpage/Errpage';
-import { isLogin } from '../../state/login';
+import LOGIN_STATE from '../../state/login';
 import './MyAccount.scss';
 
 function UserProfile({ user }) {
-  const loginCheck = useRecoilValue(isLogin);
+  const loginCheck = useRecoilValue(LOGIN_STATE);
   if (!loginCheck) {
     return (
       <div

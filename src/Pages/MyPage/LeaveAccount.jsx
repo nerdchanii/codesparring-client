@@ -4,14 +4,14 @@ import React, { useCallback, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useSetRecoilState } from 'recoil';
-import { isLogin } from '../../state/login';
+import LOGIN_STATE from '../../state/login';
 import env from '../../env';
 
 function LeaveAccount() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   // 후에 방식이 변경되어야 할 것
-  const setLogin = useSetRecoilState(isLogin);
+  const setLogin = useSetRecoilState(LOGIN_STATE);
   const onClickQuit = useCallback(async () => {
     setLoading(true);
     try {

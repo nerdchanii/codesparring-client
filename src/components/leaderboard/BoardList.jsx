@@ -26,7 +26,7 @@ function BoardList() {
   const [rankLoadding, setRankLoadding] = useRecoilState(loadding);
   const [rankList, setRankList] = useState(null);
   const fetchData = useCallback(async () => {
-    const response = await axios(`${env.API_URL}/api/rank/list`);
+    const response = await axios(`${env.API_URL}/api/user/rank`);
     const { data } = response;
     setRankList(data);
   }, []);
