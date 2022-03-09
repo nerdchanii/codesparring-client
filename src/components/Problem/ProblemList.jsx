@@ -14,13 +14,16 @@ function ProblemListHeader() {
       <div className="problem-level">레벨</div>
       <div className="problem-title">문제제목</div>
       <div className="problem-type">문제분류</div>
+      <div className="count-good">good</div>
+      <div className="count-bad">bad</div>
+      <div className="count-total">total</div>
     </div>
   );
 }
 
 function ProblemListItem({ problem }) {
   const { pathname } = useLocation();
-  const { id, level, problemType, title } = problem;
+  const { id, level, problemType, title, good, bad, total } = problem;
   useEffect(() => {
     console.log(pathname);
   }, []);
@@ -32,6 +35,9 @@ function ProblemListItem({ problem }) {
         {title}
       </Link>
       <div className="problem-type">{problemType}</div>
+      <div>{total}</div>
+      <div>{good}</div>
+      <div>{bad}</div>
     </li>
   );
 }
