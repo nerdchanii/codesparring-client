@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
-import { isLogin } from '../../state/login';
+import LOGIN_STATE from '../../state/login';
 import './Topper.scss';
 import LoginBoxContainer from './Topper/LoginBoxContainer';
 import SettingContainer from '../ide/SettingsContainer';
 
 function Topper() {
-  const [loginState, setLoginState] = useRecoilState(isLogin);
+  const [loginState, setLoginState] = useRecoilState(LOGIN_STATE);
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [openSetting, setOpenSetting] = useState(false);
 
   const onLogout = () => {
+    localStorage.removeItem('LOGIN_TOKEN');
     setLoginState(false);
   };
   const onClickLogin = () => {

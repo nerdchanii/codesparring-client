@@ -5,11 +5,11 @@ import axios from 'axios';
 import MyAccountHeader from './MyAccountHeader';
 import UserProfile from './UserProfile';
 import './MyAccount.scss';
-import { isLogin } from '../../state/login';
+import LOGIN_STATE from '../../state/login';
 import env from '../../env';
 
 function MyAccount() {
-  const loginCheck = useRecoilValue(isLogin);
+  const loginCheck = useRecoilValue(LOGIN_STATE);
   const { pathname } = useLocation();
   const [user, setUser] = useState(null);
 

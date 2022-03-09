@@ -1,14 +1,10 @@
 import { atom } from 'recoil';
 
-const IS_LOGIN = 'isLogin';
-const NAVER_ACESS_TOKEN = 'naverAccessToken';
+const LOGIN_STATE_KEY = 'LOGIN_STATE';
 
-export const isLogin = atom({
-  key: IS_LOGIN,
-  default: false,
+const LOGIN_STATE = atom({
+  key: LOGIN_STATE_KEY,
+  default: !!localStorage.LOGIN_TOKEN,
 });
 
-export const naverAcessToken = atom({
-  key: NAVER_ACESS_TOKEN,
-  default: null,
-});
+export default LOGIN_STATE;
