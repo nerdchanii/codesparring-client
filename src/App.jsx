@@ -9,7 +9,6 @@ function App() {
     <div className="App">
       <Topper />
       <RouteContainer />
-      {/* <Footer /> */}
     </div>
   );
 }
