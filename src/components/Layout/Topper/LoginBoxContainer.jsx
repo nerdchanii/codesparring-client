@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect } from 'react';
 import './LoginBox.scss';
-import naverLoginConfig from '../../../constants/secret/naverloginConfig';
+import naverLoginConfig from '../../../constants/config/naverloginConfig';
 
 function LoginBoxContainer(props) {
   const { click } = props;

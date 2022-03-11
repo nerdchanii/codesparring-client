@@ -2,7 +2,12 @@ import React from 'react';
 import { useRecoilState } from 'recoil';
 import { AiOutlineClose } from 'react-icons/ai';
 import { ideState } from '../../state/ide';
-import { keybindList, fontSizeList, themeList, languageList } from '../../constants/AceOption';
+import {
+  keybindList,
+  fontSizeList,
+  themeList,
+  languageList,
+} from '../../constants/config/AceOption';
 import './settings.scss';
 import Select from './Select';
 

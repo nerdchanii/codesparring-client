@@ -2,7 +2,7 @@ import React, { useCallback, useEffect } from 'react';
 import { useRecoilState } from 'recoil';
 import { Navigate } from 'react-router-dom';
 import LOGIN_STATE from '../../../state/login';
-import naverLoginConfig from '../../../constants/secret/naverloginConfig';
+import naverLoginConfig from '../../../constants/config/naverloginConfig';
 import login from '../../../api/login';
 
 function NaverCallback() {
