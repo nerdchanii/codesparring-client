@@ -15,8 +15,6 @@
       border-radius: 0.5rem;
       padding: 0.5rem 1rem;
       cursor: pointer;
-      // transition: all 0.2s ease;
-      // when clicked color should be white
       transition: all 1ms;
       &:active {
         background: white;
@@ -47,7 +45,6 @@
   label {
     display: flex;
     flex-direction: column;
-    // border: 1px solid #2f9272;
     div {
       display: inline-block;
       margin-bottom: 0.5rem;

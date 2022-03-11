@@ -3,53 +3,56 @@ import React from 'react';
 import env from '../../env';
 import AddButton from './AddButton';
 
+const MESSAGE = {
+  SUCCESS: '문제가 추가 되었습니다.',
+  FAIL: {
+    NOT_INPUT_TITLE: '제목을 입력해주세요',
+    NOT_INPUT_LEVEL: '난이도을 입력해주세요',
+    NOT_INPUT_PROBLEM_TYPE: '문제 유형을 입력해주세요',
+    NOT_INPUT_PROBLEM_DESC: '문제 설명 입력해주세요',
+    NOT_INPUT_REQUIREMENT: '문제 조건 입력해주세요',
+    NOT_INPUT_TESTCASE_INPUT: '테스트케이스 입력해주세요',
+    NOT_INPUT_TESTCASE_OUTPUT: '테스트케이스 출력해주세요',
+    NOT_INPUT_TESTCASE_DESC: '테스트케이스 설명 입력해주세요',
+    DUPLICATE_TITLE: '중복된 제목입니다',
+    CAN_NOT_ADD_PROBLEM: '문제를 추가할 수 없습니다.',
+  },
+};
+
 function ProblemAdd({ back }) {
-  // submit to server json data and redirect to problem page
   const submitAdd = async (event) => {
     event.preventDefault();
     const { target } = event;
     switch ('') {
       case target.title.value:
-        alert('제목을 입력해주세요');
+        alert(MESSAGE.FAIL.NOT_INPUT_TITLE);
         return;
       case target.level.value:
-        alert('난이도를 선택해주세요');
+        alert(MESSAGE.FAIL.NOT_INPUT_LEVEL);
         return;
       case target.problemType.value:
-        alert('문제 유형을 선택해주세요');
+        alert(MESSAGE.FAIL.NOT_INPUT_PROBLEM_TYPE);
         return;
       case target.problemDescription.value:
-        alert('문제 설명을 입력해주세요');
+        alert(MESSAGE.FAIL.NOT_INPUT_PROBLEM_DESC);
         return;
       case target.requirement.value:
-        alert('제출 시 요구사항을 입력해주세요');
+        alert(MESSAGE.FAIL.NOT_INPUT_REQUIREMENT);
         return;
       case target['testCase1-input'].value:
-        alert('테스트 케이스1의 입력을 입력해주세요');
+      case target['testCase2-input'].value:
+      case target['testCase3-input'].value:
+        alert(MESSAGE.FAIL.NOT_INPUT_TESTCASE_INPUT);
         return;
       case target['testCase1-output'].value:
-        alert('테스트 케이스1의 출력을 입력해주세요');
+      case target['testCase2-output'].value:
+      case target['testCase3-output'].value:
+        alert(MESSAGE.FAIL.NOT_INPUT_TESTCASE_OUTPUT);
         return;
       case target['testCase1-description'].value:
-        alert('테스트 케이스1의 설명을 입력해주세요');
-        return;
-      case target['testCase2-input'].value:
-        alert('테스트 케이스2의 입력을 입력해주세요');
-        return;
-      case target['testCase2-output'].value:
-        alert('테스트 케이스2의 출력을 입력해주세요');
-        return;
       case target['testCase2-description'].value:
-        alert('테스트 케이스2의 설명을 입력해주세요');
-        return;
-      case target['testCase3-input'].value:
-        alert('테스트 케이스3의 입력을 입력해주세요');
-        return;
-      case target['testCase3-output'].value:
-        alert('테스트 케이스3의 출력을 입력해주세요');
-        return;
       case target['testCase3-description'].value:
-        alert('테스트 케이스3의 설명을 입력해주세요');
+        alert(MESSAGE.FAIL.NOT_INPUT_TESTCASE_DESC);
         return;
       default:
         break;
@@ -83,19 +86,29 @@ function ProblemAdd({ back }) {
 
     const stringData = JSON.stringify(data);
     try {
-      const response = await axios(`${env.API_URL}/api/problem/add`, {
+      const response = await axios(`${env.API_URL}/problem/add`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         data: stringData,
       });
-
-      const result = response.data;
-      console.log(result);
+      if (response.data.result === 'success') {
+        alert(MESSAGE.SUCCESS);
+        back();
+      } else {
+        alert(MESSAGE.FAIL.CAN_NOT_ADD_PROBLEM);
+      }
       // back();
     } catch (e) {
-      console.log(e);
+      switch (e.response.data.message) {
+        case 'DUPLICATE_TITLE':
+          alert(MESSAGE.FAIL.DUPLICATE_TITLE);
+          break;
+        default:
+          alert(MESSAGE.FAIL.CAN_NOT_ADD_PROBLEM);
+          break;
+      }
     }
   };
 
@@ -142,7 +155,10 @@ function ProblemAdd({ back }) {
           <div className="ProblemAdd-testCase">
             {[1, 2, 3].map((number) => (
               <div className="testCaseContainer">
-                <div className="testCase-title">테스트 케이스{number}</div>
+                <div className="testCase-title">
+                  테스트 케이스
+                  {number}
+                </div>
                 <div className="testCase">
                   <label htmlFor={`testCase${number}-input`}>
                     <div>입력</div>

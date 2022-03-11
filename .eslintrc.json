@@ -27,6 +27,9 @@
         "react/button-has-type":"off",
         "react/no-array-index-key":"off",
         "consistent-return":"off",
-        "react/jsx-one-expression-per-line": "warn"
+        "react/jsx-one-expression-per-line": "warn",
+        "arrow-body-style": "off",
+        "no-alert": "off",
+        "no-console": "off"
     }
 }

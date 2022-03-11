@@ -1,7 +1,5 @@
 import React from 'react';
 import { useRecoilState } from 'recoil';
-// TODO
-// options에 들어갈 변수리스트 설정해야함
 import { AiOutlineClose } from 'react-icons/ai';
 import { ideState } from '../../state/ide';
 import { keybindList, fontSizeList, themeList, languageList } from '../../constants/AceOption';

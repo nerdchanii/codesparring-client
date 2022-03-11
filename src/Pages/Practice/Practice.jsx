@@ -3,8 +3,8 @@ import { Route, Routes } from 'react-router-dom';
 import IdeContainer from '../../components/ide/IdeContainer';
 import ProblemContainer from '../../components/Problem/ProblemContainer';
 import ProblemListContainers from '../../components/Problem/ProblemListContainers';
-import Chat from '../../components/Chat/Chat';
 import './Practice.scss';
+import ChatContainer from '../../components/Chat/ChatContainer';
 
 function Practice() {
   return (
@@ -17,7 +17,7 @@ function Practice() {
           </Routes>
         </div>
         <div className="section">
-          <Chat />
+          <ChatContainer />
         </div>
       </div>
       <div className="right-side">

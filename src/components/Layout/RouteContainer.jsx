@@ -4,10 +4,11 @@ import Sparring from '../../Pages/Sparring/Sparring';
 import Home from '../../Pages/Home/Home';
 import MyPage from '../../Pages/MyPage/MyPage';
 import Practice from '../../Pages/Practice/Practice';
-import LeaderBoard from '../leaderboard/Leaderboard';
+
 import Notice from '../Notice/Notice';
 import './RouteContainer.scss';
 import ProblemPage from '../../Pages/ProblemPage/ProblemPage';
+import LeaderBoardPage from '../../Pages/LeaderBoardPage/LeaderBoardPage';
 
 function RouteContainer() {
   return (
@@ -15,7 +16,7 @@ function RouteContainer() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/notice/*" element={<Notice />} />
-        <Route path="/leaderboard/*" element={<LeaderBoard />} />
+        <Route path="/leaderboard/*" element={<LeaderBoardPage />} />
         <Route path="/sparring/*" element={<Sparring />} />
         <Route path="/practice/*" element={<Practice />} />
         <Route path="/mypage/*" element={<MyPage />} />

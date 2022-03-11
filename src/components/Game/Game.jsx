@@ -8,7 +8,7 @@ function Game() {
     <>
       <Routes>
         <Route path="" element={<WaitingRoom />} />
-        <Route path=":param" element={<InGameRoom />} />
+        <Route path=":id" element={<InGameRoom />} />
       </Routes>
     </>
   );

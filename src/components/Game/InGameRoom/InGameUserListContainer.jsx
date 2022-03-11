@@ -1,44 +1,20 @@
-import React, { useEffect, useState } from 'react';
-import { GrStatusGoodSmall } from 'react-icons/gr';
+import React from 'react';
+
 import './InGameUserList.scss';
 
-function UserListItem({ status, name }) {
-  const [circleColor, setCircleColor] = useState('black');
-
-  useEffect(() => {
-    switch (status) {
-      case 'good':
-        setCircleColor('green');
-        break;
-      case 'bad':
-        setCircleColor('red');
-        break;
-      default:
-        setCircleColor('lightGray');
-        break;
-    }
-  }, [status]);
-
-  return (
-    <li className="InGameUserListItem">
-      <GrStatusGoodSmall style={{ color: circleColor }} />
-      {name}
-    </li>
-  );
+function UserListItem({ name }) {
+  return <li className="InGameUserListItem">{name}</li>;
 }
 
-function InGameUserListContainer() {
-  const userList = [
-    { nickname: 'nerdchanii', status: 'good' },
-    { nickname: 'whos', status: 'good' },
-    { nickname: 'coder', status: 'good' },
-    { nickname: 'sparring', status: 'good' },
-  ];
+function InGameUserListContainer({ users }) {
+  if (!users) {
+    return <></>;
+  }
   return (
     <div className="InGameUserListContainer">
       <ul className="InGameUserList">
-        {userList.map((item) => (
-          <UserListItem key={item.nickname} name={item.nickname} status={item.status} />
+        {users.map((item) => (
+          <UserListItem key={item} name={item} />
         ))}
       </ul>
     </div>

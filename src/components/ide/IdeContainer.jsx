@@ -13,7 +13,7 @@ import problemNumberState from '../../state/problem/problemNumberState';
 
 async function getPost(lang, value, input = '', expectOutput = '') {
   const response = await axios.post(
-    `${env.API_URL}/api/code/test`,
+    `${env.API_URL}/code/test`,
     {
       lang,
       code: value,
@@ -56,7 +56,7 @@ function IdeContainer() {
 
   const onSubmit = useCallback(async () => {
     const response = await axios.post(
-      `${env.API_URL}/api/code/submit`,
+      `${env.API_URL}/code/submit`,
       {
         problemId: problemNumber,
         lang,

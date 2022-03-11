@@ -10,6 +10,7 @@
     color: white;
     display: flex;
     align-items: center;
+    font-size: 1rem;
     justify-content: center;
     a {
       color: white;
@@ -27,7 +28,7 @@
     flex: 3;
     display: flex;
 
-    font-size: 1.5rem;
+    font-size: 1rem;
     margin: 0em 1rem;
     justify-content: center;
     align-items: center;
@@ -46,7 +47,7 @@
   button {
     border: none;
     background: none;
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-weight: bold;
     color: white;
     // svg {

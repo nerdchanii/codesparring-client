@@ -1,85 +1,113 @@
 import React, { useCallback, useEffect, useState } from 'react';
+import { useRecoilState, useSetRecoilState } from 'recoil';
 import { CircularProgress } from '@mui/material';
-import Chat from '../../Chat/Chat';
+import { useNavigate, useParams } from 'react-router-dom';
+import LOGIN_STATE from '../../../state/login';
+import roomAtom from '../../../state/room/roomAtom';
 import InGameHeader from './InGameHeader';
 import InGameUserListContainer from './InGameUserListContainer';
 import InGameProblemContianer from './InGameProblemContianer';
 import './InGame.scss';
+import { joinGame, leaveGame } from './api';
+import ChatContainer from '../../Chat/ChatContainer';
+import socket from '../../../constants/socket/socket';
 
 function InGameRoom() {
-  const [roomInfo, setRoomInfo] = useState(null);
+  const [problem, setProblem] = useState(null);
+  const [roomInfo, setRoomInfo] = useRecoilState(roomAtom);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+  const loginState = useSetRecoilState(LOGIN_STATE);
 
-  const fetchRoom = useCallback(async () => {
-    setLoading(true);
-    try {
-      const mock = {
-        id: '1',
-        level: '2',
-        title: '개블리셔 쌉고수? ㅋㅋ',
-        data: {
-          problemDescription:
-            '올해 가계부를 정리해야 하는 일이 생겼습니다. 그런데, 가지고 있는 영수증의 수는 몇장인지 모르지만, 일단 금액을 전부 정리한 배열을 만들었습니다. 입력 된 수들을 더해서 출력해주세요! :)',
-          requirement: [
-            '금액의 배열의 길이는 2개 이상  100개 이하 입니다.',
-            '출력은 정수로 출력해야 합니다. ',
-          ],
-          testcase: [
-            {
-              input: '[1,2,3]',
-              output: 6,
-              description: '주어진 수 1, 2, 3을 더하면 6이 나옵니다.',
-            },
-            {
-              input: '[10,10,20]',
-              output: 40,
-              description: '주어진 [10,10,20]을 더하면 40이나옵니다',
-            },
-            {
-              input: '[100,200,200,200]',
-              output: 700,
-              description: '주어진 [100,200,200,200]을 더하면 700이나옵니다',
-            },
-          ],
-        },
-      };
-      const response = await Promise.resolve(mock);
-      setRoomInfo(response);
-    } catch (e) {
-      console.log(e);
-    } finally {
-      setLoading(false);
-    }
+  const { id } = useParams();
+  const onClickStart = () => {
+    console.log('click');
+    socket.connect();
+    socket.emit('gamestart', { roomId: roomInfo.roomId });
+  };
+
+  const join = useCallback(() => {
+    joinGame(id)
+      .then((res) => {
+        setRoomInfo(res);
+      })
+      .catch((err) => {
+        switch (err.response.status) {
+          case 400:
+            alert('인원이 꽉 찼습니다');
+            navigate('/sparring');
+            break;
+          case 404:
+            alert('서버오류');
+            navigate('/sparring');
+            break;
+          case 401:
+            alert('다시 로그인해주세요');
+            localStorage.clear();
+            loginState(false);
+            navigate('/sparring');
+            break;
+          default:
+            alert('오류');
+            navigate('/sparring');
+            break;
+        }
+      });
+  }, []);
+
+  const leave = useCallback(() => {
+    leaveGame(id);
   }, []);
 
   useEffect(() => {
-    fetchRoom();
-  }, []);
+    join(id);
+    console.log('listener join');
+    console.log(socket);
+
+    socket.connect();
+    socket.on('gamestart', (data) => {
+      console.log('gamestart', data);
+      setLoading(true);
+      setProblem(data);
+      socket.off('gamestart');
+
+      setTimeout(() => {
+        setLoading(false);
+      }, 3000);
+    });
+    return () => {
+      leave(id);
+    };
+  }, [id]);
 
   if (!roomInfo) {
-    return <></>;
-  }
-  if (loading) {
-    return (
-      <div className="loading">
-        <CircularProgress />
-      </div>
-    );
-  }
-  if (roomInfo) {
     return (
       <div className="InGameRoom">
-        <div className="InGameQuest">
-          <InGameHeader title={roomInfo.title} level={roomInfo.level} />
-          <InGameUserListContainer />
-          <InGameProblemContianer data={roomInfo.data} />
-        </div>
-        <div className="InGameChat">
-          <Chat />
+        <div className="loading">
+          <CircularProgress />
         </div>
       </div>
     );
   }
+
+  return (
+    <div className="InGameRoom">
+      <div className="InGameQuest">
+        <InGameHeader title={roomInfo.roomTitle} />
+        <InGameUserListContainer users={roomInfo.userList} />
+        {!loading && !problem && <button onClick={onClickStart}>게임시작하기</button>}
+        {loading && (
+          <div style={{ margin: 'auto' }}>
+            <CircularProgress />
+          </div>
+        )}
+        {!loading && problem && <InGameProblemContianer data={problem} />}
+      </div>
+      <div className="InGameChat">
+        <ChatContainer room={roomInfo.roomId} />
+      </div>
+    </div>
+  );
 }
 
 export default InGameRoom;

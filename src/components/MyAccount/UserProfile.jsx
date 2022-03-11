@@ -30,7 +30,7 @@ function UserProfile({ user }) {
   return (
     <div className="UserProfile">
       <div className="imgContainer">
-        <img src={user.img} alt="userProfile" />
+        <img src={user.imgsrc} alt="userProfile" />
       </div>
       <div className="textContainer">
         <p className="nickname">

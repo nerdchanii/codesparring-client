@@ -23,23 +23,31 @@
 }
 
 .ProblemListHeader,
-.ProblemListItem {
+.ProblemListItem-Link {
   text-align: center;
   display: grid;
   grid-template-columns: 1fr 1fr 2fr 1fr 1fr 1fr 1fr;
   font-size: 1.2rem;
   font-weight: 500;
   padding: 5px;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 
 .ProblemListItem {
-  background: lightgray;
+  background: #2f927233;
+  border-radius: 5px;
+  border: 1px solid #2f927211;
+
   & + & {
-    margin-top: 3px;
+    margin-top: 0.5rem;
+  }
+  :hover {
+    background-color: #f5f5f5;
   }
 }
 .ProblemListHeader {
-  background: lightslategray;
+  background-color: #2f9272;
   color: white;
 }
 .ProblemListItem-ul {

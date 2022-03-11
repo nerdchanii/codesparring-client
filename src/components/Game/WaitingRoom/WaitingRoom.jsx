@@ -14,7 +14,7 @@ function WaitingRoom() {
     // fetchRoomList();
     setLoading(true);
     axios
-      .get(`${env.API_URL}/api/game/list`)
+      .get(`${env.API_URL}/game/list`)
       .then((response) => setgameRoom(response.data))
       .catch(() => console.log('error'))
       .then(() => setLoading(false));

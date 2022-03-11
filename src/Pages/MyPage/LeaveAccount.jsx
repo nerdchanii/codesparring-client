@@ -10,19 +10,20 @@ import env from '../../env';
 function LeaveAccount() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
-  // 후에 방식이 변경되어야 할 것
   const setLogin = useSetRecoilState(LOGIN_STATE);
   const onClickQuit = useCallback(async () => {
     setLoading(true);
     try {
-      const token = localStorage.getItem('com.naver.nid.access_token');
-      const response = await axios.delete(`${env.API_URL}/api/delete/user`, {
+      const token = localStorage.getItem('LOGIN_TOKEN');
+      const response = await axios.delete(`${env.API_URL}/delete/user`, {
         headers: { Authorization: `${token}` },
       });
-      if (response.data === true) {
-        // 후에 방식이 변경되어야 할 것
+
+      if (response.data.result === true) {
         alert('탈퇴가 완료되었습니다.');
         setLogin(false);
+        localStorage.clear();
+        navigate('/', { replace: true });
       }
     } catch (e) {
       alert('에러가 발생했습니다. 다시 시도해주세요');

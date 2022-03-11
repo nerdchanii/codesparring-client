@@ -1,8 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Box, CircularProgress } from '@mui/material';
 import axios from 'axios';
-// import { loadding } from '../../state/loading';
-// import { useRecoilState } from 'recoil';
 import { Link, useLocation } from 'react-router-dom';
 import env from '../../env';
 import './Problem.scss';
@@ -29,15 +27,15 @@ function ProblemListItem({ problem }) {
   }, []);
   return (
     <li className="ProblemListItem">
-      <div className="problem-number">{id}</div>
-      <div className="problem-level">{level}</div>
-      <Link to={`${pathname}/${id}`} className="problem-title">
-        {title}
+      <Link to={`${pathname}/${id}`} className="ProblemListItem-Link">
+        <div className="problem-number">{id}</div>
+        <div className="problem-level">{level}</div>
+        <div className="problem-title">{title}</div>
+        <div className="problem-type">{problemType}</div>
+        <div>{total}</div>
+        <div>{good}</div>
+        <div>{bad}</div>
       </Link>
-      <div className="problem-type">{problemType}</div>
-      <div>{total}</div>
-      <div>{good}</div>
-      <div>{bad}</div>
     </li>
   );
 }
@@ -50,7 +48,7 @@ function ProblemList() {
   const fetchData = useCallback(async () => {
     setLoadding(true);
     try {
-      const response = await axios.get(`${env.API_URL}/api/problem`);
+      const response = await axios.get(`${env.API_URL}/problem`);
       const { data } = response;
       setProblemItems(data);
     } catch (e) {
