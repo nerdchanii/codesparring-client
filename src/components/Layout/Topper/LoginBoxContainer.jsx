@@ -1,9 +1,25 @@
 import React, { useCallback, useEffect } from 'react';
 import './LoginBox.scss';
+import { useSetRecoilState } from 'recoil';
+import LOGIN_STATE from '../../../state/login';
 import naverLoginConfig from '../../../constants/config/naverloginConfig';
+import fakeLogin from '../../../api/fakeLogin';
+
+const buttonStyles = {
+  border: '1px solid #ebebeb',
+  backgroundColor: '#fff',
+  color: '#999',
+  fontSize: '14px',
+  fontWeight: 'bold',
+  padding: '10px 20px',
+  borderRadius: '4px',
+  marginTop: '20px',
+  cursor: 'pointer',
+};
 
 function LoginBoxContainer(props) {
   const { click } = props;
+  const setLoginState = useSetRecoilState(LOGIN_STATE);
 
   const NaverLogin = useCallback(() => {
     const { naver } = window;
@@ -15,6 +31,19 @@ function LoginBoxContainer(props) {
 
     naverLogin.init();
   }, []);
+  const loginbutton = async () => {
+    try {
+      const result = await fakeLogin();
+      if (result) {
+        setLoginState(true);
+        click();
+      }
+    } catch (e) {
+      setLoginState(false);
+      alert(e);
+      console.log(e);
+    }
+  };
 
   useEffect(() => {
     NaverLogin();
@@ -37,6 +66,9 @@ function LoginBoxContainer(props) {
         </div>
         <div className="button-Container">
           <div id="naverIdLogin" />
+          <button style={buttonStyles} onClick={loginbutton}>
+            네이버로그인 없이 고냥 마구잡이로 즐겨보기
+          </button>
         </div>
       </div>
     </div>
