@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import Chat from './Chat';
-import socket, { ANONY } from '../../constants/socket/socket';
+import socket from '../../constants/socket/socket';
 
 function ChatContainer(props) {
   const { room } = props;
@@ -12,11 +12,9 @@ function ChatContainer(props) {
 
   // pathname 에 맞는 룸을 연결시키기 위함
   useEffect(() => {
-    socket.auth = { token: localStorage.getItem('LOGIN_TOKEN') || { nickName: ANONY } };
     setMessages([]);
     const space = room || home;
 
-    socket.connect();
     socket.emit('join', space);
     socket.on('message', (message) => {
       setMessages((prev) => [message, ...prev]);
@@ -24,7 +22,7 @@ function ChatContainer(props) {
 
     return () => {
       socket.off('message');
-      socket.disconnect();
+      socket.emit('leave', space);
       setMessages([]);
     };
   }, [room]);

@@ -22,7 +22,7 @@ function InGameRoom() {
   const { id } = useParams();
   const onClickStart = () => {
     console.log('click');
-    socket.connect();
+
     socket.emit('gamestart', { roomId: roomInfo.roomId });
   };
 
@@ -62,9 +62,7 @@ function InGameRoom() {
   useEffect(() => {
     join(id);
     console.log('listener join');
-    console.log(socket);
 
-    socket.connect();
     socket.on('gamestart', (data) => {
       console.log('gamestart', data);
       setLoading(true);

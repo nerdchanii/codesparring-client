@@ -36,7 +36,7 @@ function LoginBoxContainer(props) {
       const result = await fakeLogin();
       if (result) {
         setLoginState(true);
-        click();
+        window.location.replace('/');
       }
     } catch (e) {
       setLoginState(false);

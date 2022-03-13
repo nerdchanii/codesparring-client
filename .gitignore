@@ -12,7 +12,7 @@
 
 # secret
 /src/constants/secret
-
+build/
 # testing
 /coverage
 

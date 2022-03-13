@@ -25,6 +25,7 @@ function NaverCallback() {
           case !!(email && email && nickName && nickName): {
             const result = await login({ email, nickName, naverId });
             if (result) setLoginState(true);
+            window.location.replace('/');
             break;
           }
           default:
