@@ -54,7 +54,7 @@ function BoardList() {
             ranking={user.id}
             nickName={user.nickName}
             point={user.point}
-            key={user.id}
+            key={user.id + user.nickName}
           />
         ))}
       </ul>
