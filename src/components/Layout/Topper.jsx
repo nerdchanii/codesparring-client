@@ -33,6 +33,8 @@ function Topper() {
         <Link to="/">codesparring</Link>
       </h1>
       <nav className="NavigatorContainer">
+        <a href="https://github.com/nerdchanii/codesparring-client/issues">Github issue</a>
+        <a href="mailto:nerdchanii@gmail.com">리뷰메일</a>
         <Link to="/notice">Notice</Link>
         <Link to="/leaderboard">LeaderBoard</Link>
         <Link to="/sparring">Sparring</Link>
