@@ -11,13 +11,15 @@ import './InGame.scss';
 import { joinGame, leaveGame } from './api';
 import ChatContainer from '../../Chat/ChatContainer';
 import socket from '../../../constants/socket/socket';
+import problemNumberState from '../../../state/problem/problemNumberState';
 
 function InGameRoom() {
   const [problem, setProblem] = useState(null);
   const [roomInfo, setRoomInfo] = useRecoilState(roomAtom);
+  const loginState = useSetRecoilState(LOGIN_STATE);
+  const probmlemNumber = useSetRecoilState(problemNumberState);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const loginState = useSetRecoilState(LOGIN_STATE);
 
   const { id } = useParams();
   const onClickStart = () => {
@@ -67,8 +69,8 @@ function InGameRoom() {
       console.log('gamestart', data);
       setLoading(true);
       setProblem(data);
+      probmlemNumber(data.id);
       socket.off('gamestart');
-
       setTimeout(() => {
         setLoading(false);
       }, 3000);
