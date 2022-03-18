@@ -1,31 +1,41 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 import Chat from './Chat';
 import socket from '../../constants/socket/socket';
+import roomAtom from '../../state/room/roomAtom';
+import userList from '../../state/room/userList';
 
-function ChatContainer(props) {
-  const { room } = props;
+function ChatContainer() {
+  const roomInfo = useRecoilValue(roomAtom);
+  const setRoomUserList = useSetRecoilState(userList);
+  const { pathname } = useLocation();
+  const room = roomInfo?.roomId || pathname.split('/')[1];
   const [messages, setMessages] = useState([]);
   const [value, setValue] = useState('');
-  const { pathname } = useLocation();
-  const home = pathname.split('/')[1];
-
   // pathname 에 맞는 룸을 연결시키기 위함
   useEffect(() => {
     setMessages([]);
-    const space = room || home;
-
-    socket.emit('join', space);
-    socket.on('message', (message) => {
-      setMessages((prev) => [message, ...prev]);
+    socket.on('message', ({ room: roomId, ...message }) => {
+      if (roomId === room) {
+        setMessages((prev) => [message, ...prev]);
+      }
     });
+    console.log(room, room);
+    socket.emit('join', room);
 
+    socket.on('updateUser', (list) => {
+      console.log('userList update');
+      setRoomUserList(list);
+    });
+    socket.emit('updateUser', room);
     return () => {
+      socket.emit('leave', room);
+      console.log('chat unmount: leave');
       socket.off('message');
-      socket.emit('leave', space);
       setMessages([]);
     };
-  }, [room]);
+  }, [roomInfo]);
 
   const onChange = (e) => {
     setValue(e.target.value);

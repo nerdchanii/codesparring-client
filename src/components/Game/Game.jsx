@@ -1,14 +1,14 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import WaitingRoom from './WaitingRoom/WaitingRoom';
-import InGameRoom from './InGameRoom/InGameRoom';
+import InGameRoomContainer from './InGameRoom/InGameRoomContainer';
 
 function Game() {
   return (
     <>
       <Routes>
         <Route path="" element={<WaitingRoom />} />
-        <Route path=":id" element={<InGameRoom />} />
+        <Route path=":id" element={<InGameRoomContainer />} />
       </Routes>
     </>
   );

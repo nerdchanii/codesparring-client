@@ -24,7 +24,36 @@ export const leaveGame = (gameId) => {
   }).then((res) => res.data);
 };
 
-export const gameStart = async (roomId) => {
-  const response = await axios.get(`${env.API_URL}/game/start/${roomId}`);
-  return response;
+const defaultErrorDispatch = {
+  400: {
+    action() {
+      alert('400번에러');
+    },
+  },
+  401: {
+    action() {
+      alert('401번에러');
+    },
+  },
+  403: {
+    action() {
+      alert('403번에러');
+    },
+  },
 };
+
+export function errorSwitcher(errStatus, dispatch = defaultErrorDispatch) {
+  switch (errStatus) {
+    case 400:
+      dispatch[400].action();
+      break;
+    case 401:
+      dispatch[401].action();
+      break;
+    case 403:
+      dispatch[403].action();
+      break;
+    default:
+      dispatch[errStatus].action();
+  }
+}
