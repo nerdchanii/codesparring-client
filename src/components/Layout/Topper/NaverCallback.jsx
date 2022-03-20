@@ -7,7 +7,6 @@ import login from '../../../api/login';
 
 function NaverCallback() {
   const [loginState, setLoginState] = useRecoilState(LOGIN_STATE);
-  // const [userInfo, setUserInfo] = useState(null);
   const getInfo = useCallback(() => {
     const { naver } = window;
     const naverLogin = new naver.LoginWithNaverId({
@@ -50,9 +49,8 @@ function NaverCallback() {
     // TODO
     return <div>로그인에 실패했습니다</div>;
   }
-  if (loginState) {
-    return <Navigate to="/" replace />;
-  }
+
+  return <Navigate to="/" replace />;
 }
 
 export default NaverCallback;

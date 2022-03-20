@@ -15,10 +15,10 @@ function Header() {
           <span>{ext}</span>
         </div>
       </div>
-      <div className="Timer">
+      {/* <div className="Timer">
         <div>소요시간</div>
         <div>00:00:00</div>
-      </div>
+      </div> */}
     </div>
   );
 }

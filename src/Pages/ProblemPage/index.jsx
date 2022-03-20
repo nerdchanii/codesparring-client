@@ -11,15 +11,6 @@ function index() {
   const toggleEditMode = () => {
     setEditProblem(!editProblem);
   };
-
-  if (editProblem) {
-    return (
-      <div className="ProblemPage">
-        <ProblemAdd back={toggleEditMode} />
-      </div>
-    );
-  }
-
   if (!editProblem) {
     return (
       <div className="ProblemPage">
@@ -35,6 +26,11 @@ function index() {
       </div>
     );
   }
+  return (
+    <div className="ProblemPage">
+      <ProblemAdd back={toggleEditMode} />
+    </div>
+  );
 }
 
 export default index;

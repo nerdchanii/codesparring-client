@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { Box, CircularProgress } from '@mui/material';
 import axios from 'axios';
 import { Link, useLocation } from 'react-router-dom';
-import env from '../../env';
+
 import './Problem.scss';
 
 function ProblemListHeader() {
@@ -48,7 +48,7 @@ function ProblemList() {
   const fetchData = useCallback(async () => {
     setLoadding(true);
     try {
-      const response = await axios.get(`${env.API_URL}/problem`);
+      const response = await axios.get(`${process.env.REACT_APP_API_DEFAULTS_URL}/problem`);
       const { data } = response;
       setProblemItems(data);
     } catch (e) {

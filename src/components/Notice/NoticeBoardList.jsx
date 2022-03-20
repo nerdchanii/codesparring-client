@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useCallback, useEffect, useState } from 'react';
 import { BiLabel } from 'react-icons/bi';
-import env from '../../env';
+
 import './Notice.scss';
 
 function NoticeBoardListItem(props) {
@@ -37,7 +37,7 @@ function NoticeBoardList() {
   const [loading, setLoading] = useState(false);
   const [notices, setNotices] = useState(null);
   const fetchData = useCallback(async () => {
-    const response = await axios.get(`${env.API_URL}/notice`);
+    const response = await axios.get(`${process.env.REACT_APP_API_DEFAULTS_URL}/notice`);
     const { data } = response;
     setNotices(data);
   }, []);

@@ -1,10 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { useRecoilState } from 'recoil';
 import axios from 'axios';
-import { loadding } from '../../state/loading';
 import './BoardListItem.scss';
 import BoardListHeader from './BoardListHeader';
-import env from '../../env';
 
 // POW = Prolbem of Week
 function BoardListItem(props) {
@@ -20,10 +17,10 @@ function BoardListItem(props) {
 }
 
 function BoardList() {
-  const [rankLoadding, setRankLoadding] = useRecoilState(loadding);
+  const [rankLoadding, setRankLoadding] = useState(false);
   const [rankList, setRankList] = useState(null);
   const fetchData = useCallback(async () => {
-    const response = await axios(`${env.API_URL}/user/rank`);
+    const response = await axios(`${process.env.REACT_APP_API_DEFAULTS_URL}/user/rank`);
     const { data } = response;
     setRankList(data);
   }, []);
@@ -54,7 +51,7 @@ function BoardList() {
             ranking={user.id}
             nickName={user.nickName}
             point={user.point}
-            key={user.id + user.nickName}
+            key={`${user.id}${user.nickName}`}
           />
         ))}
       </ul>

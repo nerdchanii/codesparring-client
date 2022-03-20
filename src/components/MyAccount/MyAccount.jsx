@@ -6,7 +6,6 @@ import MyAccountHeader from './MyAccountHeader';
 import UserProfile from './UserProfile';
 import './MyAccount.scss';
 import LOGIN_STATE from '../../state/login';
-import env from '../../env';
 
 function MyAccount() {
   const [loginCheck, setLogin] = useRecoilState(LOGIN_STATE);
@@ -16,7 +15,7 @@ function MyAccount() {
   const fetchUser = useCallback(async () => {
     const accessToken = localStorage?.LOGIN_TOKEN;
     try {
-      const response = await axios.get(`${env.API_URL}/user/profile`, {
+      const response = await axios.get(`${process.env.REACT_APP_API_DEFAULTS_URL}/user/profile`, {
         headers: { Authorization: `${accessToken}` },
       });
       setUser(response.data);
@@ -47,7 +46,8 @@ function MyAccount() {
         <MyAccountHeader />
       </div>
       <div className="MyAccount-Body">
-        <UserProfile user={user} />
+        {user && <UserProfile user={user} />}
+        {!user && <div>다시 로그인해주세요!</div>}
       </div>
     </div>
   );

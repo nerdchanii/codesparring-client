@@ -1,4 +1,7 @@
-export const keybindList = ['emacs', 'vim', 'vscode', 'sublime'];
-export const fontSizeList = [8, 10, 12, 14, 16, 18, 20, 24, 30, 34, 36, 38, 40];
-export const themeList = ['monokai', 'github', 'xcode', 'dracula'];
-export const languageList = ['cpp', 'javascript', 'java', 'python'];
+const ACE_OPTION = {
+  KEYBIND_LIST: ['emacs', 'vim', 'vscode', 'sublime'],
+  FONT_SIZE_LIST: [8, 10, 12, 14, 16, 18, 20, 24, 30, 34, 36, 38, 40],
+  THEME_LIST: ['monokai', 'github', 'xcode', 'dracula'],
+  LANGUAGE_LIST: ['cpp', 'javascript', 'java', 'python'],
+};
+export default ACE_OPTION;

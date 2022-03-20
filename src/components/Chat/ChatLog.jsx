@@ -13,16 +13,11 @@ function ChatLogItem(props) {
 
 function ChatLog(props) {
   const { messages } = props;
-  if (!messages) return <></>;
-  if (messages) {
-    return (
-      <div className="ChatLog">
-        {messages.map((item, idx) => (
-          <ChatLogItem key={idx} item={item} />
-        ))}
-      </div>
-    );
-  }
+  return (
+    <div className="ChatLog">
+      {messages ? messages.map((item, idx) => <ChatLogItem key={idx} item={item} />) : <></>}
+    </div>
+  );
 }
 
 export default ChatLog;
