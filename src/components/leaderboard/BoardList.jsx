@@ -1,7 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { useRecoilState } from 'recoil';
 import axios from 'axios';
-import { loadding } from '../../state/loading';
 import './BoardListItem.scss';
 import BoardListHeader from './BoardListHeader';
 
@@ -19,7 +17,7 @@ function BoardListItem(props) {
 }
 
 function BoardList() {
-  const [rankLoadding, setRankLoadding] = useRecoilState(loadding);
+  const [rankLoadding, setRankLoadding] = useState(false);
   const [rankList, setRankList] = useState(null);
   const fetchData = useCallback(async () => {
     const response = await axios(`${process.env.REACT_APP_API_DEFAULTS_URL}/user/rank`);

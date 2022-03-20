@@ -16,11 +16,11 @@ function Topper() {
     setLoginState(false);
   };
   const onClickLogin = () => {
-    if (loginState !== false) {
+    if (!!loginState) {
+      setShowLoginModal(true);
+    } else {
       console.log('err');
       throw Error;
-    } else {
-      setShowLoginModal(true);
     }
   };
 
