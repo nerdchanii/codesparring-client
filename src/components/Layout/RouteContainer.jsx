@@ -1,0 +1,28 @@
+import React from 'react';
+import { Route, Routes } from 'react-router-dom';
+import Sparring from '../../Pages/Sparring/Sparring';
+import Home from '../../Pages/Home/Home';
+import MyPage from '../../Pages/MyPage/MyPage';
+import Practice from '../../Pages/Practice/Practice';
+
+import Notice from '../Notice/Notice';
+import './RouteContainer.scss';
+import ProblemPage from '../../Pages/ProblemPage/ProblemPage';
+import LeaderBoardPage from '../../Pages/LeaderBoardPage/LeaderBoardPage';
+
+function RouteContainer() {
+  return (
+    <div className="RouteContainer">
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/notice/*" element={<Notice />} />
+        <Route path="/leaderboard/*" element={<LeaderBoardPage />} />
+        <Route path="/sparring/*" element={<Sparring />} />
+        <Route path="/practice/*" element={<Practice />} />
+        <Route path="/mypage/*" element={<MyPage />} />
+        <Route path="/problem/*" element={<ProblemPage />} />
+      </Routes>
+    </div>
+  );
+}
+export default RouteContainer;

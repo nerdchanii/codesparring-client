@@ -1,0 +1,130 @@
+.ProblemListContainers {
+  max-height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  * {
+    max-height: 100%;
+  }
+  .section-title {
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+  .section-ProblemList {
+    margin-top: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    max-height: 100%;
+  }
+}
+.ProblemListContainers::-webkit-scrollbar {
+  display: none;
+}
+
+.ProblemListHeader,
+.ProblemListItem-Link {
+  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr 1fr 1fr 1fr 1fr;
+  font-size: 1.2rem;
+  font-weight: 500;
+  padding: 5px;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.ProblemListItem {
+  background: #2f927233;
+  border-radius: 5px;
+  border: 1px solid #2f927211;
+
+  & + & {
+    margin-top: 0.5rem;
+  }
+  :hover {
+    background-color: #f5f5f5;
+  }
+}
+.ProblemListHeader {
+  background-color: #2f9272;
+  color: white;
+}
+.ProblemListItem-ul {
+  margin-top: 0.5rem;
+  overflow: hidden;
+  max-height: 100%;
+}
+
+.ProblemHeader {
+  font-weight: bold;
+  display: flex;
+  border-bottom: 1px solid #2f9272;
+  .Problem-title {
+    flex: 1;
+    margin-bottom: 1rem;
+  }
+  .backButton {
+    button {
+      border: none;
+      background: none;
+      color: #2f9272;
+      cursor: pointer;
+    }
+  }
+}
+
+.ProblemContainer {
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.ProblemBody {
+  overflow-y: scroll;
+  flex: 1;
+  .Problem-section {
+    margin-top: 1rem;
+    .Problem-section-title {
+      font-weight: bold;
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    .Problem-section-body {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    .Problem-section-table {
+      margin: auto;
+      // * {
+      // border: 1px solid red;
+      text-align: center;
+      border-collapse: collapse;
+      height: min-content;
+      td {
+        max-width: 20vw;
+        white-space: nowrap;
+        overflow-y: scroll;
+      }
+      td::-webkit-scrollbar {
+        display: none;
+      }
+      * {
+        // overflow-x: scroll;
+        padding: 0.5rem;
+        border: 1px solid black;
+      }
+      p {
+        border: none;
+        padding: none;
+      }
+      // }
+      .Problem-section-table-head {
+        border-bottom: 2px solid Black;
+      }
+    }
+  }
+}
+.ProblemBody::-webkit-scrollbar {
+  display: none;
+}

@@ -1,0 +1,66 @@
+.Editor {
+  flex: 3;
+  // max-height: 60vh;
+  min-height: 50vh;
+  // border-radius: 10px 10px 0px 0px;
+  padding-top: 20px;
+}
+
+.IdeContainer {
+  max-height: 90vh;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  .Header {
+    // background: yellow;
+    height: fit-content;
+    padding: 0.5em 1rem 0.5rem 1rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: right;
+    display: flex;
+    justify-content: space-between;
+    .Timer {
+      display: flex;
+    }
+  }
+}
+
+.Output {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  .title {
+    max-height: fit-content;
+    padding: 0.5rem;
+  }
+  .body {
+    flex: 1;
+  }
+  .run {
+    height: fit-content;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    .button {
+      background: #2f9272;
+      border: 1px solid #2f9272;
+      border-radius: 0.5rem;
+      color: white;
+      font-weight: bold;
+      padding: 0.5rem 1rem;
+    }
+    .button:active {
+      box-shadow: #2f9272 1px 1px 1px 1px;
+      background: #fff;
+      border: 1.5px solid #2f9272;
+      border-radius: 0.5rem;
+      color: #2f9272;
+      font-weight: bold;
+      padding: 0.5rem 1rem;
+    }
+  }
+}

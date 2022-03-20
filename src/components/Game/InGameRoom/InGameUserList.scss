@@ -1,0 +1,10 @@
+.InGameUserListContainer {
+  .InGameUserList {
+    display: flex;
+    justify-content: space-around;
+    .InGameUserListItem {
+      display: flex;
+      font-size: 1rem;
+    }
+  }
+}

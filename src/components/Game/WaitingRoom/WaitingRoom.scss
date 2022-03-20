@@ -1,0 +1,126 @@
+.WaitingRoomHeader {
+  color: #2f9272;
+  text-align: center;
+  font-weight: bolder;
+  font-size: 1.5rem;
+  margin: 1rem;
+
+  .staticHeader {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .WaitingRoomHeader-header {
+    flex: 1;
+  }
+
+  //.waitingRoomHeader-buttonContainer {
+  button {
+    background-color: #2f9272;
+    color: white;
+    border: 1px solid #2f9272;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    font-size: 1rem;
+    font-weight: bolder;
+    cursor: pointer;
+  }
+
+  button:active {
+    box-sizing: border-box;
+    background: white;
+    color: #2f9272;
+    border: 1px solid #2f9272;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    font-size: 1rem;
+    font-weight: bolder;
+    cursor: pointer;
+    transition: all 0.01s ease;
+  }
+
+  .MakeRoom {
+    form {
+      justify-content: center;
+      display: flex;
+      flex-direction: row;
+      div {
+        display: flex;
+        align-items: center;
+      }
+      input {
+        border: 1px solid #2f9272;
+        border-radius: 0.5rem;
+        padding: 0.5rem;
+        font-size: 1rem;
+        font-weight: bolder;
+        cursor: pointer;
+        flex: 1;
+      }
+    }
+    margin: 0.5rem;
+    padding: 0.5rem;
+    font-size: 1rem;
+    font-weight: bolder;
+    cursor: pointer;
+  }
+}
+
+.RoomList {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+  overflow: hidden;
+  max-height: 100%;
+
+  .ListHeader {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: bold;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 2px solid #2f9272;
+  }
+
+  .RoomListItemContainer {
+    margin-bottom: 10px;
+    display: flex;
+    overflow-y: scroll;
+    scrollbar-color: white;
+    scrollbar-track-color: white;
+    flex-direction: column;
+    justify-content: space-between;
+
+    // align-items: center;
+    max-height: 100%;
+
+    .MouseOver {
+      background-color: #2f9272aa;
+    }
+
+    .RoomListItem .ItemLinkWrapper {
+      border: 2px solid #2f927233;
+      border-radius: 0.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      align-items: center;
+      text-align: center;
+      font-size: 1.5rem;
+      padding-bottom: 1rem;
+      padding-top: 1rem;
+      font-size: 1rem;
+    }
+
+    .RoomListItem:hover {
+      color: #2f9272;
+      border: 2px solid #2f9272;
+      border-radius: 0.5rem;
+
+      a {
+        color: #2f9272;
+      }
+    }
+  }
+}

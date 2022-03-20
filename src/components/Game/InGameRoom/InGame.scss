@@ -1,0 +1,42 @@
+.loading {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.InGameRoom {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .InGameHeader {
+    display: flex;
+    .title {
+      flex: 1;
+    }
+  }
+  .InGameQuest {
+    height: inherit;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    flex: 2;
+    .InGameProblemContainer {
+      max-height: 100%;
+      overflow: scroll;
+    }
+  }
+  .InGameProblemContainer ::-webkit-scrollbar {
+    display: none;
+  }
+  .InGameChat {
+    flex: 1;
+    max-height: 100%;
+    box-sizing: border-box;
+    padding: 0.5rem;
+    border: 1px solid green;
+    border-radius: 1rem;
+    overflow: hidden;
+  }
+}

@@ -1,0 +1,58 @@
+.Topper {
+  padding-top: 0.5rem;
+  display: flex;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 0.5rem;
+  height: fit-content;
+  background: #2f9272aa;
+  h1 {
+    color: white;
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    justify-content: center;
+    a {
+      color: white;
+      text-shadow: #2f9272aa 0px 4px 4px;
+    }
+  }
+  * {
+    text-decoration: none;
+    font-weight: bold;
+    font-family: 'arial';
+    text-align: center;
+  }
+
+  .NavigatorContainer {
+    flex: 3;
+    display: flex;
+
+    font-size: 1rem;
+    margin: 0em 1rem;
+    justify-content: center;
+    align-items: center;
+    a {
+      box-sizing: border-box;
+      color: white;
+      margin: 0em 1rem;
+    }
+  }
+  .ButtonContainer {
+    flex: 1;
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  button {
+    border: none;
+    background: none;
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    // svg {
+    //   width: 1.5rem;
+    //   height: 1.5rem;
+    // }
+  }
+}
