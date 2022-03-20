@@ -47,7 +47,8 @@ function MyAccount() {
         <MyAccountHeader />
       </div>
       <div className="MyAccount-Body">
-        <UserProfile user={user} />
+        {user && <UserProfile user={user} />}
+        {!user && <div>다시 로그인해주세요!</div>}
       </div>
     </div>
   );

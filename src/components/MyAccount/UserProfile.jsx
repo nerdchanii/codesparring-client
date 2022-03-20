@@ -1,11 +1,12 @@
 import React from 'react';
+import { Navigate } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
-import Errpage from '../../Pages/Errpage/Errpage';
 import LOGIN_STATE from '../../state/login';
 import './MyAccount.scss';
 
 function UserProfile({ user }) {
   const loginCheck = useRecoilValue(LOGIN_STATE);
+
   if (!loginCheck) {
     return (
       <div
@@ -21,11 +22,7 @@ function UserProfile({ user }) {
     );
   }
   if (!user) {
-    return (
-      <div>
-        <Errpage log="user정보가 없습니다" />
-      </div>
-    );
+    return <Navigate to="/login" />;
   }
   return (
     <div className="UserProfile">
