@@ -9,8 +9,6 @@ import problemNumberState from '../../state/problem/problemNumberState';
 import ProblemHeader from './ProblemHeader';
 import ProblemBody from './ProblemBody';
 
-import env from '../../env';
-
 function ProblemContainer() {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState(null);
@@ -20,7 +18,7 @@ function ProblemContainer() {
   const fetchData = useCallback(async () => {
     setLoading(true);
     try {
-      const response = await axios.get(`${env.API_URL}/problem/${id}`);
+      const response = await axios.get(`${process.env.REACT_APP_API_DEFAULTS_URL}/problem/${id}`);
       setData(response.data);
       setProblemNumberState(response.data.id);
     } catch (e) {

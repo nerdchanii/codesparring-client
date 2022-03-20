@@ -1,8 +1,6 @@
-import env from '../../env';
-
 const naverLoginConfig = {
-  clientId: env.NAVER_LOGIN_KEY,
-  callbackUrl: env.NAVER_LGONIN_CALLBACK_URL,
+  clientId: process.env.REACT_APP_NAVER_LOGIN_KEY,
+  callbackUrl: process.env.REACT_APP_NAVER_LGONIN_CALLBACK_URL,
 };
 
 export default naverLoginConfig;

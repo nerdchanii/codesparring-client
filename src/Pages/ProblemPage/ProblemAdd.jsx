@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React from 'react';
-import env from '../../env';
+
 import AddButton from './AddButton';
 
 const MESSAGE = {
@@ -86,7 +86,7 @@ function ProblemAdd({ back }) {
 
     const stringData = JSON.stringify(data);
     try {
-      const response = await axios(`${env.API_URL}/problem/add`, {
+      const response = await axios(`${process.env.REACT_APP_API_DEFAULTS_URL}/problem/add`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

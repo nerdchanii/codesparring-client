@@ -1,9 +1,8 @@
 import axios from 'axios';
-import env from '../../../env';
 
 // eslint-disable-next-line arrow-body-style
 export const joinGame = (gameId) => {
-  return axios(`${env.API_URL}/game/join/${gameId}`, {
+  return axios(`${process.env.REACT_APP_API_DEFAULTS_URL}/game/join/${gameId}`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -15,7 +14,7 @@ export const joinGame = (gameId) => {
 };
 
 export const leaveGame = (gameId) => {
-  return axios(`${env.API_URL}/game/leave/${gameId}`, {
+  return axios(`${process.env.REACT_APP_API_DEFAULTS_URL}/game/leave/${gameId}`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

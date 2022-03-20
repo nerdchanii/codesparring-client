@@ -1,8 +1,7 @@
 import { io } from 'socket.io-client';
-import env from '../../env';
 
 export const ANONY = `ANONYMOUS ${Math.floor(Math.random() * 10000).toString()}`;
 
-const socket = io(env.END_POINT);
+const socket = io(process.env.REACT_APP_SOCKET_END_POINT);
 
 export default socket;

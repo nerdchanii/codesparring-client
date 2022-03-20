@@ -8,12 +8,12 @@ import Header from './Header';
 import Output from './Output';
 import aceEditorDefaultValue from '../../state/ide/aceEditorDefaultValue';
 import './Ide.scss';
-import env from '../../env';
+
 import problemNumberState from '../../state/problem/problemNumberState';
 
 async function getPost(lang, value, input = '', expectOutput = '') {
   const response = await axios.post(
-    `${env.API_URL}/code/test`,
+    `${process.env.REACT_APP_API_DEFAULTS_URL}/code/test`,
     {
       lang,
       code: value,
@@ -56,7 +56,7 @@ function IdeContainer() {
 
   const onSubmit = useCallback(async () => {
     const response = await axios.post(
-      `${env.API_URL}/code/submit`,
+      `${process.env.REACT_APP_API_DEFAULTS_URL}/code/submit`,
       {
         problemId: problemNumber,
         lang,

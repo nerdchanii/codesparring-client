@@ -4,7 +4,6 @@ import { CircularProgress } from '@mui/material';
 import WaitingRoomHeader from './WaitingRoomHeader';
 import RoomList from './RoomList';
 import './WaitingRoom.scss';
-import env from '../../../env';
 
 function WaitingRoom() {
   const [gameRooms, setgameRoom] = useState(null);
@@ -14,7 +13,7 @@ function WaitingRoom() {
     // fetchRoomList();
     setLoading(true);
     axios
-      .get(`${env.API_URL}/game/list`)
+      .get(`${process.env.REACT_APP_API_DEFAULTS_URL}/game/list`)
       .then((response) => setgameRoom(response.data))
       .catch(() => console.log('error'))
       .then(() => setLoading(false));

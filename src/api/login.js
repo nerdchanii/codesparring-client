@@ -1,11 +1,10 @@
 import axios from 'axios';
-import env from '../env';
 
 // userInfo = {email, nickName, naverId}
 
 const login = async (userInfo = null) => {
   try {
-    const response = await axios(`${env.API_URL}/user/login`, {
+    const response = await axios(`${process.env.REACT_APP_API_DEFAULTS_URL}/user/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

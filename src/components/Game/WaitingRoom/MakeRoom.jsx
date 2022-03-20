@@ -1,7 +1,6 @@
 import React from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import env from '../../../env';
 
 function MakeRoom() {
   const navigate = useNavigate();
@@ -12,7 +11,7 @@ function MakeRoom() {
       return;
     }
     try {
-      const response = await axios(`${env.API_URL}/game/make`, {
+      const response = await axios(`${process.env.REACT_APP_API_DEFAULTS_URL}/game/make`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

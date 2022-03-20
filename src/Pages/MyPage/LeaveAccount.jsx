@@ -5,7 +5,6 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useSetRecoilState } from 'recoil';
 import LOGIN_STATE from '../../state/login';
-import env from '../../env';
 
 function LeaveAccount() {
   const navigate = useNavigate();
@@ -15,7 +14,7 @@ function LeaveAccount() {
     setLoading(true);
     try {
       const token = localStorage.getItem('LOGIN_TOKEN');
-      const response = await axios.delete(`${env.API_URL}/delete/user`, {
+      const response = await axios.delete(`${process.env.REACT_APP_API_DEFAULTS_URL}/delete/user`, {
         headers: { Authorization: `${token}` },
       });
 
