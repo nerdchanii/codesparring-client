@@ -16,7 +16,7 @@ function Topper() {
     setLoginState(false);
   };
   const onClickLogin = () => {
-    if (!!loginState) {
+    if (!loginState) {
       setShowLoginModal(true);
     } else {
       console.log('err');
