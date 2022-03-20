@@ -34,18 +34,17 @@ function WaitingRoom() {
       </div>
     );
   }
-  if (!loading) {
-    return (
-      <>
-        <WaitingRoomHeader />
-        {gameRooms ? (
-          <RoomList gameRooms={gameRooms} />
-        ) : (
-          <div>게임 룸을 불러오지 못했습니다.새로침해주세요!</div>
-        )}
-      </>
-    );
-  }
+
+  return (
+    <>
+      <WaitingRoomHeader />
+      {gameRooms ? (
+        <RoomList gameRooms={gameRooms} />
+      ) : (
+        <div>게임 룸을 불러오지 못했습니다.새로침해주세요!</div>
+      )}
+    </>
+  );
 }
 
 export default WaitingRoom;

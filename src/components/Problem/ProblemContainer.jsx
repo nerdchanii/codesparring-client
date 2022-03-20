@@ -53,14 +53,13 @@ function ProblemContainer() {
   if (!data) {
     return <div>..Error..! please reload</div>;
   }
-  if (data) {
-    return (
-      <div className="ProblemContainer">
-        <ProblemHeader data={data} />
-        <ProblemBody data={data.data} />
-      </div>
-    );
-  }
+
+  return (
+    <div className="ProblemContainer">
+      <ProblemHeader data={data} />
+      <ProblemBody data={data.data} />
+    </div>
+  );
 }
 
 export default ProblemContainer;
