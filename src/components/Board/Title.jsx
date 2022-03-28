@@ -1,9 +1,9 @@
 import React from 'react';
 
 function Title(props) {
-  const { children, className } = props;
+  const { children } = props;
 
-  return <div className={className}>{children}</div>;
+  return <div className="title">{children}</div>;
 }
 
 export default Title;
