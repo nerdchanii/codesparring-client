@@ -1,10 +1,23 @@
-import React from 'react';
-import LeaderBoard from '../../components/leaderboard/Leaderboard';
+import axios from 'axios';
+import React, { useEffect } from 'react';
+import Board from '../../components/Board';
 
 function LeaderBoardPage() {
-  return (
-    <div style={{ width: '90%', marginTop: '5vh' }}>
-      <LeaderBoard />
+  const [rankList, setRankList] = React.useState([]);
+
+  useEffect(() => {
+    (async () => {
+      const response = await axios(`${process.env.REACT_APP_API_DEFAULTS_URL}/user/rank`);
+      const { data } = response;
+      setRankList(data);
+    })();
+  }, []);
+
+  return rankList.length === 0 ? (
+    <></>
+  ) : (
+    <div style={{ width: '90%', height: 'inherit', margin: 'auto' }}>
+      <Board className="leaderBoard" title="리더보드" data={rankList} />
     </div>
   );
 }
