@@ -10,26 +10,27 @@ import './Board.scss';
 function Board(props) {
   const { className, title, data } = props;
 
+  if (!data?.length) {
+    return null;
+  }
   return (
-    !!data.length && (
-      <div className={className}>
-        <Title>{title}</Title>
-        <ListHeader className="header">
-          {Object.keys(data[0]).map((col, idx) => (
-            <Column key={idx}>{col}</Column>
-          ))}
-        </ListHeader>
-        <List className="list">
-          {data.map((item, idx) => (
-            <ListItem className="item" key={idx}>
-              {Object.values(item).map((col, colIdx) => (
-                <Column key={colIdx}>{col}</Column>
-              ))}
-            </ListItem>
-          ))}
-        </List>
-      </div>
-    )
+    <div className={className}>
+      <Title>{title}</Title>
+      <ListHeader className="header">
+        {Object.keys(data[0]).map((col, idx) => (
+          <Column key={idx}>{col}</Column>
+        ))}
+      </ListHeader>
+      <List className="list">
+        {data.map((item, idx) => (
+          <ListItem className="item" key={idx}>
+            {Object.values(item).map((col, colIdx) => (
+              <Column key={colIdx}>{col}</Column>
+            ))}
+          </ListItem>
+        ))}
+      </List>
+    </div>
   );
 }
 
@@ -42,7 +43,7 @@ Board.propsTypes = {
 Board.deafultProps = {
   className: 'board',
   title: '보드',
-  data: null,
+  data: [],
 };
 
 export default Board;

@@ -11,9 +11,14 @@ function LinkedListItem(props) {
   );
 }
 
-LinkedListItem.PropsTypes = {
+LinkedListItem.propsTypes = {
   link: PropsTypes.string,
   children: PropsTypes.node,
+};
+
+LinkedListItem.defaultProps = {
+  link: '',
+  children: '',
 };
 
 export default LinkedListItem;
