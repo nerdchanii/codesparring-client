@@ -1,5 +1,5 @@
 import React from 'react';
-import LeaderBoard from '../../components/leaderboard/Leaderboard';
+import LeaderBoard from '../LeaderBoardPage/LeaderBoardPage';
 import './Home.scss';
 import Notice from '../../components/Notice/Notice';
 import MyAccount from '../../components/MyAccount/MyAccount';

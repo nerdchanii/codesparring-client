@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { CircularProgress } from '@mui/material';
 import WaitingRoomHeader from './WaitingRoomHeader';
-import RoomList from './RoomList';
 import './WaitingRoom.scss';
+import Board from '../../Board';
 
 function WaitingRoom() {
   const [gameRooms, setgameRoom] = useState(null);
@@ -38,7 +38,7 @@ function WaitingRoom() {
     <>
       <WaitingRoomHeader />
       {gameRooms ? (
-        <RoomList gameRooms={gameRooms} />
+        <Board className="RoomList" data={gameRooms} />
       ) : (
         <div>게임 룸을 불러오지 못했습니다.새로침해주세요!</div>
       )}
