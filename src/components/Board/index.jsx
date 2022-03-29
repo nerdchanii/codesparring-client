@@ -14,7 +14,7 @@ function Board(props) {
     return null;
   }
   return (
-    <div className={className}>
+    <div className={`${className} board`}>
       <Title>{title}</Title>
       <ListHeader className="header">
         {Object.keys(data[0]).map((col, idx) => (
@@ -41,7 +41,7 @@ Board.propsTypes = {
 };
 
 Board.deafultProps = {
-  className: 'board',
+  className: '',
   title: '보드',
   data: [],
 };

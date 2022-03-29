@@ -13,9 +13,10 @@ function LeaderBoardPage() {
     })();
   }, []);
 
-  return rankList.length === 0 ? (
-    <></>
-  ) : (
+  if (!rankList?.length) {
+    return <></>;
+  }
+  return (
     <div style={{ width: '90%', height: 'inherit', margin: 'auto' }}>
       <Board className="leaderBoard" title="리더보드" data={rankList} />
     </div>

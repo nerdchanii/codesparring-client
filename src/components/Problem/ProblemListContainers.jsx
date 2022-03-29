@@ -24,12 +24,10 @@ function ProblemListCotainers() {
     fetchData();
   }, []);
 
-  if (loadding) {
+  if (loadding || !problemItems) {
     return <></>;
   }
-  if (!problemItems) {
-    return <></>;
-  }
+
   return <Board className="ProblemList" title="문제목록" data={problemItems} />;
 }
 
