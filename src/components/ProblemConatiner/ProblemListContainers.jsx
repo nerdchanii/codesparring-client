@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import axios from 'axios';
-import Board from '../Board';
+import ProblemBoard from '../board/ProblemBoard';
 import './Problem.scss';
 
 function ProblemListCotainers() {
@@ -28,7 +28,7 @@ function ProblemListCotainers() {
     return <></>;
   }
 
-  return <Board className="ProblemList" title="문제목록" data={problemItems} />;
+  return <ProblemBoard className="ProblemList" title="문제목록" data={problemItems} />;
 }
 
 export default ProblemListCotainers;

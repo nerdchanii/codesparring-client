@@ -1,5 +1,5 @@
 import React from 'react';
-import ProblemBody from '../../Problem/ProblemBody';
+import ProblemBody from '../../ProblemConatiner/ProblemBody';
 import './InGame.scss';
 
 function InGameProblemContianer({ data }) {

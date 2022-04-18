@@ -2,16 +2,12 @@ import React from 'react';
 import IdeContainer from '../../components/ide/IdeContainer';
 import Game from '../../components/Game/Game';
 import './Sparring.scss';
+import Layout from '../Layout';
 
 function Sparring() {
   return (
     <div className="Sparring">
-      <div className="left">
-        <Game />
-      </div>
-      <div className="right">
-        <IdeContainer />
-      </div>
+      <Layout TopLeft={<Game />} TopRight={<IdeContainer />} />
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropsTypes from 'prop-types';
-import Column from './Column';
+import Column from '../../Column';
 
 function ListHeader(props) {
   const { children } = props;

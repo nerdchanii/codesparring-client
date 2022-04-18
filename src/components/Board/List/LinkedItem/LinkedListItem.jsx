@@ -4,9 +4,12 @@ import PropsTypes from 'prop-types';
 
 function LinkedListItem(props) {
   const { link, children } = props;
+  console.log(link, children);
   return (
-    <li className="list-item">
-      <Link to={link}>{children}</Link>
+    <li className="item">
+      <Link to={`${link}`} style={{ flex: 1, justifyContent: 'space-between', display: 'flex' }}>
+        {children}
+      </Link>
     </li>
   );
 }
