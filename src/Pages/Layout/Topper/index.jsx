@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
-import LOGIN_STATE from '../../state/login';
+import LOGIN_STATE from '../../../state/login';
 import './Topper.scss';
-import LoginBoxContainer from './Topper/LoginBoxContainer';
-import SettingContainer from '../ide/SettingsContainer';
+import LoginBoxContainer from './LoginBoxContainer';
+import SettingContainer from '../../../components/ide/SettingsContainer';
 
 function Topper() {
   const [loginState, setLoginState] = useRecoilState(LOGIN_STATE);

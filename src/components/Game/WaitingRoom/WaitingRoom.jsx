@@ -3,7 +3,7 @@ import axios from 'axios';
 import { CircularProgress } from '@mui/material';
 import WaitingRoomHeader from './WaitingRoomHeader';
 import './WaitingRoom.scss';
-import Board from '../../Board';
+import Board from '../../board';
 
 function WaitingRoom() {
   const [gameRooms, setgameRoom] = useState(null);

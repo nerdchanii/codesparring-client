@@ -1,14 +1,15 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import Sparring from '../../Pages/Sparring/Sparring';
-import Home from '../../Pages/Home/Home';
-import MyPage from '../../Pages/MyPage/MyPage';
-import Practice from '../../Pages/Practice/Practice';
+import SparringPage from '../SparringPage';
+import Home from '../Home/Home';
+import MyPage from '../MyPage/MyPage';
+import PracticePage from '../PracticePage';
 
-import Notice from '../Notice/Notice';
+import Notice from '../../components/board/NoticeBoard';
 import './RouteContainer.scss';
-import ProblemPage from '../../Pages/ProblemPage/ProblemPage';
-import LeaderBoardPage from '../../Pages/LeaderBoardPage/LeaderBoardPage';
+import ProblemPage from '../ProblemPage/ProblemPage';
+import LeaderBoardPage from '../LeaderBoardPage/LeaderBoardPage';
+import NotFound from '../NotFound';
 
 function RouteContainer() {
   return (
@@ -17,10 +18,11 @@ function RouteContainer() {
         <Route path="/" element={<Home />} />
         <Route path="/notice/*" element={<Notice />} />
         <Route path="/leaderboard/*" element={<LeaderBoardPage />} />
-        <Route path="/sparring/*" element={<Sparring />} />
-        <Route path="/practice/*" element={<Practice />} />
+        <Route path="/sparring/*" element={<SparringPage />} />
+        <Route path="/practice/*" element={<PracticePage />} />
         <Route path="/mypage/*" element={<MyPage />} />
         <Route path="/problem/*" element={<ProblemPage />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   );

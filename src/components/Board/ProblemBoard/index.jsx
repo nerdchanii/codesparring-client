@@ -1,14 +1,15 @@
 import React from 'react';
 import PropsTypes from 'prop-types';
-import ListHeader from './List/ListHeader/ListHeader';
-import List from './List';
-import ListItem from './List/ListItem/ListItem';
-import Title from './Title';
-import Column from './Column';
-import './Board.scss';
+import ListHeader from '../List/ListHeader/ListHeader';
+import List from '../List';
+import Title from '../Title';
+import Column from '../Column';
+import '../Board.scss';
+import LinkedListItem from '../List/LinkedItem/LinkedListItem';
 
 function Board(props) {
   const { className, title, data } = props;
+  console.log(props);
 
   if (!data?.length) {
     return null;
@@ -23,11 +24,11 @@ function Board(props) {
       </ListHeader>
       <List className="list">
         {data.map((item, idx) => (
-          <ListItem className="item" key={idx}>
+          <LinkedListItem className="item" link={item.id} key={idx}>
             {Object.values(item).map((col, colIdx) => (
               <Column key={colIdx}>{col}</Column>
             ))}
-          </ListItem>
+          </LinkedListItem>
         ))}
       </List>
     </div>

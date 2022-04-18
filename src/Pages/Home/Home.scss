@@ -1,20 +1,7 @@
 .Home {
   flex: 1;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: row;
   max-height: inherit;
-  .Left,
-  .Right {
-    width: auto;
-    display: grid;
-    grid-template-rows: 1fr 1fr;
-    max-height: inherit;
-  }
-  .Section {
-    margin: 0.5rem;
-    padding: 1rem;
-    overflow: hidden;
-    border: 1px solid #2f9272;
-    border-radius: 10px;
-  }
+  
 }

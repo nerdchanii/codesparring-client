@@ -1,29 +1,20 @@
 import React from 'react';
-import LeaderBoard from '../LeaderBoardPage/LeaderBoardPage';
+import LeaderBoard from '../../components/board/LeaderBoard';
 import './Home.scss';
-import Notice from '../../components/Notice/Notice';
-import MyAccount from '../../components/MyAccount/MyAccount';
+import Notice from '../../components/board/NoticeBoard';
+// import MyAccount from '../../components/MyAccount/MyAccount';
 import Game from '../../components/Game/Game';
+import Layout from '../Layout';
 
 function Home() {
   return (
     <div className="Home">
-      <div className="Left">
-        <div className="Section">
-          <LeaderBoard />
-        </div>
-        <div className="Section">
-          <MyAccount />
-        </div>
-      </div>
-      <div className="Right">
-        <div className="Section">
-          <Game />
-        </div>
-        <div className="Section">
-          <Notice />
-        </div>
-      </div>
+      <Layout
+        TopLeft={<Notice />}
+        // TopRight={<MyAccount />}
+        BottomLeft={<Game />}
+        BottomRight={<LeaderBoard />}
+      />
     </div>
   );
 }

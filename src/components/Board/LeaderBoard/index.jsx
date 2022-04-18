@@ -1,9 +1,8 @@
 import axios from 'axios';
 import React, { useEffect } from 'react';
-import LeaderBoard from '../../components/board/LeaderBoard';
-import Layout from '../Layout';
+import LeaderBoardPresentation from './LeaderBoardPresetation';
 
-function LeaderBoardPage() {
+function LeaderBoard() {
   const [rankList, setRankList] = React.useState([]);
 
   useEffect(() => {
@@ -17,11 +16,7 @@ function LeaderBoardPage() {
   if (!rankList?.length) {
     return <></>;
   }
-  return (
-    <div style={{ width: '90%', height: 'inherit', margin: 'auto' }}>
-      <Layout TopLeft={<LeaderBoard title="랭킹" data={rankList} />} />
-    </div>
-  );
+  return <LeaderBoardPresentation className="LeaderBoard" title="랭킹" data={rankList} />;
 }
 
-export default LeaderBoardPage;
+export default LeaderBoard;

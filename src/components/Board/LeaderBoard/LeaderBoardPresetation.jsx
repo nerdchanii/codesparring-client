@@ -1,13 +1,13 @@
 import React from 'react';
 import PropsTypes from 'prop-types';
-import ListHeader from './List/ListHeader/ListHeader';
-import List from './List';
-import ListItem from './List/ListItem/ListItem';
-import Title from './Title';
-import Column from './Column';
-import './Board.scss';
+import ListHeader from '../List/ListHeader/ListHeader';
+import List from '../List';
+import Title from '../Title';
+import Column from '../Column';
+import '../Board.scss';
+import ListItem from '../List/ListItem/ListItem';
 
-function Board(props) {
+function LeaderBoardPresentation(props) {
   const { className, title, data } = props;
 
   if (!data?.length) {
@@ -34,16 +34,16 @@ function Board(props) {
   );
 }
 
-Board.propsTypes = {
+LeaderBoardPresentation.propsTypes = {
   className: PropsTypes.string,
   title: PropsTypes.string,
   data: PropsTypes.arrayOf(PropsTypes.object),
 };
 
-Board.deafultProps = {
+LeaderBoardPresentation.deafultProps = {
   className: '',
   title: '보드',
   data: [],
 };
 
-export default Board;
+export default LeaderBoardPresentation;

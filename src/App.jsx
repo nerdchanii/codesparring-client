@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import Topper from './components/Layout/Topper';
-import RouteContainer from './components/Layout/RouteContainer';
+import Topper from './Pages/Layout/Topper';
+import RouteContainer from './Pages/Layout/RouteContainer';
 import './App.scss';
 import socket, { ANONY } from './constants/socket/socket';
 
