@@ -1,10 +1,20 @@
 import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Topper from './Pages/Layout/Topper';
 import RouteContainer from './Pages/Layout/RouteContainer';
 import './App.scss';
 import socket, { ANONY } from './constants/socket/socket';
+import { fetchLogin, logout } from './redux/reducers/auth.reducer';
 
 function App() {
+  const userLoggined = useSelector((state) => state.auth.isLoggedIn);
+  const dispatch = useDispatch();
+
+  const onClick = () => {
+    if (userLoggined) dispatch(logout());
+    else dispatch(fetchLogin({ email: ANONY, password: ANONY }));
+  };
+
   useEffect(() => {
     socket.auth = { token: localStorage.getItem('LOGIN_TOKEN') || { nickName: ANONY } };
     socket.connect();
@@ -12,6 +22,7 @@ function App() {
   return (
     <div className="App">
       <Topper />
+      <button onClick={onClick}>{userLoggined ? '로그아웃' : '로그인'}</button>
       <RouteContainer />
     </div>
   );

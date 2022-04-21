@@ -1,23 +1,16 @@
 import { configureStore } from '@reduxjs/toolkit';
 import reducer from './reducers';
 import Apis from '../api/apis';
-import AuthService from '../service/auth.service';
-import UserService from '../service/user.service';
+import Service from '../service';
 
 const apis = new Apis();
-const authService = new AuthService({ apis });
-const userService = new UserService({ apis });
-
-const services = {
-  authService,
-  userService,
-};
+const service = new Service({ apis });
 
 export default configureStore({
   reducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
-      thunk: { withExtraArgument: services },
+      thunk: { extraArgument: { service } },
       logger: true,
     }),
   devTools: true,

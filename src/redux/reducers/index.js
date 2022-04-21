@@ -1,3 +1,3 @@
-import authReducer from './auth';
+import authReducer from './auth.reducer';
 
 export default { auth: authReducer };
