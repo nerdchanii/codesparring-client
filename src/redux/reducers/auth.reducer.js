@@ -5,14 +5,17 @@ export const FETCH_LOGIN = 'auth/FETCH_LOGIN';
 export const LOGOUT = 'auth/LOGOUT';
 
 // Auth Store initial state
-const initialState = {
-  isLoggedIn: false,
-  userId: 1,
-  profile: {
-    name: 'kim',
-  },
-  token: 'jsonWebToken',
-};
+const defaultAuth = JSON.parse(localStorage.getItem('auth'));
+const initialState = defaultAuth
+  ? { isLoggedIn: true, ...defaultAuth }
+  : {
+      isLoggedIn: false,
+      userId: null,
+      profile: {
+        name: null,
+      },
+      token: null,
+    };
 
 // ACTION CREATORS for FETCH_LOGIN
 // thunk action creator will pass to createSlice's extraReducers
@@ -39,6 +42,7 @@ const authSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(fetchLogin.fulfilled, (state, action) => {
+      window.localStorage.setItem('auth', JSON.stringify(action.payload));
       state.isLoggedIn = true;
       state.userId = action.payload.userId;
       state.profile = action.payload.profile;
