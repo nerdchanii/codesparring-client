@@ -11,7 +11,6 @@ export default configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       thunk: { extraArgument: { service } },
-      logger: true,
     }),
   devTools: true,
 });
