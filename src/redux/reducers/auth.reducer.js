@@ -34,6 +34,7 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     logout(state) {
+      localStorage.removeItem('auth');
       state.isLoggedIn = false;
       state.userId = null;
       state.profile = {};
