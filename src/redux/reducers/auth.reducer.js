@@ -24,23 +24,23 @@ export const fetchLogin = createAsyncThunk(FETCH_LOGIN, async ({ email, password
   // const { data } = await service.authService.login({ email, password });
   // 임시로 fulfilled 상태로 만듬
   const { data } = await Promise.resolve({
-    data: { userId: 234234, profile: { name: 'chanii' }, token: 'token' },
+    data: { userId: 234234, profile: { name: 'chanii' }, token: 'jsonWebToken' },
   });
+  data && service.apis.setAccessToken(data.token); 
+  console.log(service);
   return data;
+});
+
+export const logout = createAsyncThunk(LOGOUT, async (args, { extra }) => {
+  const { service } = extra;
+  service.apis.setAccessToken(null);
+  localStorage.removeItem('auth');
+  return true;
 });
 
 const authSlice = createSlice({
   name: 'auth',
   initialState,
-  reducers: {
-    logout(state) {
-      localStorage.removeItem('auth');
-      state.isLoggedIn = false;
-      state.userId = null;
-      state.profile = {};
-      state.token = null;
-    },
-  },
   extraReducers: (builder) => {
     builder.addCase(fetchLogin.fulfilled, (state, action) => {
       window.localStorage.setItem('auth', JSON.stringify(action.payload));
@@ -49,9 +49,15 @@ const authSlice = createSlice({
       state.profile = action.payload.profile;
       state.token = action.payload.token;
     });
+    builder.addCase(logout.fulfilled, (state) => {
+      state.isLoggedIn = false;
+      state.userId = null;
+      state.profile = {};
+      state.token = null;
+    });
   },
 });
 
 const { actions, reducer } = authSlice;
-export const { logout } = actions;
+
 export default reducer;

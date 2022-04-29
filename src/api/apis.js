@@ -9,7 +9,7 @@ const AUTH_REQUIRED_LIST = ['/users/*'];
 
 class Apis {
   constructor() {
-    // this._axios =
+  
     this._axios = axios.create({
       baseURL: API_BASE_URL,
       timeout: API_DEFAULT_TIMEOUT,
@@ -31,10 +31,18 @@ class Apis {
     this._user = new User({ axios: this._axios });
   }
 
-  // accessTOken을 어떻게 주입받지 ?
-  // get accessToken() {
-  //   return;
-  // }
+  // accessToken 
+  get accessToken() {
+    return this._accessToken;
+  }
+
+  setAccessToken(accessToken) {
+    this._accessToken = accessToken;
+  }
+
+
+
+
 
   get auth() {
     return this._auth;
