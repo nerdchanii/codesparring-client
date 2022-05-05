@@ -4,7 +4,7 @@ class AuthService {
   }
 
   login({ email, password }) {
-    this._apis.auth.login({ email, password });
+    return this._apis.auth.login({ email, password });
   }
 }
 
