@@ -44,7 +44,7 @@ class Apis {
     this._code = new Code({ axios: this._axios });
     this._notice = new Notice({ axios: this._axios });
   }
-  
+
   // accessToken 
   get accessToken() {
     return this._accessToken;
@@ -74,7 +74,7 @@ class Apis {
     return this._code;
   }
 
-  get notice(){
+  get notice() {
     return this._notice;
   }
 }

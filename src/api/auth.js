@@ -4,7 +4,7 @@ class Auth {
   }
 
   login({ email, password }) {
-    return this._axios.post('/auth/login', { email, password });
+    return this._axios.post('/auth/token', { email, password });
   }
 }
 export default Auth;

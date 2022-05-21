@@ -1,4 +1,5 @@
 import { createAsyncThunk, createAction, createSlice } from '@reduxjs/toolkit';
+import thunk from 'redux-thunk';
 
 // ACTION TYPES
 export const FETCH_LOGIN = 'auth/FETCH_LOGIN';
@@ -9,55 +10,58 @@ const defaultAuth = JSON.parse(localStorage.getItem('auth'));
 const initialState = defaultAuth
   ? { isLoggedIn: true, ...defaultAuth }
   : {
-      isLoggedIn: false,
-      userId: null,
-      profile: {
-        name: null,
-      },
-      token: null,
-    };
+    isLoggedIn: false,
+    userId: null,
+    profile: {
+      name: null,
+    },
+    token: null,
+  };
 
-// ACTION CREATORS for FETCH_LOGIN
-// thunk action creator will pass to createSlice's extraReducers
-export const fetchLogin = createAsyncThunk(FETCH_LOGIN, async ({ email, password }, { extra }) => {
+export const login = createAsyncThunk(FETCH_LOGIN, async ({ email, password }, { extra }) => {
   const { service } = extra;
-  // const { data } = await service.authService.login({ email, password });
-  // 임시로 fulfilled 상태로 만듬
-  const { data } = await Promise.resolve({
-    data: { userId: 234234, profile: { name: 'chanii' }, token: 'jsonWebToken' },
-  });
-  data && service.apis.setAccessToken(data.token); 
+  const { data } = await service.authService.login({ email, password });
+  const { auth } = data.result;
+  console.log(auth);
+  auth && service.apis.setAccessToken(auth?.token);
   console.log(service);
-  return data;
+  return auth;
 });
 
-export const logout = createAsyncThunk(LOGOUT, async (args, { extra }) => {
+
+// It is not Async Thunk but 
+export const logout = createAsyncThunk(LOGOUT, (args, { extra }) => {
   const { service } = extra;
-  service.apis.setAccessToken(null);
-  localStorage.removeItem('auth');
-  return true;
+  console.log('logout, result',);
+  const result = service.authService.logout();
+  return result;
 });
+
 
 const authSlice = createSlice({
   name: 'auth',
   initialState,
   extraReducers: (builder) => {
-    builder.addCase(fetchLogin.fulfilled, (state, action) => {
+    builder.addCase(login.fulfilled, (state, action) => {
       window.localStorage.setItem('auth', JSON.stringify(action.payload));
       state.isLoggedIn = true;
       state.userId = action.payload.userId;
       state.profile = action.payload.profile;
       state.token = action.payload.token;
-    });
+      return state;
+    })
     builder.addCase(logout.fulfilled, (state) => {
       state.isLoggedIn = false;
       state.userId = null;
       state.profile = {};
       state.token = null;
-    });
+      return state;
+    })
   },
+
 });
 
-const { actions, reducer } = authSlice;
+const { reducer } = authSlice;
+
 
 export default reducer;
