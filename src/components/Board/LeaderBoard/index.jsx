@@ -1,22 +1,20 @@
-import axios from 'axios';
 import React, { useEffect } from 'react';
-import LeaderBoardPresentation from './LeaderBoardPresetation';
+import { useDispatch, useSelector } from 'react-redux';
+import LeaderBoardPresenter from './LeaderBoardPresenter';
+import { getRanks } from '../../../redux/reducers/user.reducer';
 
 function LeaderBoard() {
-  const [rankList, setRankList] = React.useState([]);
+  const rankList = useSelector((state) => state.user.userRanks);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    (async () => {
-      const response = await axios(`${process.env.REACT_APP_API_DEFAULTS_URL}/user/rank`);
-      const { data } = response;
-      setRankList(data);
-    })();
+    dispatch(getRanks());
   }, []);
 
   if (!rankList?.length) {
     return <></>;
   }
-  return <LeaderBoardPresentation className="LeaderBoard" title="랭킹" data={rankList} />;
+  return <LeaderBoardPresenter className="LeaderBoard" title="랭킹" data={rankList} />;
 }
 
 export default LeaderBoard;

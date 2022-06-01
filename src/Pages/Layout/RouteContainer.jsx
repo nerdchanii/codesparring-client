@@ -10,14 +10,16 @@ import './RouteContainer.scss';
 import ProblemPage from '../ProblemPage/ProblemPage';
 import LeaderBoardPage from '../LeaderBoardPage/LeaderBoardPage';
 import NotFound from '../NotFound';
+import Login from '../../components/Login';
 
 function RouteContainer() {
   return (
     <div className="RouteContainer">
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/notice/*" element={<Notice />} />
-        <Route path="/leaderboard/*" element={<LeaderBoardPage />} />
+        <Route path="/leaderboard" element={<LeaderBoardPage />} />
         <Route path="/sparring/*" element={<SparringPage />} />
         <Route path="/practice/*" element={<PracticePage />} />
         <Route path="/mypage/*" element={<MyPage />} />

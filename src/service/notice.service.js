@@ -3,26 +3,26 @@ class NoticeService {
     this._apis = apis;
   }
 
-  getNotices() {
-    return this._axios.notice.getNotices();
+  getNotices = async () => {
+    return this._apis.notice.getNotices();
   }
 
-  addNotice(data) {
-    return this._axios.notice.addNotice(data);
+  addNotice = async (data) => {
+    return this._apis.notice.addNotice(data);
   }
 
-  getNotice(id) {
-    return this._axios.notice.getNotice(id);
+  getNotice = async (id) => {
+    return this._apis.notice.getNotice(id);
   }
 
-  deleteNotice(id) {
-    return this._axios.notice.deleteNotice(id);
+  deleteNotice = async (id) => {
+    return this._apis.notice.deleteNotice(id);
   }
 
-  updateNotice({id, data}) {
-    return this._axios.notice.updateNotice({id, data});
+  updateNotice = async ({ id, data }) => {
+    return this._apis.notice.updateNotice({ id, data });
   }
-  
+
 
 }
 

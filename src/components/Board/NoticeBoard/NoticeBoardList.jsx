@@ -5,7 +5,7 @@ import './Notice.scss';
 
 function NoticeBoardListItem(props) {
   const { item } = props;
-  const { id, label, title, body, writer } = item;
+  const { id, label, title, contents, writer } = item;
 
   return (
     <article className="NoticeBoardItem">
@@ -22,7 +22,7 @@ function NoticeBoardListItem(props) {
       </header>
       <details>
         <summary>자세히</summary>
-        <div className="item-body">{body}</div>
+        <div className="item-body">{contents}</div>
       </details>
       <footer className="item-footer">
         <div className="item-writer">{`wrtie by :${writer}`}</div>

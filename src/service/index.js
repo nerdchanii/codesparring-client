@@ -25,5 +25,21 @@ class Service {
   get authService() {
     return this._authService;
   }
+
+  get gameService() {
+    return this._gameService;
+  }
+
+  get problemService() {
+    return this._problemService;
+  }
+
+  get codeService() {
+    return this._codeService;
+  }
+
+  get noticeService() {
+    return this._noticeService;
+  }
 }
 export default Service;

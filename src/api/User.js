@@ -1,22 +1,32 @@
+
 class User {
   constructor({ axios }) {
+
     this._axios = axios;
   }
 
-  user(id){
-    return this._axios.user(id)
+  getUser = async ({ id }) => {
+    return this._axios.post(`/user/${id}`);
   }
 
-  register(data){
-    this._axios.register(data);
+  register = async ({ email, username, password }) => {
+    return this._axios.post('/users', { email, username, password });
   }
 
-  resign(data){
-    this._axios.resign(data);
+  remove = async ({ userId }) => {
+    return this._axios.delete('/users', { data: { userId } });
   }
 
-  ranks(data){
-    return this._axios.ranks(data);
+  ranks = async () => {
+    return this._axios.get('/users/ranks');
+  }
+
+  duplicateEmailCheck = async ({ email }) => {
+    return this._axios.get(`/users/isduplicate/email/${email}`)
+  }
+
+  duplicateUsernameCheck = async ({ username }) => {
+    return this._axios.get(`users/isduplicate/username/${username}`)
   }
 
 }

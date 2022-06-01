@@ -3,22 +3,22 @@ class GameService {
     this._apis = apis;
   }
 
-  joinRoom(roomId) {
-    return this._apis.game.joinRoom(roomId);
+  async joinRoom({ id, username }) {
+    return this._apis.game.joinRoom({ id, username });
   }
 
-  leaveRoom(roomId) {
-    return this._axios.game.leaveRoom(roomId);
-  }
-  
-  makeRoom(){
-    return this._axios.game.makeRoom();
+  async leaveRoom({ id, username }) {
+    return this._apis.game.leaveRoom({ id, username });
   }
 
-  getRooms(){
-    return this._axios.game.getRooms();
+  async createRoom({ title, username }) {
+    return this._apis.game.createRoom({ title, username });
   }
-  
+
+  async getRooms() {
+    return this._apis.game.getRooms();
+  }
+
 
 
 

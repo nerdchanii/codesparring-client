@@ -3,14 +3,14 @@ class CodeService {
     this._apis = apis;
   }
 
-  test(data) {
-    return this._apis.code.test(data);
+  test({ input, lang, code, output }) {
+    return this._apis.code.test({ input, lang, code, output });
   }
 
-  submit(data) {
-    return this._apis.code.submit(data);
+  submit({ problemId, lang, code }) {
+    return this._apis.code.submit({ problemId, lang, code });
   }
-  
+
 
 }
 

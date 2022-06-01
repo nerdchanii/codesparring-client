@@ -3,20 +3,32 @@ class UserService {
     this._apis = apis;
   }
 
-  user(id){
-    return this.apis.user.user(id)
+  get apis() {
+    return this._apis;
   }
 
-  register(data){
-    this.apis.user.register(data);
+  getUser = async ({ id }) => {
+    return this.apis.user.getUser({ id })
   }
 
-  resign(data){
-    this.apis.user.resign(data);
+  register = async ({ email, username, password }) => {
+    return this.apis.user.register({ email, username, password });
   }
 
-  ranks(data){
-    return this.apis.user.ranks(data);
+  remove = async ({ userId }) => {
+    return this.apis.user.remove({ userId });
+  }
+
+  ranks = async () => {
+    return this.apis.user.ranks();
+  }
+
+  duplicateEmailCheck = async ({ email }) => {
+    return this.apis.user.duplicateEmailCheck({ email });
+  }
+
+  duplicateUsernameCheck = async ({ username }) => {
+    return this.apis.user.duplicateUsernameCheck({ username });
   }
 
 }

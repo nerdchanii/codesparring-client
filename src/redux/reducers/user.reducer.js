@@ -1,58 +1,83 @@
-import { createAsyncThunk, createAction, createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 // ACTION TYPES
 // export const FETCH_LOGIN = 'auth/FETCH_LOGIN';
 // export const LOGOUT = 'auth/LOGOUT';
-const FETCH_SOME_DATA = 'user/FETCH_SOME_DATA';
-// Auth Store initial state
-const initialState = 
-   {
-      problem: {
-        id : 0,
-        title : '',
-        content : '',
-        input: '',
-        output: '',
-      }
-   };
+const ACTION = {
+  FETCH_SOME_DATA: 'users/FETCH_SOME_DATA',
+  REGISTER: 'users/REGISTER',
+  DUPLICATE_EMAIL_CHECK: 'users/DUPLICATE_EMAIL_CHECK',
+  DUPLICATE_USERNAME_CHECK: 'users/DUPLICATE_USERNAME_CHECK',
+  RANK: 'users/RANK',
+  REMOVE_USER: 'users/REMOVE_USER',
+  GET_USER: 'users/GET_USER',
+
+
+}
+// user store init state
+const initialState = {
+  userRanks: [],
+  user: {
+    username: '',
+    email: '',
+  }
+}
 
 // ACTION CREATORS for FETCH_LOGIN
 // thunk action creator will pass to createSlice's extraReducers
-export const fetchSomething = createAsyncThunk(FETCH_SOME_DATA, async (arg, { extra }) => {
+// export const fetchSomething = createAsyncThunk(ACTION.FETCH_SOME_DATA, async (arg, { extra }) => {
+//   const { service } = extra;
+//   console.log('fetchsomething', service);
+//   return data;
+// });
+
+export const getUser = createAsyncThunk(ACTION.FETCH_SOME_DATA, async ({ id }, { extra }) => {
   const { service } = extra;
-  console.log('fetchsomething', service);
-  // const { data } = await service.userService.fetch(arg);
-  // 임시로 fulfilled 상태로 만듬
-  // const { data } = await Promise.resolve({
-  //   data: { problem :{ id: 1, title: '제목', content: '내용', input: '', output: '' } },
-  // });
-  
-  return data;
+  console.log('getUser', service);
+  const { data } = await service.userService.getUser(id);
+  return data.result;
+});
+
+export const getRanks = createAsyncThunk(ACTION.RANK, async (args, { extra }) => {
+  console.log(args);
+  const { service } = extra;
+  console.log('getRanks', service);
+  const { data } = await service.userService.ranks();
+  return data.result;
+})
+
+export const removeUser = createAsyncThunk(ACTION.REMOVE_USER, async ({ userId }, { extra }) => {
+  const { service } = extra;
+  console.log('removeUser', service);
+  const { data } = await service.userService.removeUser({ userId });
+  return data.result;
+});
+
+export const register = createAsyncThunk(ACTION.REGISTER, async ({ username, email, password }, { extra }) => {
+  const { service } = extra;
+  console.log('register', service);
+  const { data } = await service.userService.register({ username, email, password });
+  return data.result;
 });
 
 const userSlice = createSlice({
   name: 'user',
   initialState,
-  reducers: {
-    init(state) {
-      state.problem = {
-        id: null,
-        title: '',
-        content: '',
-        input: '',
-        output: '',
-      }      
-    },
-  },
   extraReducers: (builder) => {
-    builder.addCase(fetchSomething.fulfilled, (state, action) => {
-      console.log('fetched data', action.payload);
-      console.log('action.payload', action.payload);
-      state.problem = action.payload.problem;
-    });
-  },
+    // builder.addcase regisger, getRanks, getUser
+    builder.addCase(getUser.fulfilled, (state, action) => {
+      state.user = action.payload;
+    }),
+      builder.addCase(getRanks.fulfilled, (state, action) => {
+        console.log(action.payload);
+        state.userRanks = action.payload.users;
+      }),
+      builder.addCase(register.fulfilled, (state, action) => {
+        alert('회원가입이 성공했습니다.');
+
+      })
+  }
 });
 
 const { actions, reducer } = userSlice;
-export const { init } = actions;
 export default reducer;

@@ -7,8 +7,8 @@ class ProblemService {
     return this._apis.problem.getProblems();
   }
 
-  getProblem(id) {
-    return this._apis.problem.getProblem(id);
+  getProblem({ id }) {
+    return this._apis.problem.getProblem({ id });
   }
 
   addProblem(data) {

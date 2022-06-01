@@ -4,22 +4,22 @@ import { Link } from 'react-router-dom';
 
 function RoomListItem(props) {
   const { roomInfo } = props;
-  const { roomId, title, inRoom } = roomInfo;
+  const { id, title, users, roomNumber } = roomInfo;
 
   return (
     <li style={{ cursor: 'pointer' }} className="RoomListItem">
-      <Link to={`/sparring/${roomId}`} className="ItemLinkWrapper">
-        <div className="RoomNumber">{roomId}</div>
+      <Link to={`/sparring/${id}`} className="ItemLinkWrapper">
+        <div className="RoomNumber">{roomNumber}</div>
         <div className="RoomTitle">{title}</div>
-        <div className="inRoom">{inRoom}</div>
+        <div className="inRoom">{users.length}</div>
       </Link>
     </li>
   );
 }
 
-function RoomList({ gameRooms }) {
-  console.log(gameRooms);
-  if (gameRooms) {
+function RoomList({ rooms }) {
+  console.log(rooms);
+  if (rooms) {
     return (
       <div className="RoomList">
         <div className="ListHeader">
@@ -28,7 +28,7 @@ function RoomList({ gameRooms }) {
           <div>inRoom</div>
         </div>
         <ul className="RoomListItemContainer">
-          {gameRooms.map((room) => (
+          {rooms.map((room) => (
             <RoomListItem key={room.id} roomInfo={room} />
           ))}
         </ul>

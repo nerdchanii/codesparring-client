@@ -3,22 +3,22 @@ class Game {
     this._axios = axios;
   }
 
-  joinRoom(roomId) {
-    return this._axios.post(`/game/rooms/${roomId}`);
-  }
-  
-  leaveRoom(roomId) {
-    return this._axios.delete(`/game/rooms/${roomId}`);
-  }
-  
-  makeRoom(){
-    return this._axios.post('/game/rooms');
+  async joinRoom({ id, username }) {
+    return this._axios.post(`/game/rooms/${id}`, { username });
   }
 
-  getRooms(){
+  async leaveRoom({ id, username }) {
+    return this._axios.delete(`/game/rooms/${id}`, { data: { username } });
+  }
+
+  async createRoom({ title, username }) {
+    return this._axios.post('/game/rooms', { title, username });
+  }
+
+  async getRooms() {
     return this._axios.get('/game/rooms');
   }
-  
-  
+
+
 }
 export default Game;

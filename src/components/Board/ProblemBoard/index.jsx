@@ -7,7 +7,7 @@ import Column from '../Column';
 import '../Board.scss';
 import LinkedListItem from '../List/LinkedItem/LinkedListItem';
 
-function Board(props) {
+function ProblemBoard(props) {
   const { className, title, data } = props;
   console.log(props);
 
@@ -35,16 +35,16 @@ function Board(props) {
   );
 }
 
-Board.propsTypes = {
+ProblemBoard.propsTypes = {
   className: PropsTypes.string,
   title: PropsTypes.string,
   data: PropsTypes.arrayOf(PropsTypes.object),
 };
 
-Board.deafultProps = {
+ProblemBoard.deafultProps = {
   className: '',
   title: '보드',
   data: [],
 };
 
-export default Board;
+export default ProblemBoard;

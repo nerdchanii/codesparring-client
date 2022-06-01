@@ -3,19 +3,19 @@ class Problem {
     this._axios = axios;
   }
 
-  getProblems(){
+  getProblems() {
     return this._axios.get('problems');
   }
 
-  addProblem(data){
+  addProblem(data) {
     return this._axios.post('problems', data);
   }
-  
-  getProblem(id) {
+
+  getProblem({ id }) {
     return this._axios.get(`problems/${id}`);
-  }  
-  
-  updateProblem({id, data}) {
+  }
+
+  updateProblem({ id, data }) {
     return this._axios.put(`problems/${id}`, data);
   }
 

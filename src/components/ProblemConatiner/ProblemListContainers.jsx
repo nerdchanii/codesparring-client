@@ -1,34 +1,26 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { memo, useCallback, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getProblems } from '../../redux/reducers/problems.reducer';
 import ProblemBoard from '../board/ProblemBoard';
 import './Problem.scss';
 
 function ProblemListCotainers() {
-  const [problemItems, setProblemItems] = useState(null);
-  const [loadding, setLoadding] = useState(false);
+  const problemItems = useSelector((state) => state.problems.problems);
+  const dispatch = useDispatch();
 
-  const fetchData = useCallback(async () => {
-    setLoadding(true);
-    try {
-      const response = await axios.get(`${process.env.REACT_APP_API_DEFAULTS_URL}/problem`);
-      const { data } = response;
-      setProblemItems(data);
-    } catch (e) {
-      console.log(e);
-    } finally {
-      setLoadding(false);
-    }
+  const fetchData = useCallback(() => {
+    dispatch(getProblems());
   }, []);
 
   useEffect(() => {
     fetchData();
   }, []);
 
-  if (loadding || !problemItems) {
+  if (!problemItems?.length) {
     return <></>;
   }
 
   return <ProblemBoard className="ProblemList" title="문제목록" data={problemItems} />;
 }
 
-export default ProblemListCotainers;
+export default memo(ProblemListCotainers);

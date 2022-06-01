@@ -1,25 +1,25 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useCallback, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { CircularProgress } from '@mui/material';
+import { getRooms } from '../../../redux/reducers/game.reducer';
 import WaitingRoomHeader from './WaitingRoomHeader';
+// import Board from '../../board';
 import './WaitingRoom.scss';
-import Board from '../../board';
+import RoomList from './RoomList';
 
 function WaitingRoom() {
-  const [gameRooms, setgameRoom] = useState(null);
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    // fetchRoomList();
-    setLoading(true);
-    axios
-      .get(`${process.env.REACT_APP_API_DEFAULTS_URL}/game/list`)
-      .then((response) => setgameRoom(response.data))
-      .catch(() => console.log('error'))
-      .then(() => setLoading(false));
+  const rooms = useSelector((state) => state.game.rooms);
+  const dispatch = useDispatch();
+  const fetchRoomList = useCallback(() => {
+    // TODO: 게임룸 api 연결하기
+    dispatch(getRooms());
   }, []);
 
-  if (loading) {
+  useEffect(() => {
+    fetchRoomList();
+  }, []);
+
+  if (!rooms) {
     return (
       <div
         style={{
@@ -37,8 +37,8 @@ function WaitingRoom() {
   return (
     <>
       <WaitingRoomHeader />
-      {gameRooms ? (
-        <Board className="RoomList" data={gameRooms} />
+      {rooms ? (
+        <RoomList className="RoomList" rooms={rooms} />
       ) : (
         <div>게임 룸을 불러오지 못했습니다.새로침해주세요!</div>
       )}

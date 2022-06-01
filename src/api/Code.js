@@ -3,14 +3,14 @@ class Code {
     this._axios = axios;
   }
 
-  test(data) {
-    return this._axios.post(`/codes/test`, data);
+  test({ input, lang, code, output }) {
+    return this._axios.post(`/codes/test`, { input, lang, code, output });
   }
-  
-  submit(data) {
-    return this._axios.post('/codes/submit', data);
+
+  submit({ problemId, lang, code }) {
+    return this._axios.post('/codes/submit', { problemId, lang, code });
   }
-  
-  
+
+
 }
 export default Code;

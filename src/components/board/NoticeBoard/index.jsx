@@ -1,17 +1,16 @@
-import axios from 'axios';
 import React, { useCallback, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getNotices } from '../../../redux/reducers/notice.reducer';
 import NoticeBoardHeader from './NoticeBoardHeader';
 import NoticeBoardList from './NoticeBoardList';
 
 function Notice() {
   const [loading, setLoading] = useState(false);
-  const [notices, setNotices] = useState(null);
-  const fetchData = useCallback(async () => {
-    const response = await axios.get(`${process.env.REACT_APP_API_DEFAULTS_URL}/notice`);
-    const { data } = response;
-    setNotices(data);
+  const dispatch = useDispatch();
+  const notices = useSelector((state) => state.notice.notices);
+  const fetchData = useCallback(() => {
+    dispatch(getNotices());
   }, []);
-
   useEffect(() => {
     setLoading(true);
     try {

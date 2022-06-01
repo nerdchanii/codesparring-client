@@ -1,44 +1,32 @@
-import React, { useCallback, useEffect, useState } from 'react';
-
-import { useSetRecoilState } from 'recoil';
+import React, { useCallback, useEffect } from 'react';
 import './Problem.scss';
-import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { CircularProgress } from '@mui/material';
-import problemNumberState from '../../state/problem/problemNumberState';
+import { useDispatch, useSelector } from 'react-redux';
 import ProblemHeader from './ProblemHeader';
 import ProblemBody from './ProblemBody';
+import { getProblem } from '../../redux/reducers/problem.reducer';
 
 function ProblemContainer() {
-  const [loading, setLoading] = useState(false);
-  const [data, setData] = useState(null);
-  const setProblemNumberState = useSetRecoilState(problemNumberState);
   const { id } = useParams();
-
-  const fetchData = useCallback(async () => {
-    setLoading(true);
-    try {
-      const response = await axios.get(`${process.env.REACT_APP_API_DEFAULTS_URL}/problem/${id}`);
-      setData(response.data);
-      setProblemNumberState(response.data.id);
-    } catch (e) {
-      console.log(e);
-    } finally {
-      setLoading(false);
-    }
-  }, []);
+  const dispatch = useDispatch();
+  const problem = useSelector((state) => state.problem);
+  const fetchData = useCallback(() => {
+    dispatch(getProblem({ id }));
+  }, [id]);
 
   useEffect(() => {
     fetchData();
   }, []);
 
-  if (loading) {
+  if (problem.id === null) {
     return (
       <div>
         <div
           style={{
             display: 'block',
             height: '100%',
+            width: '100%',
             justifyContent: 'center',
             alignItem: 'center',
           }}
@@ -48,14 +36,10 @@ function ProblemContainer() {
       </div>
     );
   }
-  if (!data) {
-    return <div>..Error..! please reload</div>;
-  }
-
   return (
     <div className="ProblemContainer">
-      <ProblemHeader data={data} />
-      <ProblemBody data={data.data} />
+      <ProblemHeader data={problem} />
+      <ProblemBody data={problem} />
     </div>
   );
 }

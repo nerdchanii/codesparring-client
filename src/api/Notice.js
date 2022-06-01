@@ -4,27 +4,28 @@ class Notice {
   }
 
   // get notices list without params
-  getNotices() {
+  getNotices = async () => {
+
     return this._axios.get('/notices');
   }
 
-  addNotice(data) {
+  addNotice = async (data) => {
     return this._axios.post('/notices', data);
   }
 
-  getNotice(id) {
+  getNotice = async (id) => {
     return this._axios.get(`/notices/${id}`);
   }
 
-  deleteNotice(id) {
+  deleteNotice = async (id) => {
     return this._axios.delete(`/notices/${id}`);
   }
 
-  updateNotice({id, data}) {
+  updateNotice = async ({ id, data }) => {
     return this._axios.put(`/notices/${id}`, data);
   }
-  
 
-  
+
+
 }
 export default Notice;
