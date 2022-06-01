@@ -1,39 +1,11 @@
 import React, { useEffect } from 'react';
-import { useSetRecoilState } from 'recoil';
-import testCaseState from '../../state/problem/testCaseState';
 import './Problem.scss';
-
-function TestCase(props) {
-  const { input, output } = props;
-
-  return (
-    <tr>
-      <td>
-        {input.split('\n').map((line, idx) => (
-          <p key={idx}>{line}</p>
-        ))}
-      </td>
-      <td>
-        {output.split('\n').map((line, idx) => (
-          <p key={idx}>{line}</p>
-        ))}
-      </td>
-    </tr>
-  );
-}
 
 function ProblemBody(props) {
   const { data } = props;
-  const { problemDescription, requirement, testcase } = data;
-  const setTestCaseState = useSetRecoilState(testCaseState);
+  const { testOutput, testInput, description, requirement } = data;
 
-  useEffect(() => {
-    setTestCaseState(testcase);
-    console.log(testcase);
-    return () => {
-      setTestCaseState(null);
-    };
-  }, []);
+  useEffect(() => {}, []);
 
   if (!data) {
     return <div>Error!</div>;
@@ -42,38 +14,49 @@ function ProblemBody(props) {
     <div className="ProblemBody">
       <div className="Problem-section">
         <p className="Problem-section-title">문제설명</p>
-        <p className="Problem-section-body">{problemDescription}</p>
+        <p className="Problem-section-body">{description}</p>
       </div>
       <div className="Problem-section">
         <p className="Problem-section-title">제안사항</p>
-        <p className="Problem-section-body">{requirement}</p>
+        <p className="Problem-section-body">
+          {requirement.map((text) => (
+            <>
+              <span>{text}</span>
+              <br />
+            </>
+          ))}
+        </p>
       </div>
       <div className="Problem-section">
         <div className="Problem-section">
           <p className="Problem-section-title">테스트 케이스</p>
-          <table className="Problem-section-table">
-            <thead className="Problem-section-table-head">
-              <tr>
-                <th>인풋</th>
-                <th>아웃풋</th>
-              </tr>
-            </thead>
-            <tbody className="Problem-section-table-body">
-              {testcase.map((eachCase, idx) => (
-                <TestCase key={idx} input={eachCase.input} output={eachCase.output} />
-              ))}
-            </tbody>
-          </table>
         </div>
-        {testcase.map((eachCase, idx) => (
-          <div key={idx}>
-            <div className="Problem-section-title">
-              # 입출력예시
-              {idx + 1}
-            </div>
-            <div className="Problem-section-body">{eachCase.description}</div>
+        <div style={{ display: 'flex', flex: 1, columnGap: '20px', textAlign: 'center' }}>
+          <div className="Problem-section-body">
+            <p>인풋</p>
+            <hr style={{ margin: '20px 0' }} />
+            {testInput.map((item) => {
+              return (
+                <>
+                  <span>{item}</span>
+                  <hr style={{ margin: '20px 0' }} />
+                </>
+              );
+            })}
           </div>
-        ))}
+          <div className="Problem-section-body">
+            <p>아웃풋</p>
+            <hr style={{ margin: '20px 0' }} />
+            {testOutput.map((item) => {
+              return (
+                <>
+                  <span>{item}</span>
+                  <hr style={{ margin: '20px 0' }} />
+                </>
+              );
+            })}
+          </div>
+        </div>
       </div>
     </div>
   );

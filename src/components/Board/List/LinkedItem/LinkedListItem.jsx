@@ -4,7 +4,6 @@ import PropsTypes from 'prop-types';
 
 function LinkedListItem(props) {
   const { link, children } = props;
-  console.log(link, children);
   return (
     <li className="item">
       <Link to={`${link}`} style={{ flex: 1, justifyContent: 'space-between', display: 'flex' }}>

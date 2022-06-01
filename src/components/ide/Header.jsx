@@ -1,18 +1,15 @@
 import React from 'react';
-import { useRecoilValue } from 'recoil';
-import { langExt } from '../../state/ide';
+import { LANGUAGE_EXTENSION } from '../../config/ide.config';
 import './Ide.scss';
 
-function Header() {
-  const ext = useRecoilValue(langExt);
-  // console.log(ext);
-
+function Header({ language }) {
+  const extension = LANGUAGE_EXTENSION[language];
   return (
     <div className="Header">
       <div className="FileName">
         <div>
           solution.
-          <span>{ext}</span>
+          <span>{extension}</span>
         </div>
       </div>
       {/* <div className="Timer">

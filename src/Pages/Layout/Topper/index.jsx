@@ -1,32 +1,20 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useRecoilState } from 'recoil';
-import LOGIN_STATE from '../../../state/login';
+import { useDispatch, useSelector } from 'react-redux';
 import './Topper.scss';
-import LoginBoxContainer from './LoginBoxContainer';
 import SettingContainer from '../../../components/ide/SettingsContainer';
+import { logout } from '../../../redux/reducers/auth.reducer';
 
 function Topper() {
-  const [loginState, setLoginState] = useRecoilState(LOGIN_STATE);
-  const [showLoginModal, setShowLoginModal] = useState(false);
+  const isLogin = useSelector((state) => state.auth.isLoggedIn);
+  const profile = useSelector((state) => state.auth.profile);
+  const dispatch = useDispatch();
   const [openSetting, setOpenSetting] = useState(false);
 
   const onLogout = () => {
-    localStorage.removeItem('LOGIN_TOKEN');
-    setLoginState(false);
-  };
-  const onClickLogin = () => {
-    if (!loginState) {
-      setShowLoginModal(true);
-    } else {
-      console.log('err');
-      throw Error;
-    }
+    dispatch(logout());
   };
 
-  const toggleShowLoginModal = () => {
-    setShowLoginModal(!showLoginModal);
-  };
   return (
     <header className="Topper">
       <h1>
@@ -40,7 +28,7 @@ function Topper() {
         <Link to="/sparring">Sparring</Link>
         <Link to="/practice">Practice</Link>
         <Link to="/problem">Problem</Link>
-        {loginState ? <Link to="/mypage">My Account</Link> : <></>}
+        {isLogin ? <Link to="/mypage">My Account</Link> : <></>}
       </nav>
       <div className="ButtonContainer">
         <button
@@ -52,13 +40,18 @@ function Topper() {
         </button>
         {openSetting ? <SettingContainer setshowing={setOpenSetting} /> : <></>}
 
-        {loginState ? (
-          <button onClick={onLogout}>log out</button>
+        {isLogin ? (
+          <>
+            <span>{profile.username}</span>
+            <button onClick={onLogout}>log out</button>
+          </>
         ) : (
-          <button onClick={onClickLogin}>Log in</button>
+          <>
+            <Link to="/login">
+              <button>Log in</button>
+            </Link>
+          </>
         )}
-
-        {showLoginModal ? <LoginBoxContainer click={toggleShowLoginModal} /> : <></>}
       </div>
     </header>
   );

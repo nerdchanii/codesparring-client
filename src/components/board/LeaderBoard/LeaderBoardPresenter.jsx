@@ -7,7 +7,7 @@ import Column from '../Column';
 import '../Board.scss';
 import ListItem from '../List/ListItem/ListItem';
 
-function LeaderBoardPresentation(props) {
+function LeaderBoardPresenter(props) {
   const { className, title, data } = props;
 
   if (!data?.length) {
@@ -34,16 +34,16 @@ function LeaderBoardPresentation(props) {
   );
 }
 
-LeaderBoardPresentation.propsTypes = {
+LeaderBoardPresenter.propsTypes = {
   className: PropsTypes.string,
   title: PropsTypes.string,
   data: PropsTypes.arrayOf(PropsTypes.object),
 };
 
-LeaderBoardPresentation.deafultProps = {
+LeaderBoardPresenter.deafultProps = {
   className: '',
-  title: '보드',
+  title: '',
   data: [],
 };
 
-export default LeaderBoardPresentation;
+export default LeaderBoardPresenter;

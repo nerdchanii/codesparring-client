@@ -3,15 +3,12 @@ import './Ide.scss';
 import Result from './Result';
 
 function Output(props) {
-  const { onSubmit, result, runTest } = props;
-  if (!result) {
-    return null;
-  }
+  const { onSubmit, runTest } = props;
   return (
     <div className="Output">
       <div className="body">
         <div className="title">실행결과</div>
-        <Result result={result} />
+        <Result />
       </div>
       <div className="run">
         <button className="button" formMethod="POST" type="button" onClick={runTest}>

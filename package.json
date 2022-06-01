@@ -29,6 +29,7 @@
     "recoil": "^0.5.2",
     "redux": "^4.2.0",
     "redux-devtools-extension": "^2.13.9",
+    "redux-logger": "^3.0.6",
     "redux-thunk": "^2.4.1",
     "sass": "^1.48.0",
     "socket.io-client": "^4.4.1",
@@ -71,5 +72,6 @@
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
     "prettier": "2.5.1"
-  }
+  },
+  "proxy": "http://localhost:4000"
 }

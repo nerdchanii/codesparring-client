@@ -25,7 +25,7 @@ function InGameRoom(props) {
   return (
     <div className="InGameRoom">
       <div className="InGameQuest">
-        <InGameHeader title={roomInfo.roomTitle} />
+        <InGameHeader title={roomInfo.title} />
         <InGameUserListContainer users={roomUserList} />
         {!problem && <button onClick={onClickStart}>게임시작하기</button>}
         {problem && <InGameProblemContianer data={problem} />}

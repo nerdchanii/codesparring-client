@@ -1,4 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
+import logger from 'redux-logger'
 import reducer from './reducers';
 import Apis from '../api/apis';
 import Service from '../service';
@@ -11,6 +12,6 @@ export default configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       thunk: { extraArgument: { service } },
-    }),
+    }).concat(logger),
   devTools: true,
 });

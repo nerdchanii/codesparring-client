@@ -1,40 +1,27 @@
-import React from 'react';
-import axios from 'axios';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { createRoom } from '../../../redux/reducers/game.reducer';
 
 function MakeRoom() {
+  const dispatch = useDispatch();
+  const roomId = useSelector((state) => state.game?.room?.id);
   const navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (e.target.roomName.value === '') {
       alert('방 이름을 입력해주세요');
       return;
     }
-    try {
-      const response = await axios(`${process.env.REACT_APP_API_DEFAULTS_URL}/game/make`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        data: JSON.stringify({
-          roomTitle: e.target.roomName.value,
-        }),
-      });
-      navigate(`/sparring/${response.data.id}`);
-    } catch (Error) {
-      switch (Error.response.status) {
-        case 400:
-          alert('방 이름이 중복되었습니다.');
-          break;
-        case 500:
-        case 404:
-        default:
-          alert('서버 오류');
-          break;
-      }
-    }
-    // post to server make game room and redirect to game room page
+    dispatch(createRoom({ title: e.target.roomName.value }));
   };
+
+  useEffect(() => {
+    if (roomId) {
+      navigate(`/sparring/${roomId}`);
+    }
+  }, [roomId]);
 
   return (
     <div className="MakeRoom">
