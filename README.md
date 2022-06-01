@@ -1,15 +1,14 @@
-# Code Sparring 
-> ## Wellcome! Code Sparring🥊🥊
+# Code Sparring 🥊
 
-[kor_Readme](/kor_README.md)
----------
- **It's my First Toy Project**
+[한국어 README](/README.ko.md)</br>
 
-It is a project created with the hope that **development will be fun**. 
+## **It's my First Toy Project**
+----
 
-Here, **users can solve coding tests** with other people in **real time**. 
+It is a project created with the hope that development will be fun. </br>
+Here, users can solve coding tests with other people in real time.</br>
 
+You're not preparing for the coding test alone. Don't be bored anymore. </br>
+Code sparring is with you. It will be fun!</br>
 
-You're not preparing for the coding test alone. Don't be bored anymore. 
-
-**Code sparring is with you.**
+Let's go try : [codesparring.com](codesparring.com)
