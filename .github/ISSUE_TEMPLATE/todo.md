@@ -1,17 +1,15 @@
 ---
-name: TODO
-about: Describe this issue template's purpose here.
-title: "[TODO]"
-labels: TODO
+name: Feature
+about: It is template for next feature.
+title: "Feature: "
+labels: enhancement
 assignees: nerdchanii
-
 ---
+<!--Thanks you, for your contribution :)-->
 
-# title:
+### Feature
+<!-- Write here feature description-->
 
-> ## requirements
+#### Requirements
+<!-- Write here Requirements -->
 
-> ##  work list
-- [ ]
-- [ ]
-- [ ]
