@@ -6,7 +6,6 @@ import User from './User';
 import Problem from './Problem';
 import Notice from './Notice';
 import Code from './Code';
-import Game from './Game';
 
 
 
@@ -40,7 +39,6 @@ class Apis {
     this._auth = new Auth({ axios: this._axios });
     this._user = new User({ axios: this._axios });
     this._problem = new Problem({ axios: this._axios });
-    this._game = new Game({ axios: this._axios });
     this._code = new Code({ axios: this._axios });
     this._notice = new Notice({ axios: this._axios });
   }
@@ -66,9 +64,9 @@ class Apis {
     return this._problem;
   }
 
-  get game() {
-    return this._game;
-  }
+  // get game() {
+  //   return this._game;
+  // }
 
   get code() {
     return this._code;

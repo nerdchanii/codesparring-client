@@ -4,7 +4,7 @@ import GameService from './game.service';
 import NoticeService from './notice.service';
 import CodeService from './code.service';
 import ProblemService from './problem.service';
-
+import SocketService from './socket.service';
 
 class Service {
   constructor({ apis }) {
@@ -15,7 +15,7 @@ class Service {
     this._problemService = new ProblemService({ apis });
     this._codeService = new CodeService({ apis });
     this._noticeService = new NoticeService({ apis });
-    
+    this._socketService = new SocketService();
   }
 
   get userService() {
@@ -41,5 +41,11 @@ class Service {
   get noticeService() {
     return this._noticeService;
   }
+
+  get socketService() {
+    return this._socketService;
+  }
+
+
 }
 export default Service;
