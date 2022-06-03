@@ -3,27 +3,30 @@ import { CircularProgress } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import ChatContainer from '../../Chat/ChatContainer';
-import { joinRoom, leaveRoom } from '../../../redux/reducers/game.reducer';
+import { emitGameStart, emitJoin, emitLeave } from '../../../redux/reducers/room.reducer';
 import InGameRoom from './InGameRoom';
 
 function InGameRoomContainer() {
   const dispatch = useDispatch();
-  const roomInfo = useSelector((state) => state.game.room);
+  const roomInfo = useSelector((state) => state.room);
   const { username } = useSelector((state) => state.auth.profile);
+  const { problem } = useSelector((state) => state);
+
   const { id } = useParams();
   const navigate = useNavigate();
-
   // 컨트롤러
   const onClickStart = useCallback(() => {
-    console.log('start');
+    dispatch(emitGameStart());
   }, []);
 
   const join = useCallback(() => {
-    dispatch(joinRoom({ id, username }));
-  }, [id, username]);
+    if (roomInfo !== id) {
+      dispatch(emitJoin({ id }));
+    }
+  }, [id]);
 
   const leave = useCallback(() => {
-    dispatch(leaveRoom({ id, username }));
+    dispatch(emitLeave({ id, username }));
   }, [id, username]);
 
   useEffect(() => {
@@ -44,7 +47,12 @@ function InGameRoomContainer() {
     );
   }
   return (
-    <InGameRoom roomInfo={roomInfo} onClickStart={onClickStart} ChatComponet={<ChatContainer />} />
+    <InGameRoom
+      roomInfo={roomInfo}
+      problem={problem}
+      onClickStart={onClickStart}
+      ChatComponet={<ChatContainer />}
+    />
   );
 }
 

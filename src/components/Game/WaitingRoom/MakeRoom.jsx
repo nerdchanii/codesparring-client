@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { createRoom } from '../../../redux/reducers/game.reducer';
+import { emitCreateRoom } from '../../../redux/reducers/room.reducer';
 
 function MakeRoom() {
   const dispatch = useDispatch();
-  const roomId = useSelector((state) => state.game?.room?.id);
+  const roomId = useSelector((state) => state.room?.id);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -14,7 +14,7 @@ function MakeRoom() {
       alert('방 이름을 입력해주세요');
       return;
     }
-    dispatch(createRoom({ title: e.target.roomName.value }));
+    dispatch(emitCreateRoom({ name: e.target.roomName.value }));
   };
 
   useEffect(() => {

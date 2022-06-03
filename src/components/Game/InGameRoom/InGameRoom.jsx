@@ -1,34 +1,23 @@
 import React from 'react';
-import { useRecoilValue } from 'recoil';
-import { CircularProgress } from '@mui/material';
 import InGameHeader from './InGameHeader';
 import InGameUserListContainer from './InGameUserListContainer';
 import InGameProblemContianer from './InGameProblemContianer';
-import problemAtom from '../../../state/problem/ProblemAtom';
 import './InGame.scss';
-import userList from '../../../state/room/userList';
 
 function InGameRoom(props) {
-  const { roomInfo, onClickStart, ChatComponet } = props;
-  const problem = useRecoilValue(problemAtom);
-  const roomUserList = useRecoilValue(userList);
-  if (!roomInfo) {
-    return (
-      <div className="InGameRoom">
-        <div className="loading">
-          <CircularProgress />
-        </div>
-      </div>
-    );
-  }
+  const { roomInfo, onClickStart, ChatComponet, problem } = props;
+  const { users } = roomInfo;
 
   return (
     <div className="InGameRoom">
       <div className="InGameQuest">
-        <InGameHeader title={roomInfo.title} />
-        <InGameUserListContainer users={roomUserList} />
-        {!problem && <button onClick={onClickStart}>게임시작하기</button>}
-        {problem && <InGameProblemContianer data={problem} />}
+        <InGameHeader title={roomInfo.name} />
+        <InGameUserListContainer users={users} />
+        {problem.id ? (
+          <InGameProblemContianer data={problem} />
+        ) : (
+          <button onClick={onClickStart}>게임시작하기</button>
+        )}
       </div>
       <div className="InGameChat">{ChatComponet}</div>
     </div>

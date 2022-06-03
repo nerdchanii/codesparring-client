@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { memo, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { emitJoin, emitLeave, DEFAULT_ROOM_ID } from '../../redux/reducers/room.reducer';
 import IdeContainer from '../../components/ide/IdeContainer';
 import ProblemContainer from '../../components/ProblemConatiner';
 import ProblemListContainers from '../../components/ProblemConatiner/ProblemListContainers';
@@ -8,6 +10,13 @@ import ChatContainer from '../../components/Chat/ChatContainer';
 import Layout from '../Layout';
 
 function ProblemRouter() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(emitJoin({ id: DEFAULT_ROOM_ID }));
+    return () => {
+      dispatch(emitLeave({ id: DEFAULT_ROOM_ID }));
+    };
+  }, []);
   return (
     <Routes>
       <Route path="" element={<ProblemListContainers />} />
@@ -22,21 +31,10 @@ function Practice() {
       <Layout
         TopLeft={<ProblemRouter />}
         BottomLeft={<ChatContainer />}
-        BottomRight={<IdeContainer />}
+        TopRight={<IdeContainer />}
       />
-      {/* <div className="left-side">
-        <div className="section">
-          <
-        </div>
-        <div className="section">
-          <ChatContainer />
-        </div>
-      </div>
-      <div className="right-side">
-        <IdeContainer />
-      </div> */}
     </div>
   );
 }
 
-export default Practice;
+export default memo(Practice);
