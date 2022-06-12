@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import MESSAGE from '../../config/message';
 
 // ACTION TYPES
 // export const FETCH_LOGIN = 'auth/FETCH_LOGIN';
@@ -73,7 +74,7 @@ const userSlice = createSlice({
         state.userRanks = action.payload.users;
       }),
       builder.addCase(register.fulfilled, (state, action) => {
-        alert('회원가입이 성공했습니다.');
+        alert(MESSAGE.SIGN_UP_SUCCESS);
 
       })
   }

@@ -1,4 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import MESSAGE from '../../config/message';
+
 
 const ACTION = {
   TEST: 'code/TEST',
@@ -28,7 +30,7 @@ const initialState = {
 
 export const test = createAsyncThunk(ACTION.TEST, async ({ code }, { getState, extra }) => {
   if (code.trim() === '') {
-    alert('코드를 입력해주세요.');
+    alert(MESSAGE.PROBLEM.WRITE_CODE);
     return Promise.reject();
   }
   const { service } = extra;
@@ -49,7 +51,7 @@ export const test = createAsyncThunk(ACTION.TEST, async ({ code }, { getState, e
 
 export const submit = createAsyncThunk(ACTION.SUBMIT, async ({ code }, { getState, extra }) => {
   if (code.trim() === '') {
-    alert('코드를 입력해주세요.');
+    alert(MESSAGE.PROBLEM.WRITE_CODE);
     return Promise.reject();
   }
   const { service } = extra;
@@ -67,7 +69,7 @@ const codeSlice = createSlice({
     builder.addCase(test.fulfilled, (state, action) => {
       const result = action.payload;
       const isFail = result.some((eachResult) => !eachResult.correct);
-      isFail ? alert('틀렸습니다') : alert('정답입니다');
+      isFail ? alert(MESSAGE.PROBLEM.FAIL) : alert(MESSAGE.PROBLEM.SUCCESS);
       return {
         ...state,
         result
@@ -76,7 +78,7 @@ const codeSlice = createSlice({
       builder.addCase(submit.fulfilled, (state, action) => {
         const result = action.payload;
         const isFail = result.some((eachResult) => !eachResult.correct);
-        isFail ? alert('틀렸습니다') : alert('정답입니다');
+        isFail ? alert(MESSAGE.PROBLEM.FAIL) : alert(MESSAGE.PROBLEM.SUCCESS);
         return {
           ...state,
           result: action.payload
