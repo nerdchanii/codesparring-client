@@ -1,16 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import MyAccount from '../../components/MyAccount/MyAccount';
+import MESSAGE from '../../config/message';
 import LeaveAccount from './LeaveAccount';
 import './MyPage.scss';
 
 function MyPage() {
   const login = useSelector((state) => state.auth.isLoggedIn);
+  const navigate = useNavigate();
+  const { LOGIN_NEEDED } = MESSAGE;
+  useEffect(() => {
+    if (!login) {
+      alert(LOGIN_NEEDED);
+      navigate('/login');
+    }
+  }, [login, navigate]);
 
-  if (!login) {
-    return <Navigate to="/" />;
-  }
   return (
     <div className="MyPage">
       <MyAccount />
