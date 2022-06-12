@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect } from 'react';
 import { CircularProgress } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import ChatContainer from '../../Chat/ChatContainer';
 import { emitGameStart, emitJoin, emitLeave } from '../../../redux/reducers/room.reducer';
 import InGameRoom from './InGameRoom';
@@ -13,7 +13,7 @@ function InGameRoomContainer() {
   const { problem } = useSelector((state) => state);
 
   const { id } = useParams();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   // 컨트롤러
   const onClickStart = useCallback(() => {
     dispatch(emitGameStart());
@@ -33,7 +33,6 @@ function InGameRoomContainer() {
     join();
     return () => {
       leave();
-      navigate('/sparring');
     };
   }, []);
 
