@@ -1,15 +1,15 @@
 import React from 'react';
 
-function ChatLogItem(props) {
+const ChatLogItem = React.memo((props) => {
   const { item } = props;
-  const { user, message } = item;
+  const { username, message } = item;
   return (
     <div className="ChatLogItem">
-      <div className="Username">{user}</div>
+      <div className="Username">{username}</div>
       <div className="UserMessage">{message}</div>
     </div>
   );
-}
+});
 
 function ChatLog(props) {
   const { messages } = props;
@@ -20,4 +20,4 @@ function ChatLog(props) {
   );
 }
 
-export default ChatLog;
+export default React.memo(ChatLog);

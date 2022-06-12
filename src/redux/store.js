@@ -7,11 +7,17 @@ import Service from '../service';
 const apis = new Apis();
 const service = new Service({ apis });
 
-export default configureStore({
+
+const store = configureStore({
   reducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       thunk: { extraArgument: { service } },
-    }).concat(logger),
+    })
+      .concat(logger),
   devTools: true,
 });
+
+service._socketService.setStore({ store });
+service._socketService.on();
+export default store;

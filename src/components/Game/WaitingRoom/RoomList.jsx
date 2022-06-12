@@ -4,13 +4,13 @@ import { Link } from 'react-router-dom';
 
 function RoomListItem(props) {
   const { roomInfo } = props;
-  const { id, title, users, roomNumber } = roomInfo;
+  const { id, name, users, roomNumber } = roomInfo;
 
   return (
     <li style={{ cursor: 'pointer' }} className="RoomListItem">
       <Link to={`/sparring/${id}`} className="ItemLinkWrapper">
         <div className="RoomNumber">{roomNumber}</div>
-        <div className="RoomTitle">{title}</div>
+        <div className="Roomname">{name}</div>
         <div className="inRoom">{users.length}</div>
       </Link>
     </li>
@@ -24,7 +24,7 @@ function RoomList({ rooms }) {
       <div className="RoomList">
         <div className="ListHeader">
           <div>RoomNumber</div>
-          <div>title</div>
+          <div>name</div>
           <div>inRoom</div>
         </div>
         <ul className="RoomListItemContainer">

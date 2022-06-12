@@ -21,9 +21,11 @@ const initialState = defaultAuth
 export const login = createAsyncThunk(FETCH_LOGIN, async ({ email, password }, { extra }) => {
   const { service } = extra;
   const { data } = await service.authService.login({ email, password });
+
   const { auth } = data.result;
   console.log(auth);
   auth && service.apis.setAccessToken(auth?.token);
+  auth && service.socketService.setAuth({ auth });
   console.log(service);
   return auth;
 });

@@ -1,17 +1,17 @@
 import React, { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { CircularProgress } from '@mui/material';
-import { getRooms } from '../../../redux/reducers/game.reducer';
+import { getRooms } from '../../../redux/reducers/rooms.reducer';
+
 import WaitingRoomHeader from './WaitingRoomHeader';
 // import Board from '../../board';
 import './WaitingRoom.scss';
 import RoomList from './RoomList';
 
 function WaitingRoom() {
-  const rooms = useSelector((state) => state.game.rooms);
+  const { rooms } = useSelector((state) => state);
   const dispatch = useDispatch();
   const fetchRoomList = useCallback(() => {
-    // TODO: 게임룸 api 연결하기
     dispatch(getRooms());
   }, []);
 
