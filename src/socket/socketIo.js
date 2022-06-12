@@ -28,7 +28,7 @@ class SocketIo {
      * @type {SOCKET_EVENT} event;
      */
     this.event = SOCKET_EVENT;
-    this._socket = io();
+    this._socket = io(['websocket', 'polling']);
   }
 
   on = () => {
