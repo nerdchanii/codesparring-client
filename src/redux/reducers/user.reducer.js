@@ -17,6 +17,7 @@ const ACTION = {
 }
 // user store init state
 const initialState = {
+  isduplicateEmail: null,
   userRanks: [],
   user: {
     username: '',
@@ -61,11 +62,18 @@ export const register = createAsyncThunk(ACTION.REGISTER, async ({ username, ema
   return data.result;
 });
 
+export const duplicateEmailCheck = createAsyncThunk(ACTION.DUPLICATE_EMAIL_CHECK, async ({ email }, { extra }) => {
+  const { service } = extra;
+  console.log('duplicateEmailCheck', service);
+  const { data } = await service.userService.duplicateEmailCheck({ email });
+  return data.result;
+});
+
+
 const userSlice = createSlice({
   name: 'user',
   initialState,
   extraReducers: (builder) => {
-    // builder.addcase regisger, getRanks, getUser
     builder.addCase(getUser.fulfilled, (state, action) => {
       state.user = action.payload;
     }),
@@ -75,8 +83,11 @@ const userSlice = createSlice({
       }),
       builder.addCase(register.fulfilled, (state, action) => {
         alert(MESSAGE.SIGN_UP_SUCCESS);
-
       })
+    builder.addCase(duplicateEmailCheck.fulfilled, (state, action) => {
+      state.isduplicateEmail = action.payload;
+
+    })
   }
 });
 
