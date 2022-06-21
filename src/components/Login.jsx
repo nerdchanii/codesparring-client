@@ -38,6 +38,13 @@ function Login() {
         <input name="password" type="password" onInput={onInput} placeholder="Password" />
         <button type="submit">Login</button>
       </form>
+      <button
+        onClick={() => {
+          navigate('/signup');
+        }}
+      >
+        signUp
+      </button>
     </div>
   );
 }
