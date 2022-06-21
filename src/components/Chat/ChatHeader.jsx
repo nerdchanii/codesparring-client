@@ -6,8 +6,8 @@ function ChatHeader(props) {
   if (!roomName) return <></>;
   return (
     <div className="ChatHeader">
-      <span>{roomName}</span>
-      <span>{!!users ? users : ''}</span>
+      <span>Room:{roomName}</span>
+      <div>{!!users ? users.map((user) => <span>{user}</span>) : ''}</div>
     </div>
   );
 }
