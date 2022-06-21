@@ -63,6 +63,8 @@ class SocketIo {
     this.store.dispatch(actions[ACTION.ON.JOIN]({ room }));
     if (room.status !== 'playing') {
       this.store.dispatch(problemActions[PROBLEM_ACTION.INIT_PROBLEM]());
+    } else {
+      this.store.dispatch(problemActions[PROBLEM_ACTION.SET_PROBLEM]({ problem: room.problem }));
     }
   }
 
