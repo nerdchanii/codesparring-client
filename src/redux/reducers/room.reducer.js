@@ -13,6 +13,9 @@ export const ACTION = {
     CONNECT: 'room/ON/CONNECT', // return null
     CREATE_ROOM: 'room/ON/CREATE_ROOM',
     ON: 'room/ON', // return null
+    CODE_TEST: 'room/ON/CODE_TEST',
+    CODE_SUBMIT: 'room/ON/CODE_SUBMIT',
+    GAME_END: 'room/ON/GAME_END',
   },
   EMIT: {
     MESSAGE: 'room/EMIT/MESSAGE',
@@ -20,6 +23,8 @@ export const ACTION = {
     LEAVE: 'room/EMIT/LEAVE',
     GAME_START: 'room/EMIT/GAME_START',
     CREATE_ROOM: 'room/EMIT/CREATE_ROOM',
+    CODE_SUBMIT: 'room/EMIT/CODE_SUBMIT',
+    CODE_TEST: 'room/EMIT/CODE_TEST',
   },
   JOIN: 'room/JOIN',
   LEAVE: 'room/LEAVE',
@@ -96,6 +101,21 @@ export const emitGameStart = createAsyncThunk(ACTION.EMIT.GAME_START, (arg, { ex
 
 });
 
+export const emitCodeTest = createAsyncThunk(ACTION.EMIT.CODE_TEST, ({ lang, code }, { extra, getState }) => {
+  const { service } = extra;
+  const { id } = getState().room;
+  return service.socketService.emitCodeTest({ roomId: id, lang, code });
+});
+
+export const emitCodeSubmit = createAsyncThunk(ACTION.EMIT.CODE_SUBMIT, ({ lang, code }, { extra, getState }) => {
+  const { service } = extra;
+  const { id } = getState().room;
+  const { username } = getState().auth?.profile;
+  return service.socketService.emitCodeSubmit({ roomId: id, username, lang, code });
+});
+
+
+
 
 
 
@@ -138,7 +158,13 @@ const roomSlice = createSlice({
     [ACTION.ON.GAME_START]: (state, action) => {
       return {
         ...state,
-        status: 'started', // true => 게임 시작 됨 , false = 기다리는 중 
+        status: 'playing',
+      }
+    },
+    [ACTION.ON.GAME_END]: (state, action) => {
+      return {
+        ...state,
+        status: 'waiting',
       }
     }
   },

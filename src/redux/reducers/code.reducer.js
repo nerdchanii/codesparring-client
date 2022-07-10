@@ -2,9 +2,13 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import MESSAGE from '../../config/message';
 
 
-const ACTION = {
+export const ACTION = {
   TEST: 'code/TEST',
   SUBMIT: 'code/SUBMIT',
+  ON: {
+    TEST: 'code/ON/TEST',
+    SUBMIT: 'code/ON/SUBMIT',
+  }
 }
 
 const serverError = [{
@@ -65,6 +69,19 @@ export const submit = createAsyncThunk(ACTION.SUBMIT, async ({ code }, { getStat
 const codeSlice = createSlice({
   name: 'code',
   initialState,
+  reducers: {
+    [ACTION.ON.TEST]: (state, action) => {
+      console.log(state, action)
+      return { result: action.payload.results }
+
+    },
+    [ACTION.ON.SUBMIT]: (state, action) => {
+      return {
+        // ...state,
+        result: action.payload.results,
+      }
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(test.fulfilled, (state, action) => {
       const result = action.payload;
@@ -89,5 +106,5 @@ const codeSlice = createSlice({
 });
 
 const { reducer } = codeSlice;
-
+export const { actions } = codeSlice;
 export default reducer;

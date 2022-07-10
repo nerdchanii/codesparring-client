@@ -9,11 +9,21 @@ function ResultMessage(props) {
   return (
     <div className="ResultMessage">
       <div className={`result-message-${idx}`}>
-        <div className="result-message-title">
-          {`case ${idx + 1}:`}
-          <span className={`correct ${correct}`}>{`${correct}`}</span>
+        <div className="result-message-title" style={{ fontSize: '1.5rem' }}>
+          {`case ${idx + 1} `}
+          <span
+            className={`correct ${correct}`}
+            style={
+              correct
+                ? { color: 'blue', fontWeight: 'bolder' }
+                : { color: 'red', fontWeight: 'bolder' }
+            }
+          >
+            {`${correct}`}
+          </span>
+          <span>{'  '}</span>
+          <span className="result-message-text">{correct ? stdout : stderr || error}</span>
         </div>
-        <div className="result-message-text">{correct ? stdout : stderr || error}</div>
       </div>
     </div>
   );
