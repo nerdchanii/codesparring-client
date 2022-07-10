@@ -42,6 +42,13 @@ export default class SocketService {
     this.socketIo.emitGameStart({ username, roomId });
   }
 
+  emitCodeTest({ roomId, lang, code }) {
+    this.socketIo.emitCodeTest({ roomId, lang, code });
+  }
+
+  emitCodeSubmit({ roomId, username, lang, code }) {
+    this.socketIo.emitCodeSubmit({ roomId, username, lang, code });
+  }
 
   setAuth({ auth }) {
     this.socketIo.setAuth({ auth });
@@ -55,4 +62,6 @@ export default class SocketService {
   setStore({ store }) {
     this.socketIo.setStore({ store });
   }
+
+
 }
