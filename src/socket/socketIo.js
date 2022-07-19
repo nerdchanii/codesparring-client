@@ -40,6 +40,10 @@ class SocketIo {
      */
     this.event = SOCKET_EVENT;
     this._socket = io(['websocket', 'polling']);
+    const auth = localStorage.getItem('auth');
+    if (!!auth) {
+      this.setAuth({ auth: JSON.parse(auth) });
+    }
   }
 
   on = () => {
@@ -145,15 +149,6 @@ class SocketIo {
 
   onCodeSubmit = ({ username, correct }) => {
     console.log('Event on:', this.event.CODE_SUBMIT);
-
-    // username 이 없으면 내 결과 
-    // username 이 있으면 다른사람 결과 
-    // username 이 있고, correct이 true면 다른 사람이 맞춘것 
-    // username이 있을떈, correct이 항상 있고, 
-
-    // 1. username, results, correct -> correct always true
-    // 2. results, correct-> correct true or false
-    // case 1 
     console.log('username', username);
     console.log('correct', correct);
     if (username && correct) {
@@ -172,6 +167,7 @@ class SocketIo {
 
   emitCodeTest = ({ roomId, lang, code }) => {
     console.log('Event emit:', this.event.CODE_TEST);
+    console.log(this.socket);
     this._socket.emit(SOCKET_EVENT.CODE_TEST, { roomId, lang, code });
     this.store.dispatch(codeActions[CODE_ACTION.LOADDING]({ loading: true }));
 
@@ -196,13 +192,14 @@ class SocketIo {
   setAuth = ({ auth }) => {
     console.log(auth);
     console.log('auth setting!')
-    console.log({ auth })
+
     this._socket = io({
       auth: {
-        username: auth.username,
+        username: auth.profile.username,
         token: `Bearer ${auth.token}`
       }
     })
+
   }
 
   unsetAuth = () => {
