@@ -76,9 +76,14 @@ class SocketIo {
     this._socket.emit(this.event.MESSAGE, { username, roomId, message });
   }
 
-  onJoin = ({ room }) => {
+  onJoin = ({ room, error }) => {
     console.log('Event on:', this.event.JOIN, room);
     this.store.dispatch(actions[ACTION.ON.JOIN]({ room }));
+    if (!!error) {
+      alert('방이 존재하지 않거나 입장할 수 없습니다');
+      return this.store.dispatch(actions[ACTION.ON.JOIN_ERROR]({ error }));
+    }
+    if (room.id === 'Hello World') { return; }
     if (room.status !== 'playing') {
       this.store.dispatch(problemActions[PROBLEM_ACTION.INIT_PROBLEM]());
     } else {
@@ -148,6 +153,7 @@ class SocketIo {
     console.log('correct', correct);
     if (username && correct) {
       if (username === this.socket.auth.username) {
+        this.store.dispatch(codeActions[CODE_ACTION.LOADDING]({ loading: false }));
         return alert('맞았습니다! + 15점');
       }
       return alert(`${username} 님이 맞추었습니다!`);
@@ -155,6 +161,7 @@ class SocketIo {
     // case 2
     if (correct) { alert('맞추었습니다!'); }
     else { alert('틀렸습니다.'); }
+    this.store.dispatch(codeActions[CODE_ACTION.LOADDING]({ loading: false }));
 
   }
 
@@ -162,6 +169,7 @@ class SocketIo {
     console.log('Event emit:', this.event.CODE_TEST);
     console.log(this.socket);
     this._socket.emit(SOCKET_EVENT.CODE_TEST, { roomId, lang, code });
+    this.store.dispatch(codeActions[CODE_ACTION.LOADDING]({ loading: true }));
 
   }
 
@@ -171,11 +179,13 @@ class SocketIo {
       return alert('게임이 시작되지 않았습니다.');
     }
     this._socket.emit(SOCKET_EVENT.CODE_SUBMIT, { roomId, username, lang, code });
+    this.store.dispatch(codeActions[CODE_ACTION.LOADDING]({ loading: true }));
   }
 
   onGameEnd = () => {
     console.log('Event on:', this.event.GAME_END);
     this.store.dispatch(actions[ACTION.ON.GAME_END]());
+    this.store.dispatch(problemActions[PROBLEM_ACTION.INIT_PROBLEM]());
   }
 
   // set Auth Token

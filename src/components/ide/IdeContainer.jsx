@@ -1,5 +1,7 @@
 import React, { useCallback, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { CircularProgress } from '@mui/material';
 import { submit, test } from '../../redux/reducers/code.reducer';
 import { emitCodeTest, emitCodeSubmit } from '../../redux/reducers/room.reducer';
 import Editor from './Editor';
@@ -8,8 +10,13 @@ import Output from './Output';
 import './Ide.scss';
 
 function IdeContainer() {
+  // if location is /problem, /practice
+  const location = useLocation();
+
+  const outputshow = !(location.pathname === '/practice' || location.pathname === '/sparring');
   const { keybind, fontSize, theme, language } = useSelector((state) => state.ideOption);
   const { status } = useSelector((state) => state.room);
+  const { loading } = useSelector((state) => state.code);
 
   const [value, setValue] = useState('');
   const dispatch = useDispatch();
@@ -29,6 +36,13 @@ function IdeContainer() {
 
   return (
     <div className="IdeContainer">
+      {loading && (
+        <div className="loading">
+          채점중입니다...
+          <br />
+          <CircularProgress color="primary" />
+        </div>
+      )}
       <Header language={language} />
       <Editor
         value={value}
@@ -38,7 +52,7 @@ function IdeContainer() {
         theme={theme}
         lang={language}
       />
-      <Output runTest={runTest} onSubmit={onSubmit} />
+      {outputshow && <Output runTest={runTest} onSubmit={onSubmit} />}
     </div>
   );
 }

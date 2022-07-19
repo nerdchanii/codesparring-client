@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import MESSAGE from '../../config/message';
 
 
@@ -8,7 +8,8 @@ export const ACTION = {
   ON: {
     TEST: 'code/ON/TEST',
     SUBMIT: 'code/ON/SUBMIT',
-  }
+  },
+  LOADDING: 'code/LOADING',
 }
 
 const serverError = [{
@@ -27,20 +28,20 @@ const defaultoutput = [{
 
 
 const initialState = {
-  result: []
+  result: [],
+  loading: false,
 };
 
 
-
-export const test = createAsyncThunk(ACTION.TEST, async ({ code }, { getState, extra }) => {
+export const test = createAsyncThunk(ACTION.TEST, async ({ code }, { getState, extra, dispatch }) => {
   if (code.trim() === '') {
     alert(MESSAGE.PROBLEM.WRITE_CODE);
     return Promise.reject();
   }
+  // dispatch code/LOADING true
   const { service } = extra;
   const { language: lang } = getState().ideOption;
   const { testInput: inputs, testOutput: outputs } = getState().problem;
-  // const response = await service.test({ code, lang, inputs, outputs });
   const response = await Promise.allSettled(inputs.map((input, idx) => service.codeService.test({ lang, input, code, output: outputs[idx] })));
   const result =
     response.map(({ status, value }) => {
@@ -53,7 +54,7 @@ export const test = createAsyncThunk(ACTION.TEST, async ({ code }, { getState, e
   return result;
 });
 
-export const submit = createAsyncThunk(ACTION.SUBMIT, async ({ code }, { getState, extra }) => {
+export const submit = createAsyncThunk(ACTION.SUBMIT, async ({ code }, { getState, extra, dispatch }) => {
   if (code.trim() === '') {
     alert(MESSAGE.PROBLEM.WRITE_CODE);
     return Promise.reject();
@@ -70,15 +71,25 @@ const codeSlice = createSlice({
   name: 'code',
   initialState,
   reducers: {
+    // loading state
+    [ACTION.LOADDING]: (state, action) => {
+      console.log('action', action);
+      console.log('payload', action.payload);
+      return {
+        ...state,
+        loading: action.payload.loading,
+      }
+    },
     [ACTION.ON.TEST]: (state, action) => {
       console.log(state, action)
-      return { result: action.payload.results }
+      return { result: action.payload.results, loading: false }
 
     },
     [ACTION.ON.SUBMIT]: (state, action) => {
       return {
         // ...state,
         result: action.payload.results,
+        loading: false
       }
     },
   },
@@ -89,7 +100,8 @@ const codeSlice = createSlice({
       isFail ? alert(MESSAGE.PROBLEM.FAIL) : alert(MESSAGE.PROBLEM.SUCCESS);
       return {
         ...state,
-        result
+        result,
+        loading: false
       };
     }),
       builder.addCase(submit.fulfilled, (state, action) => {
@@ -98,11 +110,23 @@ const codeSlice = createSlice({
         isFail ? alert(MESSAGE.PROBLEM.FAIL) : alert(MESSAGE.PROBLEM.SUCCESS);
         return {
           ...state,
-          result: action.payload
+          result: action.payload,
+          loading: false
+        }
+      }),
+      builder.addCase(test.pending, (state, action) => {
+        return {
+          ...state,
+          loading: true
+        }
+      }),
+      builder.addCase(submit.pending, (state, action) => {
+        return {
+          ...state,
+          loading: true
         }
       });
-
-  },
+  }
 });
 
 const { reducer } = codeSlice;

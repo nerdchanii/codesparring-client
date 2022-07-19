@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { memo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import './Topper.scss';
@@ -7,7 +7,6 @@ import { logout } from '../../../redux/reducers/auth.reducer';
 
 function Topper() {
   const isLogin = useSelector((state) => state.auth.isLoggedIn);
-  const profile = useSelector((state) => state.auth.profile);
   const dispatch = useDispatch();
   const [openSetting, setOpenSetting] = useState(false);
 
@@ -42,7 +41,6 @@ function Topper() {
 
         {isLogin ? (
           <>
-            <span>{profile.username}</span>
             <button onClick={onLogout}>log out</button>
           </>
         ) : (
@@ -57,4 +55,4 @@ function Topper() {
   );
 }
 
-export default Topper;
+export default memo(Topper);
