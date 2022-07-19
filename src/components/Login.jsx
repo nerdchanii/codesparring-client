@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { login } from '../redux/reducers/auth.reducer';
+import './Login.scss';
 
 function Login() {
   const navigate = useNavigate();
@@ -31,22 +32,38 @@ function Login() {
     }
   }, [isLogin]);
   return (
-    <div>
+    <div className="Login--container">
       <h1>Login</h1>
-      <form onSubmit={onSubmit}>
-        <input name="email" type="email" onInput={onInput} placeholder="Email" />
-        <input name="password" type="password" onInput={onInput} placeholder="Password" />
+      <form onSubmit={onSubmit} className="Login--form">
+        <div className="Login--form--input--Area">
+          <input
+            id="login-email"
+            name="email"
+            type="email"
+            onInput={onInput}
+            placeholder="Email"
+            className="Login--form--input"
+          />
+          <input
+            name="password"
+            type="password"
+            onInput={onInput}
+            placeholder="Password"
+            className="Login--form--input"
+          />
+        </div>
         <button type="submit">Login</button>
       </form>
-      <button
-        onClick={() => {
-          navigate('/signup');
-        }}
-      >
-        signUp
-      </button>
+      <div className="Login--form--register">
+        <p>
+          아직 회원이 아니신가요?
+          <span className="Login--register--span">
+            <Link to="/signup">회원가입</Link>
+          </span>
+        </p>
+      </div>
     </div>
   );
 }
 
-export default Login;
+export default memo(Login);

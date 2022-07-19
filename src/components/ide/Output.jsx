@@ -6,8 +6,8 @@ function Output(props) {
   const { onSubmit, runTest } = props;
   return (
     <div className="Output">
+      <div className="title">실행결과</div>
       <div className="body">
-        <div className="title">실행결과</div>
         <Result />
       </div>
       <div className="run">

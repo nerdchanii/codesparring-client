@@ -16,6 +16,7 @@ export const ACTION = {
     CODE_TEST: 'room/ON/CODE_TEST',
     CODE_SUBMIT: 'room/ON/CODE_SUBMIT',
     GAME_END: 'room/ON/GAME_END',
+    JOIN_ERROR: 'room/ON/JOIN_ERROR',
   },
   EMIT: {
     MESSAGE: 'room/EMIT/MESSAGE',
@@ -141,6 +142,9 @@ const roomSlice = createSlice({
         ...state,
         ...room
       }
+    },
+    [ACTION.ON.JOIN_ERROR]: (state, action) => {
+      return state;
     },
     [ACTION.ON.LEAVE]: (state, action) => {
       return {
