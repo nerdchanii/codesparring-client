@@ -14,7 +14,7 @@ import { API_BASE_URL, API_DEFAULT_TIMEOUT } from './constants';
 
 
 
-const AUTH_REQUIRED_LIST = ['/uesrs/*', '/problems/*', '/games/*', '/codes/*'];
+const AUTH_REQUIRED_LIST = [/users/, /problems/, /games/, /codes/];
 
 class Apis {
   constructor() {
@@ -22,7 +22,7 @@ class Apis {
       baseURL: API_BASE_URL,
       timeout: API_DEFAULT_TIMEOUT,
     });
-
+    this.setAccessToken(JSON.parse(localStorage.getItem('auth'))?.token || null);
     this._axios.interceptors.request.use((config) => {
       const required = AUTH_REQUIRED_LIST.some((pattern) => config.url.match(pattern));
       if (required) {
@@ -64,9 +64,6 @@ class Apis {
     return this._problem;
   }
 
-  // get game() {
-  //   return this._game;
-  // }
 
   get code() {
     return this._code;
