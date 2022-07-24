@@ -1,0 +1,47 @@
+.LoginNeeded--wrapper {
+  display: flex;
+  padding-bottom: 2rem;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  flex-direction: column;
+  .title{
+    margin: 2rem 0;
+  }
+  .title::before,
+  .title::after{
+    content: "⚠️";
+    font-size: 2rem;
+    padding: 0 1rem;
+  }
+  div {
+    box-sizing: border-box;
+    padding: 1rem;
+    margin-top: 1rem;
+    width: 100%;
+    gap:2rem;
+    display: flex;
+    justify-content: space-between;
+    
+    p {
+      font-size: 1.5rem;
+      display: inline-block;
+      align-self: center;
+    }
+
+    button {
+      display: inline-block;
+      padding: 0.3rem;
+      border: 0;
+      border-radius: 5px;
+      background-color: #fff;
+      font-size: 1.2rem;
+      font-weight: bold;
+      cursor: pointer;
+      color: #2f9272;
+      a {
+        color: inherit;
+      }
+    }
+  }
+}

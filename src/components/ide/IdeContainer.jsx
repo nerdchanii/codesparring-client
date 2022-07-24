@@ -13,10 +13,14 @@ function IdeContainer() {
   // if location is /problem, /practice
   const location = useLocation();
 
-  const outputshow = !(location.pathname === '/practice' || location.pathname === '/sparring');
   const { keybind, fontSize, theme, language } = useSelector((state) => state.ideOption);
   const { status } = useSelector((state) => state.room);
   const { loading } = useSelector((state) => state.code);
+  const outputshow = !(
+    location.pathname === '/practice' ||
+    location.pathname === '/sparring' ||
+    status === 'waiting'
+  );
 
   const [value, setValue] = useState('');
   const dispatch = useDispatch();

@@ -45,9 +45,12 @@ function Topper() {
           </>
         ) : (
           <>
-            <Link to="/login">
-              <button>Log in</button>
-            </Link>
+            <button>
+              <Link to="/login">Log in</Link>
+            </button>
+            <button>
+              <Link to="/signup">sign up</Link>
+            </button>
           </>
         )}
       </div>

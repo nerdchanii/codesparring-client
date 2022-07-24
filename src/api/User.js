@@ -5,8 +5,8 @@ class User {
     this._axios = axios;
   }
 
-  getUser = async ({ id }) => {
-    return this._axios.post(`/user/${id}`);
+  getUser = async ({ username }) => {
+    return this._axios.post(`/user/${username}`);
   }
 
   register = async ({ email, username, password }) => {

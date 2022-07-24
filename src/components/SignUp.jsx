@@ -2,10 +2,17 @@
 import React, { memo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
-import { duplicateEmailCheck, register } from '../redux/reducers/user.reducer';
+import {
+  duplicateEmailCheck,
+  register,
+  duplicateUsernameCheck,
+} from '../redux/reducers/user.reducer';
 import './signup.scss';
 
-function Message({ correct, emailDuplicateState }) {
+function EmailMessage({ correct, emailDuplicateState }) {
+  if (emailDuplicateState === null && correct === null) {
+    return null;
+  }
   if (!correct) {
     return <p className="message warn">올바른 이메일 형식이 아닙니다.</p>;
   }
@@ -15,10 +22,30 @@ function Message({ correct, emailDuplicateState }) {
   return <p className="message false">이미 사용중인 이메일입니다.</p>;
 }
 
+function UsernameMessage({ correct, usernameDuplicateState }) {
+  if (usernameDuplicateState === null && correct === null) {
+    return null;
+  }
+  if (!correct) {
+    return <p className="message warn">너무 짧은 유저네임입니다.</p>;
+  }
+  if (!usernameDuplicateState) {
+    return <p className="message true">사용 가능한 유저네임입니다.</p>;
+  }
+  return <p className="message false">이미 사용중인 유저네임입니다.</p>;
+}
+
 function SignUp() {
-  const emailDuplicateState = useSelector((state) => state.user.isduplicateEmail);
+  const {
+    isduplicateEmail: emailDuplicateState,
+    isduplicateUsername: usernameDuplicateState,
+    success,
+  } = useSelector((state) => state.user);
   const isLogin = useSelector((state) => state.auth.isLoggedIn);
-  const [correct, setCorrect] = useState(null);
+  const [correct, setCorrect] = useState({
+    email: null,
+    username: null,
+  });
 
   const [form, setForm] = useState({
     username: '',
@@ -27,25 +54,39 @@ function SignUp() {
     passwordConfirm: '',
   });
   const dispatch = useDispatch();
-  const validation = (e) => {
+  const emailValidation = (e) => {
     e.preventDefault();
-    const test = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(form.email);
-    if (test) {
-      setCorrect(true);
+
+    const emailTest = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(form.email);
+    if (emailTest) {
+      setCorrect({ ...correct, email: true });
       dispatch(duplicateEmailCheck({ email: form.email }));
     } else {
-      setCorrect(false);
+      setCorrect({ ...correct, email: false });
     }
   };
 
-  const onSubmit = (event) => {
+  const usernameValidation = (e) => {
+    e.preventDefault();
+    if (form.username.length > 4) {
+      setCorrect({ ...correct, username: true });
+      dispatch(duplicateUsernameCheck({ username: form.username }));
+    } else {
+      setCorrect({ ...correct, username: false });
+    }
+  };
+
+  const onSubmit = async (event) => {
     event.preventDefault();
-    console.log('form', form);
+    if (form.password !== form.passwordConfirm) {
+      return alert('비밀번호를 확인해주세요');
+    }
     const { username, email, password } = form;
     dispatch(register({ username, email, password }));
   };
 
   if (isLogin) return <Navigate to="/" />;
+  if (success) return <Navigate to="/login" />;
   return (
     <div className="wrapper">
       <div className="Signup--box">
@@ -57,30 +98,33 @@ function SignUp() {
               placeholder="email"
               type="email"
               name="email"
-              onBlur={validation}
+              onBlur={emailValidation}
               value={form.email}
               onInput={(e) => {
                 setForm({ ...form, email: e.target.value });
               }}
               required
             />
-            {!correct ? (
-              <Message correct={correct} emailDuplicateState={emailDuplicateState} />
-            ) : (
-              <p className="message" />
-            )}
+            <EmailMessage correct={correct.email} emailDuplicateState={emailDuplicateState} />
           </div>
-          <input
-            id="signup-username"
-            type="text"
-            placeholder="username"
-            name="username"
-            value={form.username}
-            onInput={(e) => {
-              setForm({ ...form, username: e.target.value });
-            }}
-            required
-          />
+          <div className="container">
+            <input
+              id="signup-username"
+              type="text"
+              placeholder="username"
+              name="username"
+              value={form.username}
+              onBlur={usernameValidation}
+              onInput={(e) => {
+                setForm({ ...form, username: e.target.value });
+              }}
+              required
+            />
+            <UsernameMessage
+              correct={correct.username}
+              usernameDuplicateState={usernameDuplicateState}
+            />
+          </div>
           <div className="container">
             <input
               id="signup-password"

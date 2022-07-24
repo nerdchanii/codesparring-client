@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import MESSAGE from '../../config/message';
+import { actions as authActions } from './auth.reducer';
 
 // ACTION TYPES
 // export const FETCH_LOGIN = 'auth/FETCH_LOGIN';
@@ -18,20 +19,14 @@ const ACTION = {
 // user store init state
 const initialState = {
   isduplicateEmail: null,
+  isduplicateUsername: null,
+  success: false,
   userRanks: [],
   user: {
     username: '',
     email: '',
   }
 }
-
-// ACTION CREATORS for FETCH_LOGIN
-// thunk action creator will pass to createSlice's extraReducers
-// export const fetchSomething = createAsyncThunk(ACTION.FETCH_SOME_DATA, async (arg, { extra }) => {
-//   const { service } = extra;
-//   console.log('fetchsomething', service);
-//   return data;
-// });
 
 export const getUser = createAsyncThunk(ACTION.FETCH_SOME_DATA, async ({ id }, { extra }) => {
   const { service } = extra;
@@ -48,10 +43,14 @@ export const getRanks = createAsyncThunk(ACTION.RANK, async (args, { extra }) =>
   return data.result;
 })
 
-export const removeUser = createAsyncThunk(ACTION.REMOVE_USER, async ({ userId }, { extra }) => {
+export const removeUser = createAsyncThunk(ACTION.REMOVE_USER, async ({ userId }, { extra, dispatch }) => {
   const { service } = extra;
-  console.log('removeUser', service);
-  const { data } = await service.userService.removeUser({ userId });
+  const { data } = await service.userService.remove({ userId });
+  if (data.result) {
+    alert(MESSAGE.REMOVE_USER_SUCCESS);
+    dispatch(authActions.initAuth());
+  }
+
   return data.result;
 });
 
@@ -69,6 +68,13 @@ export const duplicateEmailCheck = createAsyncThunk(ACTION.DUPLICATE_EMAIL_CHECK
   return data.result;
 });
 
+export const duplicateUsernameCheck = createAsyncThunk(ACTION.DUPLICATE_USERNAME_CHECK, async ({ username }, { extra }) => {
+  const { service } = extra;
+  const { data } = await service.userService.duplicateUsernameCheck({ username });
+  return data.result;
+});
+
+
 
 const userSlice = createSlice({
   name: 'user',
@@ -83,10 +89,13 @@ const userSlice = createSlice({
       }),
       builder.addCase(register.fulfilled, (state, action) => {
         alert(MESSAGE.SIGN_UP_SUCCESS);
+        state.success = true;
+      }),
+      builder.addCase(duplicateEmailCheck.fulfilled, (state, action) => {
+        state.isduplicateEmail = action.payload;
       })
-    builder.addCase(duplicateEmailCheck.fulfilled, (state, action) => {
-      state.isduplicateEmail = action.payload;
-
+    builder.addCase(duplicateUsernameCheck.fulfilled, (state, action) => {
+      state.isduplicateUsername = action.payload;
     })
   }
 });

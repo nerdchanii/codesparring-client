@@ -7,8 +7,8 @@ class UserService {
     return this._apis;
   }
 
-  getUser = async ({ id }) => {
-    return this.apis.user.getUser({ id })
+  getUser = async ({ username }) => {
+    return this.apis.user.getUser({ username })
   }
 
   register = async ({ email, username, password }) => {
