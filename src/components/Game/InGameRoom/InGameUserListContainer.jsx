@@ -12,6 +12,7 @@ function InGameUserListContainer({ users }) {
   }
   return (
     <div className="InGameUserListContainer">
+      <span>참가자</span>
       <ul className="InGameUserList">
         {users.map((item) => (
           <UserListItem key={item} name={item} />

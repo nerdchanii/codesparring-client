@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700');
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  min-height: 100vh;
+  width: 100%;
+  font-size: 16px;
+}
+
+body {
+  max-height: inherit;
+  min-height: inherit;
+  font-family: 'roboto', sans-serif;
+}
+#root {
+  max-height: inherit;
+  min-height: inherit;
+}
+
+// github, monokai, xcode, dracula
+.App{
+  // prime, secondary, tertiary colors
+  --color-primary: #2f2972;
+  --color-secondary: #A6E22E; 
+  --color-tertiary: #CC2B1E;
+  // background
+  --color-background-main: #282a36;
+  --color-background-sub: #ededed;
+  --color-background-hover: #ededed50;
+  // text
+  --color-text-default: #000;
+  --color-text-emphasis: var(--color-secondary);
+  --color-text-highlight: var(--color-tertiary);
+  --color-border:var(--color-background-sub);
+  // result
+  --color-success: #50fa7b;
+  --color-warning: #ffb86c;
+  --color-error: #ff5555;
+}
+
+.App[data-theme="github"] {
+  // prime, secondary, tertiary colors
+  --color-primary: #0086B3;
+  --color-secondary: #DD1144; 
+  --color-tertiary: #0086B3;
+  // background
+  --color-background-main: #f5f5f5;
+  --color-background-sub: #FFFFCC;
+  --color-background-hover: #FFFFCC50;
+  // text
+  --color-text-default: #000;
+  --color-text-emphasis: var(--color-secondary);
+  --color-text-highlight: var(--color-tertiary);
+  --color-border:var(--color-background-sub);
+  // result
+  --color-success: #50fa7b;
+  --color-warning: #ffb86c;
+  --color-error: #ff5555;
+}
+
+.App[data-theme="monokai"] {
+  // prime, secondary, tertiary colors
+  --color-primary: #F92672;
+  --color-secondary: #A6E22E; 
+  --color-tertiary: #66D9EF;
+  // background
+  --color-background-main: #272822;
+  --color-background-sub: #202020;
+  --color-background-hoveri: #20202050;
+  // text
+  --color-text-default: #F8F8F2;
+  --color-text-emphasis: var(--color-secondary);
+  --color-text-highlight: var(--color-tertiary);
+  --color-border:var(--color-background-sub);
+  // result
+  --color-success: #50fa7b;
+  --color-warning: #ffb86c;
+  --color-error: #ff5555;
+
+
+}
+
+.App[data-theme="dracula"] {
+  // prime, secondary, tertiary colors
+  --color-primary: #ff79c6;
+  --color-secondary: #8be9fd; 
+  --color-tertiary: #50fa7b;
+  // background
+  --color-background-main: #282a36;
+  --color-background-sub: #44475a;
+  --color-background-hover: #44475a90;
+  // text
+  --color-text-default: #f8f8f2;
+  --color-text-emphasis: var(--color-secondary);
+  --color-text-highlight: var(--color-tertiary);
+  --color-border:var(--color-background-sub);
+  // result
+  --color-success: #50fa7b;
+  --color-warning: #ffb86c;
+  --color-error: #ff5555;
+
+
+}
+
+.App[data-theme="xcode"]{
+  // prime, secondary, tertiary colors
+  --color-primary: #b7269f;
+  --color-secondary: #3f067f;
+  --color-tertiary: #CC2B1E;
+  // background
+  --color-background-main: #fff;
+  --color-background-sub: #ededed;
+  --color-background-hover: #ededed50;
+  // text
+  --color-text-default: #000;
+  --color-text-emphasis: var(--color-secondary);
+  --color-text-highlight: var(--color-tertiary);
+  --color-border: var(--color-background-sub);
+  // result
+  --color-success: #50fa7b;
+  --color-warning: #ffb86c;
+  --color-error: #ff5555;
+
+}
+
+
+
+

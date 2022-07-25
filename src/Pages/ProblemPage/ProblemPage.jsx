@@ -32,7 +32,6 @@ function ProblemPage() {
     return (
       <div className="ProblemPage">
         <AddButton buttonClick={toggleEditMode} />
-
         <Routes>
           <Route path="" element={<ProblemListContainers />} />
           <Route path=":id" element={<ProblemContainer />} />

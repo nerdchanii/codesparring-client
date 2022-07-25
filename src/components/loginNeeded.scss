@@ -1,7 +1,8 @@
 .LoginNeeded--wrapper {
   display: flex;
   padding-bottom: 2rem;
-  justify-content: center;
+  justify-content: start;
+  margin: 5% auto;
   align-items: center;
   height: 50vh;
   flex-direction: column;
@@ -34,11 +35,11 @@
       padding: 0.3rem;
       border: 0;
       border-radius: 5px;
-      background-color: #fff;
+      
       font-size: 1.2rem;
       font-weight: bold;
       cursor: pointer;
-      color: #2f9272;
+      
       a {
         color: inherit;
       }

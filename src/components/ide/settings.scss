@@ -1,12 +1,21 @@
+.Setting--background--wrapper{
+  width: 100%;
+  height: 100%;
+  top:0;
+  left:0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 10;
+  position: absolute;
+}
 .SettingContainer {
   font-size: 1rem;
   font-weight: 400;
   position: absolute;
-  z-index: 1;
-  background: hsla(161, 51%, 38%, 0.812);
+  z-index: 20;
+  background: var(--color-background-main);
   display: flex;
   flex-direction: column;
-  transform: translate(-30%, 30%);
+  transform: translate(-50%);
   padding: 0.5rem;
 
   .buttonContainer {
@@ -26,7 +35,7 @@
     font-size: 1.2rem;
     label {
       text-align: left;
-      color: white;
+      color: var(--color-text-default);
     }
   }
 }

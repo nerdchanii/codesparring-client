@@ -6,7 +6,7 @@ import Chat from './Chat';
 // import socket from '../../socket/socket';
 
 function ChatContainer() {
-  const { message: messages, users, name: roomName } = useSelector((state) => state.room);
+  const { message: messages, name: roomName } = useSelector((state) => state.room);
   const dispatch = useDispatch();
   const [value, setValue] = useState('');
   // pathname 에 맞는 룸을 연결시키기 위함
@@ -23,7 +23,6 @@ function ChatContainer() {
 
   return (
     <Chat
-      users={users}
       change={onChange}
       submit={onSubmit}
       messages={messages}

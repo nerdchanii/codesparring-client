@@ -31,28 +31,26 @@ function ProblemBody(props) {
         <div className="Problem-section">
           <p className="Problem-section-title">테스트 케이스</p>
         </div>
-        <div style={{ display: 'flex', flex: 1, columnGap: '20px', textAlign: 'center' }}>
+        <div>
           <div className="Problem-section-body">
-            <p>인풋</p>
-            <hr style={{ margin: '20px 0' }} />
-            {testInput.map((item) => {
+            <div className="line">
+              <div className="line--leftside title">
+                <span className="input">인풋</span>
+              </div>
+              <div className="line--rightside title">
+                <span className="output">아웃풋</span>
+              </div>
+            </div>
+            {testInput.map((item, idx) => {
               return (
-                <>
-                  <span>{item}</span>
-                  <hr style={{ margin: '20px 0' }} />
-                </>
-              );
-            })}
-          </div>
-          <div className="Problem-section-body">
-            <p>아웃풋</p>
-            <hr style={{ margin: '20px 0' }} />
-            {testOutput.map((item) => {
-              return (
-                <>
-                  <span>{item}</span>
-                  <hr style={{ margin: '20px 0' }} />
-                </>
+                <div className="line">
+                  <div className="line--leftside">
+                    <span className="input">{item}</span>
+                  </div>
+                  <div className="line--rightside">
+                    <span className="output">{testOutput[idx]}</span>
+                  </div>
+                </div>
               );
             })}
           </div>

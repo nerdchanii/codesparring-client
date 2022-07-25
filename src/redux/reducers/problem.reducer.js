@@ -40,6 +40,7 @@ const initialState =
   is_stable: null,
   not_stable: null,
   vote_count: null,
+  problemAdded: false,
 };
 
 
@@ -75,6 +76,7 @@ const problemReducer = createSlice({
   name: 'problem',
   initialState,
   reducers: {
+
     [ACTION.SET_PROBLEM]: (state, action) => {
       const {
         test_output: testOutput, test_input: testInput, is_stable: isStable, not_stable: notStable, vote_count: voteCount, id, level, title, type, requirement, description
@@ -109,14 +111,12 @@ const problemReducer = createSlice({
     }),
       // TODO
       builder.addCase(addProblem.fulfilled, (state, action) => {
-        // 문제 추가 성공시 추가한 문제를 리턴받는다. 
+        alert('문제 추가 성공');
+        return state = {
+          ...state,
+          problemAdded: true,
+        }
       })
-    // update 로직은 추후 추가
-    // builder.addCase(updateProblem.fulfilled, (state, action) => {
-    //   // console.log('updated data', action.payload);
-    //   // console.log('action.payload', action.payload);
-    //   // getProblem(action.payload.problem.id);
-    // });
   }
 });
 

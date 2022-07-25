@@ -23,7 +23,7 @@ function Notice() {
   }, []);
 
   if (!notices) {
-    return <div>no data</div>;
+    return <div></div>;
   }
 
   if (loading) {

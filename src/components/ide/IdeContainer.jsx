@@ -2,7 +2,7 @@ import React, { useCallback, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { CircularProgress } from '@mui/material';
-import { submit, test } from '../../redux/reducers/code.reducer';
+import { actions, ACTION, submit, test } from '../../redux/reducers/code.reducer';
 import { emitCodeTest, emitCodeSubmit } from '../../redux/reducers/room.reducer';
 import Editor from './Editor';
 import Header from './Header';
@@ -14,6 +14,7 @@ function IdeContainer() {
   const location = useLocation();
 
   const { keybind, fontSize, theme, language } = useSelector((state) => state.ideOption);
+
   const { status } = useSelector((state) => state.room);
   const { loading } = useSelector((state) => state.code);
   const outputshow = !(
@@ -45,6 +46,14 @@ function IdeContainer() {
           채점중입니다...
           <br />
           <CircularProgress color="primary" />
+          <button
+            onClick={() => {
+              dispatch(actions[ACTION.LOADDING](false));
+            }}
+          >
+            취소하기
+          </button>
+          <p>채점이 너무오래걸린다면 취소하고 다시눌러주세요!</p>
         </div>
       )}
       <Header language={language} />

@@ -8,7 +8,7 @@ class Problem {
   }
 
   addProblem(data) {
-    return this._axios.post('problems', data);
+    return this._axios.post('problems', ({ data }));
   }
 
   getProblem({ id }) {

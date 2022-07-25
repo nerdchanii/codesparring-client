@@ -1,19 +1,14 @@
 import React from 'react';
-import { Button } from '@mui/material';
+import './MyPage.scss';
 import { BiBlock } from 'react-icons/bi';
 
 function LeaveAccount({ onClickQuit }) {
   return (
-    <div>
-      <Button
-        startIcon={<BiBlock />}
-        size="large"
-        variant="outlined"
-        sx={{ color: '#2f9272' }}
-        onClick={onClickQuit}
-      >
-        탈퇴하기
-      </Button>
+    <div className="LeaveAccount">
+      <button onClick={onClickQuit} className="button">
+        <BiBlock />
+        <span>탈퇴하기</span>
+      </button>
     </div>
   );
 }

@@ -186,6 +186,7 @@ class SocketIo {
     console.log('Event on:', this.event.GAME_END);
     this.store.dispatch(actions[ACTION.ON.GAME_END]());
     this.store.dispatch(problemActions[PROBLEM_ACTION.INIT_PROBLEM]());
+    this.store.dispatch(codeActions[CODE_ACTION.INIT_CODE]());
   }
 
   // set Auth Token

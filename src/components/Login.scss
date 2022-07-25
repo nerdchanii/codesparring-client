@@ -1,3 +1,6 @@
+
+
+
 .Login--container{
   display: flex;
   flex-direction: column;
@@ -11,11 +14,11 @@
   h1{
     font-size: 2rem;
     font-weight: bold;
-    color: #2f9272;
+    color: var(--color-primary);
     text-align: left;
     margin-bottom: 1rem;
     box-sizing: content-box;
-    border-bottom: 3px solid #2f9272;
+    border-bottom: 3px solid var(--color-primary);
   }  
   .Login--form--input--Area{
     flex:1;
@@ -53,13 +56,13 @@
         }   
       .Login--form--input:focus{
         outline:none;
-        border: 1px solid #2f9272;
+        border: 1px solid var(--color-primary);
       } 
 
   }
   button{
     width: 5rem;
-    background-color: #2f9272;
+    background-color: var(--color-primary);
     color: #fff;
     border: none;
     border-radius: 10px;
@@ -67,8 +70,8 @@
   
     &:hover{
       background-color: #fff;
-      color: #2f9272;
-      border: 1px solid #2f9272;
+      color: var(--color-primary);
+      border: 1px solid var(--color-primary);
       transform: scale(0.925);
     }
   }
@@ -78,7 +81,7 @@
 
     a{
       padding-left: 1rem;
-      color: #2f9272;
+      color: var(--color-primary);
     }
     a:active{
       color: #ccc;

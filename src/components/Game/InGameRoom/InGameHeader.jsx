@@ -1,6 +1,5 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Button } from '@mui/material';
 import './InGame.scss';
 
 function InGameHeader(props) {
@@ -9,7 +8,7 @@ function InGameHeader(props) {
   return (
     <div className="InGameHeader">
       <div className="title">{title}</div>
-      <Button onClick={() => navigate('/sparring')}>나가기</Button>
+      <button onClick={() => navigate('/sparring')}>나가기</button>
     </div>
   );
 }

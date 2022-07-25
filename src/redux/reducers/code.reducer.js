@@ -10,6 +10,7 @@ export const ACTION = {
     SUBMIT: 'code/ON/SUBMIT',
   },
   LOADDING: 'code/LOADING',
+  INIT_CODE: 'code/INIT_CODE',
 }
 
 const serverError = [{
@@ -92,6 +93,13 @@ const codeSlice = createSlice({
         loading: false
       }
     },
+    [ACTION.INIT_CODE]: (state, action) => {
+      return {
+        ...state,
+        ...initialState,
+      }
+    }
+
   },
   extraReducers: (builder) => {
     builder.addCase(test.fulfilled, (state, action) => {
@@ -124,6 +132,18 @@ const codeSlice = createSlice({
         return {
           ...state,
           loading: true
+        }
+      }),
+      builder.addCase(test.rejected, (state, action) => {
+        return {
+          ...state,
+          loading: false
+        }
+      }),
+      builder.addCase(submit.rejected, (state, action) => {
+        return {
+          ...state,
+          loading: false
         }
       });
   }

@@ -1,10 +1,22 @@
 .InGameUserListContainer {
+  display: flex;
+  margin-bottom: 10px;
+  border-bottom: 1px solid var(--color-primary);
+  span{
+    margin-right: 10px;
+  }
   .InGameUserList {
+    flex:1;
     display: flex;
     justify-content: space-around;
     .InGameUserListItem {
       display: flex;
       font-size: 1rem;
+      &::before{
+        content: '👊🏻';
+        font-family: 'FontAwesome';
+        margin-right: 10px;
+      }
     }
   }
 }

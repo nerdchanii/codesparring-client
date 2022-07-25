@@ -1,66 +1,89 @@
+
+
 .Topper {
-  padding-top: 0.5rem;
   display: flex;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-bottom: 0.5rem;
-  height: fit-content;
-  background: #2f9272aa;
-  button{
-    color:white;
-  }
-  a{
-    color: white;
-  }
-  h1 {
-    color: white;
-    display: flex;
-    align-items: center;
-    font-size: 1rem;
-    justify-content: center;
-    a {
-      color: white;
-      text-shadow: #2f9272aa 0px 4px 4px;
-    }
-  }
+  padding: 0.5rem 1rem;
+  height: 2rem;
+  gap:3rem;
+  line-height: 1.5rem;
+  vertical-align: center;
+  border-bottom: var(--color-primary) 1px solid;
+  // border-bottom: 1px solid var(--color-primary);
   * {
+    box-sizing: border-box;
     text-decoration: none;
     font-weight: bold;
     font-family: 'arial';
     text-align: center;
-  }
-
-  .NavigatorContainer {
-    flex: 3;
-    display: flex;
-
+    color: var(--color-primary);
     font-size: 1rem;
-    margin: 0em 1rem;
-    justify-content: center;
-    align-items: center;
-    a {
-      box-sizing: border-box;
-      color: white;
-      margin: 0em 1rem;
+    display: inline-block;
+  }
+  a{
+    font-size:1rem;
+    display: inline-block;
+    vertical-align: center;
+    span{
+      height: 100%;
+      display: inline-flex;
+      align-self: center;
     }
   }
-  .ButtonContainer {
+  svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    display: flex;
+    align-self: center;
+  }
+  h1 {
+    font-size:1.5rem;
+    a{ font-size: inherit; }
+    text-shadow: var(--color-primary) 0px 4px 4px;
+  }
+  nav {
     flex: 1;
     display: flex;
-    justify-content: space-evenly;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 1rem;
+  }
+  button {
+    font-size: 1rem;
+    padding:0;
+    height: 100%;
+    background: none;
+    border: 1px solid #cccccc00;
+    
+    a {
+      display: inline;
+      text-decoration: none;
+      vertical-align: center;
+      text-align: center;
+    }
   }
 
-  button {
-    border: none;
-    background: none;
-    font-size: 1rem;
-    font-weight: bold;
-    color: white;
-    cursor: pointer;
-    // svg {
-    //   width: 1.5rem;
-    //   height: 1.5rem;
-    // }
+  .left {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 1rem;
+  }  
+  .right {
+    display: flex;
+    gap:1rem;
+  }
+
+  .textbutton {
+    padding: 0 0.5rem;
+    border: 1px solid var(--color-primary);
+    a{
+      height: 100%;
+      display: flex;
+      align-items:center;
+      justify-content: center;
+      
+      font-stretch: semi-expanded;
+    }
   }
 }
-

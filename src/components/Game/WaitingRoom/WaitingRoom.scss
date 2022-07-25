@@ -1,5 +1,7 @@
+
+
 .WaitingRoomHeader {
-  color: #2f9272;
+  color: var(--color-primary);
   text-align: center;
   font-weight: bolder;
   font-size: 1.5rem;
@@ -11,33 +13,14 @@
   }
 
   .WaitingRoomHeader-header {
+    color: var(--color-secondary);
     flex: 1;
   }
 
   //.waitingRoomHeader-buttonContainer {
-  button {
-    background-color: #2f9272;
-    color: white;
-    border: 1px solid #2f9272;
-    border-radius: 0.5rem;
-    padding: 0.5rem;
-    font-size: 1rem;
-    font-weight: bolder;
-    cursor: pointer;
-  }
 
-  button:active {
-    box-sizing: border-box;
-    background: white;
-    color: #2f9272;
-    border: 1px solid #2f9272;
-    border-radius: 0.5rem;
-    padding: 0.5rem;
-    font-size: 1rem;
-    font-weight: bolder;
-    cursor: pointer;
-    transition: all 0.01s ease;
-  }
+
+ 
 
   .MakeRoom {
     form {
@@ -49,7 +32,7 @@
         align-items: center;
       }
       input {
-        border: 1px solid #2f9272;
+        border: 1px solid var(--color-primary);
         border-radius: 0.5rem;
         padding: 0.5rem;
         font-size: 1rem;
@@ -81,7 +64,7 @@
     font-weight: bold;
     padding-bottom: 0.5rem;
     margin-bottom: 0.5rem;
-    border-bottom: 2px solid #2f9272;
+    border-bottom: 2px solid var(--color-primary);
   }
 
   .RoomListItemContainer {
@@ -97,11 +80,11 @@
     max-height: 100%;
 
     .MouseOver {
-      background-color: #2f9272aa;
+      background-color: var(--color-primary);
     }
 
     .RoomListItem .ItemLinkWrapper {
-      border: 2px solid #2f927233;
+      border: 2px solid var(--color-primary);
       border-radius: 0.5rem;
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
@@ -114,12 +97,12 @@
     }
 
     .RoomListItem:hover {
-      color: #2f9272;
-      border: 2px solid #2f9272;
+      color: var(--color-primary);
+      border: 2px solid var(--color-primary);
       border-radius: 0.5rem;
 
       a {
-        color: #2f9272;
+        color: var(--color-primary);
       }
     }
   }
