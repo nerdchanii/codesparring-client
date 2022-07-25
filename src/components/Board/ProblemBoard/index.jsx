@@ -9,7 +9,6 @@ import LinkedListItem from '../List/LinkedItem/LinkedListItem';
 
 function ProblemBoard(props) {
   const { className, title, data } = props;
-  console.log(props);
 
   if (!data?.length) {
     return null;

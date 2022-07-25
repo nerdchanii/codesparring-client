@@ -16,7 +16,6 @@ const ideOptionSlice = createSlice({
   initialState,
   reducers: {
     setIdeOption: (state, action) => {
-      console.log(action.payload)
       state = {
         ...state,
         [action.payload.key]: action.payload.value

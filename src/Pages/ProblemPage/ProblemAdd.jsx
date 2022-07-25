@@ -10,7 +10,6 @@ function ProblemAdd({ back }) {
     event.preventDefault();
 
     const { target } = event;
-    console.log(target);
     const data = {
       title: target.title.value,
       level: target.level.value,

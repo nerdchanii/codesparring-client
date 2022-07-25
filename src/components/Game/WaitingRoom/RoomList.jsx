@@ -18,7 +18,6 @@ function RoomListItem(props) {
 }
 
 function RoomList({ rooms }) {
-  console.log(rooms);
   if (rooms) {
     return (
       <div className="RoomList">

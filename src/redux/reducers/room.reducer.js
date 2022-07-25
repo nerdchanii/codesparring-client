@@ -128,7 +128,7 @@ const roomSlice = createSlice({
   initialState,
   reducers: {
     [ACTION.ON.MESSAGE]: (state, action) => {
-      // console.log('action!! :', action.payload);
+      //  
       return {
         ...state,
         message: [action.payload, ...state.message]
@@ -137,7 +137,7 @@ const roomSlice = createSlice({
     // action palyload is Room Information
     [ACTION.ON.JOIN]: (state, action) => {
       const { room } = action.payload;
-      console.log('reducer!!', room)
+
       return {
         ...state,
         ...room
@@ -174,7 +174,7 @@ const roomSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(connect.fulfilled, (state, action) => {
-      console.log('connect')
+
       state = {
         ...state,
       }

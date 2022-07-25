@@ -23,10 +23,8 @@ export const login = createAsyncThunk(FETCH_LOGIN, async ({ email, password }, {
   const { data } = await service.authService.login({ email, password });
 
   const { auth } = data.result;
-  console.log(auth);
   auth && service.apis.setAccessToken(auth?.token);
   auth && service.socketService.setAuth({ auth });
-  console.log(service);
   return auth;
 });
 
@@ -34,7 +32,6 @@ export const login = createAsyncThunk(FETCH_LOGIN, async ({ email, password }, {
 // It is not Async Thunk but 
 export const logout = createAsyncThunk(LOGOUT, (args, { extra }) => {
   const { service } = extra;
-  console.log('logout, result',);
   const result = service.authService.logout();
   return result;
 });

@@ -13,9 +13,9 @@ const store = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       thunk: { extraArgument: { service } },
-    })
-      .concat(logger),
-  devTools: true,
+    }),
+  // .concat(logger),
+  // devTools: true,
 });
 
 service._socketService.setStore({ store });

@@ -74,15 +74,15 @@ const codeSlice = createSlice({
   reducers: {
     // loading state
     [ACTION.LOADDING]: (state, action) => {
-      console.log('action', action);
-      console.log('payload', action.payload);
+
+
       return {
         ...state,
         loading: action.payload.loading,
       }
     },
     [ACTION.ON.TEST]: (state, action) => {
-      console.log(state, action)
+
       return { result: action.payload.results, loading: false }
 
     },

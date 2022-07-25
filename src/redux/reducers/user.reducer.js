@@ -30,15 +30,15 @@ const initialState = {
 
 export const getUser = createAsyncThunk(ACTION.FETCH_SOME_DATA, async ({ id }, { extra }) => {
   const { service } = extra;
-  console.log('getUser', service);
+
   const { data } = await service.userService.getUser(id);
   return data.result;
 });
 
 export const getRanks = createAsyncThunk(ACTION.RANK, async (args, { extra }) => {
-  console.log(args);
+
   const { service } = extra;
-  console.log('getRanks', service);
+
   const { data } = await service.userService.ranks();
   return data.result;
 })
@@ -56,14 +56,14 @@ export const removeUser = createAsyncThunk(ACTION.REMOVE_USER, async ({ userId }
 
 export const register = createAsyncThunk(ACTION.REGISTER, async ({ username, email, password }, { extra }) => {
   const { service } = extra;
-  console.log('register', service);
+
   const { data } = await service.userService.register({ username, email, password });
   return data.result;
 });
 
 export const duplicateEmailCheck = createAsyncThunk(ACTION.DUPLICATE_EMAIL_CHECK, async ({ email }, { extra }) => {
   const { service } = extra;
-  console.log('duplicateEmailCheck', service);
+
   const { data } = await service.userService.duplicateEmailCheck({ email });
   return data.result;
 });
@@ -84,7 +84,7 @@ const userSlice = createSlice({
       state.user = action.payload;
     }),
       builder.addCase(getRanks.fulfilled, (state, action) => {
-        console.log(action.payload);
+
         state.userRanks = action.payload.users;
       }),
       builder.addCase(register.fulfilled, (state, action) => {

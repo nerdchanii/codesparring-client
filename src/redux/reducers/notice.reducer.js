@@ -33,7 +33,7 @@ export const getNotices = createAsyncThunk('notice/GET_NOTICES', async (arg, { e
 // not user getNotice in V1 API
 // export const getNotice = createAsyncThunk('notice/GET_NOTICE', async ({ extra }, { id }) => {
 //   const { service } = extra;
-//   console.log('notice/GET_NOTICE', service);
+//    
 //   const { data } = await service.noticeService.getNotice(id);
 //   return data;
 // });
@@ -43,11 +43,10 @@ const noticeSlice = createSlice({
   initialState,
   extraReducers: (builder) => {
     builder.addCase(getNotices.fulfilled, (state, action) => {
-      console.log('notices data', action.payload);
       state.notices = action.payload.notices;
     });
     // builder.addCase(getNotice.fulfilled, (state, action) => {
-    //   console.log('notice data', action.payload);
+    //    
     //   state.notice = action.payload.notice;
     // });
   },

@@ -26,7 +26,6 @@ function Login() {
   };
 
   useEffect(() => {
-    console.log(isLogin);
     if (isLogin) {
       navigate('/');
     }

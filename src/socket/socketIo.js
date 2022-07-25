@@ -47,7 +47,7 @@ class SocketIo {
   }
 
   on = () => {
-    this._socket.on(this.event.CONNECT, this.onConnect);
+    // this._socket.on(this.event.CONNECT, this.onConnect);
     this._socket.on(this.event.JOIN, this.onJoin);
     this._socket.on(this.event.LEAVE, this.onLeave);
     this._socket.on(this.event.MESSAGE, this.onMessage);
@@ -60,24 +60,22 @@ class SocketIo {
   }
 
   // listen to socket event
-  onConnect = () => {
-    console.log('Event on:', this.event.CONNECT);
-  }
+
 
   onMessage = (args) => {
-    console.log('Event on:', this.event.MESSAGE);
-    console.log(args)
+
+
     this.store.dispatch(actions[ACTION.ON.MESSAGE](args));
   }
 
   emitMessage = ({ username, roomId, message }) => {
-    console.log(username, roomId, message)
-    console.log('Event emit:', this.event.MESSAGE)
+
+
     this._socket.emit(this.event.MESSAGE, { username, roomId, message });
   }
 
   onJoin = ({ room, error }) => {
-    console.log('Event on:', this.event.JOIN, room);
+
     this.store.dispatch(actions[ACTION.ON.JOIN]({ room }));
     if (!!error) {
       alert('방이 존재하지 않거나 입장할 수 없습니다');
@@ -92,65 +90,65 @@ class SocketIo {
   }
 
   emitJoin = ({ username, roomId }) => {
-    console.log('Event emit:', this.event.JOIN)
+
     this._socket.emit(SOCKET_EVENT.JOIN, ({ username, roomId }));
   }
 
   onLeave = ({ username }) => {
-    console.log('Event on:', this.event.LEAVE)
+
     this.store.dispatch(actions[ACTION.ON.LEAVE]({ username }));
   }
 
   emitLeave = ({ roomId, username }) => {
-    console.log('Event emit:', this.event.LEAVE)
+
     this._socket.emit(SOCKET_EVENT.LEAVE, { roomId, username });
   }
 
   onCreateRoom = ({ room }) => {
-    console.log('Event on:', this.event.CREATE_ROOM);
+
     this.store.dispatch(actions[ACTION.ON.CREATE_ROOM]({ room }));
   }
 
   emitCreateRoom = ({ name }) => {
-    console.log('Event emit:', this.event.CREATE_ROOM)
+
     this._socket.emit(SOCKET_EVENT.CREATE_ROOM, { name });
   }
 
   onGetRooms = ({ rooms }) => {
-    console.log(this.event.GET_ROOMS, rooms);
-    console.log('Event on:', this.event.GET_ROOMS, rooms);
+
+
     this.store.dispatch(roomsActions[ROOMS_ACTION.GET_ROOMS]({ rooms }));
   }
 
   emitGetRooms = () => {
-    console.log(this._socket);
+
     this._socket.emit(SOCKET_EVENT.GET_ROOMS);
   }
 
   onGameStart = ({ problem }) => {
-    console.log('Event on:', this.event.GAME_START);
-    console.log('problem', problem);
+
+
     this.store.dispatch(actions[ACTION.ON.GAME_START]());
     this.store.dispatch(problemActions[PROBLEM_ACTION.SET_PROBLEM]({ problem }));
   }
 
   emitGameStart = ({ roomId }) => {
-    console.log('Event emit:', this.event.GAME_START)
+
     this._socket.emit(SOCKET_EVENT.GAME_START, { roomId });
   }
 
   onCodeTest = ({ results }) => {
-    console.log('Event on:', this.event.CODE_TEST);
-    console.log('result', results);
+
+
     const isFail = results.some((eachResult) => !eachResult.correct);
     alert(isFail ? '테스트 케이스가 틀렸습니다' : '테스트 케이스 통과!');
     this.store.dispatch(codeActions[CODE_ACTION.ON.TEST]({ results }));
   }
 
   onCodeSubmit = ({ username, correct }) => {
-    console.log('Event on:', this.event.CODE_SUBMIT);
-    console.log('username', username);
-    console.log('correct', correct);
+
+
+
     if (username && correct) {
       if (username === this.socket.auth.username) {
         this.store.dispatch(codeActions[CODE_ACTION.LOADDING]({ loading: false }));
@@ -166,15 +164,15 @@ class SocketIo {
   }
 
   emitCodeTest = ({ roomId, lang, code }) => {
-    console.log('Event emit:', this.event.CODE_TEST);
-    console.log(this.socket);
+
+
     this._socket.emit(SOCKET_EVENT.CODE_TEST, { roomId, lang, code });
     this.store.dispatch(codeActions[CODE_ACTION.LOADDING]({ loading: true }));
 
   }
 
   emitCodeSubmit = ({ roomId, username, lang, code }) => {
-    console.log('Event emit:', this.event.CODE_SUBMIT);
+
     if (this.store.getState().room.status !== 'playing') {
       return alert('게임이 시작되지 않았습니다.');
     }
@@ -183,7 +181,7 @@ class SocketIo {
   }
 
   onGameEnd = () => {
-    console.log('Event on:', this.event.GAME_END);
+
     this.store.dispatch(actions[ACTION.ON.GAME_END]());
     this.store.dispatch(problemActions[PROBLEM_ACTION.INIT_PROBLEM]());
     this.store.dispatch(codeActions[CODE_ACTION.INIT_CODE]());
@@ -191,8 +189,8 @@ class SocketIo {
 
   // set Auth Token
   setAuth = ({ auth }) => {
-    console.log(auth);
-    console.log('auth setting!')
+
+
 
     this._socket = io({
       auth: {

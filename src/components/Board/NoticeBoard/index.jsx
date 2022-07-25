@@ -16,14 +16,12 @@ function Notice() {
     try {
       fetchData();
     } catch (e) {
-      console.log(e);
-    } finally {
       setLoading(false);
     }
   }, []);
 
   if (!notices) {
-    return <div></div>;
+    return <div />;
   }
 
   if (loading) {
