@@ -63,15 +63,6 @@ export const updateProblem = createAsyncThunk(ACTION.UPDATE_PROBLEM, async (arg,
 });
 
 
-
-
-
-// problem reducer 
-// user가 채점서버의 inputCase, outputCase를 받아도 되는가? 
-// 이걸 클라이언트 쪽에서 조작한다? 신뢰 불가 
-// 그리고 클라이언트는 그런 거 모르고 해야한다.
-// 여기에 graphql를 사용하면 좋지 않을까 싶다. graphql사용하고 api를 분리하면 좋을까?
-
 const problemReducer = createSlice({
   name: 'problem',
   initialState,

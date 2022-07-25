@@ -68,7 +68,7 @@ function SignUp() {
 
   const usernameValidation = (e) => {
     e.preventDefault();
-    if (form.username.length > 4) {
+    if (form.username.length > 3) {
       setCorrect({ ...correct, username: true });
       dispatch(duplicateUsernameCheck({ username: form.username }));
     } else {
@@ -80,6 +80,12 @@ function SignUp() {
     event.preventDefault();
     if (form.password !== form.passwordConfirm) {
       return alert('비밀번호를 확인해주세요');
+    }
+    if (form.password.length < 8 || form.passwordConfirm.length < 8) {
+      return alert('비밀번호는 8자 이상이어야 합니다.');
+    }
+    if (form.username.length < 4) {
+      return alert('유저네임은 4자 이상이어야 합니다.');
     }
     const { username, email, password } = form;
     dispatch(register({ username, email, password }));
@@ -137,7 +143,7 @@ function SignUp() {
               }}
               required
             />
-            {form.password.length < 12 ? (
+            {form.password.length < 8 ? (
               <p className="message false">
                 {form.password.length !== 0 && '비밀번호가 너무 짧습니다'}
               </p>
