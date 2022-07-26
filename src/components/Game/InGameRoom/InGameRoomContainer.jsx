@@ -1,10 +1,11 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { memo, useCallback, useEffect } from 'react';
 import { CircularProgress } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import ChatContainer from '../../Chat/ChatContainer';
 import { emitGameStart, emitJoin, emitLeave } from '../../../redux/reducers/room.reducer';
 import InGameRoom from './InGameRoom';
+import { ACTION, actions } from '../../../redux/reducers/code.reducer';
 
 function InGameRoomContainer() {
   const dispatch = useDispatch();
@@ -31,6 +32,7 @@ function InGameRoomContainer() {
 
   useEffect(() => {
     join();
+    dispatch(actions[ACTION.INIT_CODE]());
     return () => {
       leave();
     };
@@ -55,4 +57,4 @@ function InGameRoomContainer() {
   );
 }
 
-export default InGameRoomContainer;
+export default memo(InGameRoomContainer);

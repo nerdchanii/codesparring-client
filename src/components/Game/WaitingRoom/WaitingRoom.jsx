@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { memo, useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { CircularProgress } from '@mui/material';
 import { getRooms } from '../../../redux/reducers/rooms.reducer';
@@ -46,4 +46,4 @@ function WaitingRoom() {
   );
 }
 
-export default WaitingRoom;
+export default memo(WaitingRoom);

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { memo, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { emitCreateRoom } from '../../../redux/reducers/room.reducer';
@@ -36,4 +36,4 @@ function MakeRoom() {
   );
 }
 
-export default MakeRoom;
+export default memo(MakeRoom);

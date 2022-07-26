@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { memo, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { AiOutlineClose } from 'react-icons/ai';
 import IDE_OPTION from '../../config/ide.config';
@@ -90,4 +90,4 @@ function SettingContainer(props) {
   );
 }
 
-export default SettingContainer;
+export default memo(SettingContainer);

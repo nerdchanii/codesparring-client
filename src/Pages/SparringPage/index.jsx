@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { useSelector } from 'react-redux';
 import IdeContainer from '../../components/ide/IdeContainer';
 import Game from '../../components/Game/Game';
@@ -17,4 +17,4 @@ function Sparring() {
     </div>
   );
 }
-export default Sparring;
+export default memo(Sparring);

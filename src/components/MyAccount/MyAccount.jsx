@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 // import { Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import MyAccountHeader from './MyAccountHeader';
@@ -20,4 +20,4 @@ function MyAccount() {
   );
 }
 
-export default MyAccount;
+export default memo(MyAccount);

@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { memo, useCallback, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { CircularProgress } from '@mui/material';
@@ -70,4 +70,4 @@ function IdeContainer() {
   );
 }
 
-export default IdeContainer;
+export default memo(IdeContainer);

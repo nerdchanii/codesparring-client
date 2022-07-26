@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { useSelector } from 'react-redux';
 
 // Component: ResultMessage
@@ -53,4 +53,4 @@ function Result() {
   );
 }
 
-export default Result;
+export default memo(Result);

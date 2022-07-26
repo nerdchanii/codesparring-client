@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { memo, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import LeaderBoardPresenter from './LeaderBoardPresenter';
 import { getRanks } from '../../../redux/reducers/user.reducer';
@@ -17,4 +17,4 @@ function LeaderBoard() {
   return <LeaderBoardPresenter className="LeaderBoard" title="랭킹" data={rankList} />;
 }
 
-export default LeaderBoard;
+export default memo(LeaderBoard);

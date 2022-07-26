@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
 import { AiFillGithub } from 'react-icons/ai';
 import { IoSettingsOutline } from 'react-icons/io5';
@@ -58,4 +58,4 @@ function Navbar() {
     </nav>
   );
 }
-export default Navbar;
+export default memo(Navbar);

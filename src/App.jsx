@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { useSelector } from 'react-redux';
 import Topper from './Pages/Layout/Topper';
 import RouteContainer from './Pages/Layout/RouteContainer';
@@ -14,4 +14,4 @@ function App() {
   );
 }
 
-export default App;
+export default memo(App);

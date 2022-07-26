@@ -15,7 +15,10 @@ function Notice() {
     setLoading(true);
     try {
       fetchData();
+      // throw new Error();
     } catch (e) {
+      console.log(e);
+    } finally {
       setLoading(false);
     }
   }, []);

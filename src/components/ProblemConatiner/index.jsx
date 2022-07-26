@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { memo, useCallback, useEffect } from 'react';
 import './Problem.scss';
 import { useParams, useNavigate } from 'react-router-dom';
 import { CircularProgress } from '@mui/material';
@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import ProblemHeader from './ProblemHeader';
 import ProblemBody from './ProblemBody';
 import { getProblem } from '../../redux/reducers/problem.reducer';
+import { ACTION, actions } from '../../redux/reducers/code.reducer';
 
 // import somethign for makes backbutton
 
@@ -23,6 +24,10 @@ function ProblemContainer() {
 
   useEffect(() => {
     fetchData();
+    dispatch(actions[ACTION.INIT_CODE]());
+    return () => {
+      dispatch(actions[ACTION.INIT_CODE]());
+    };
   }, []);
 
   if (problem.id === null) {
@@ -50,4 +55,4 @@ function ProblemContainer() {
   );
 }
 
-export default ProblemContainer;
+export default memo(ProblemContainer);

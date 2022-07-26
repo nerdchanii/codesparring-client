@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { memo, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addProblem } from '../../redux/reducers/problem.reducer';
 
@@ -170,4 +170,4 @@ function ProblemAdd({ back }) {
     </div>
   );
 }
-export default ProblemAdd;
+export default memo(ProblemAdd);

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { memo, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProblemContainer from '../../components/ProblemConatiner';
@@ -41,4 +41,4 @@ function ProblemPage() {
   }
 }
 
-export default ProblemPage;
+export default memo(ProblemPage);
