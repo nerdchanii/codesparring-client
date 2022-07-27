@@ -22,6 +22,12 @@
   div {
     font-weight: bold;
   }
+  >button{
+    display: block;
+    text-align: end;
+    margin: 1rem 0;
+    margin-left:auto;
+  }
 
   select {
     flex: 1;
@@ -123,13 +129,14 @@
   border: 3px solid var(--color-primary);
   border-radius: 0.5rem;
   .testCase-title {
+    color: var(--color-secondary);
     position: relative;
     width: max-content;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
     transform: translate(0, -100%);
     z-index: 1;
-    background-color: #ffffff;
+    background-color: var(--color-background-main);
   }
   padding: 0.5rem;
   .testCase {

@@ -45,6 +45,7 @@ function ProblemAdd({ back }) {
   // form to sumbit Problem Add data to server and redirect to problem page
   return (
     <div className="ProblemAdd">
+      <button onClick={back}>뒤로가기</button>
       <div className="ProblemAdd-title">문제 추가</div>
       <div className="ProblemAdd-form">
         <form onSubmit={submitAdd}>
