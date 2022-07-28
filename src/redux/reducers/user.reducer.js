@@ -5,7 +5,7 @@ import { actions as authActions } from './auth.reducer';
 // ACTION TYPES
 // export const FETCH_LOGIN = 'auth/FETCH_LOGIN';
 // export const LOGOUT = 'auth/LOGOUT';
-const ACTION = {
+export const ACTION = {
   FETCH_SOME_DATA: 'users/FETCH_SOME_DATA',
   REGISTER: 'users/REGISTER',
   DUPLICATE_EMAIL_CHECK: 'users/DUPLICATE_EMAIL_CHECK',
@@ -13,6 +13,7 @@ const ACTION = {
   RANK: 'users/RANK',
   REMOVE_USER: 'users/REMOVE_USER',
   GET_USER: 'users/GET_USER',
+  initStore: 'users/initStore',
 
 
 }
@@ -79,6 +80,11 @@ export const duplicateUsernameCheck = createAsyncThunk(ACTION.DUPLICATE_USERNAME
 const userSlice = createSlice({
   name: 'user',
   initialState,
+  reducers: {
+    initStore: (state, action) => {
+      return initialState;
+    }
+  },
   extraReducers: (builder) => {
     builder.addCase(getUser.fulfilled, (state, action) => {
       state.user = action.payload;
@@ -100,5 +106,6 @@ const userSlice = createSlice({
   }
 });
 
-const { actions, reducer } = userSlice;
+const { reducer } = userSlice;
+export const actions = userSlice.actions;
 export default reducer;
