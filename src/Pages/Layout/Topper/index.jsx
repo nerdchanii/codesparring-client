@@ -7,7 +7,7 @@ function Topper() {
   return (
     <header className="topper">
       <div className="sitename">
-        <Link to="/">codesparring</Link>
+        <Link to="/home">codesparring</Link>
       </div>
       <Navbar />
     </header>

@@ -27,7 +27,7 @@ function Login() {
 
   useEffect(() => {
     if (isLogin) {
-      navigate('/');
+      navigate('/home');
     }
   }, [isLogin]);
   return (

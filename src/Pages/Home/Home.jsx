@@ -1,9 +1,9 @@
 import React from 'react';
+import Layout from '../Layout';
 import LeaderBoard from '../../components/board/LeaderBoard';
 import './Home.scss';
 import Notice from '../../components/board/NoticeBoard';
 import Game from '../../components/Game/Game';
-import Layout from '../Layout';
 
 function Home() {
   return (

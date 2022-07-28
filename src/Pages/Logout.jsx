@@ -10,7 +10,7 @@ function Logout() {
     dispatch(logout());
   }, []);
 
-  return <Navigate to="/" />;
+  return <Navigate to="/home" />;
 }
 
 export default Logout;

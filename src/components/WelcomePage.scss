@@ -1,0 +1,67 @@
+.welcompage{
+  position: relative;
+  width: inherit;  
+  height: inherit;
+  display: flex;
+  flex:1;
+  // background: url('/images/welcome.jpg');
+  .image--container{
+    width: 100%;
+    position: absolute;
+    overflow: hidden;
+    flex: 1;
+    height: 100%;
+    img{
+      width: 100%;
+
+    }
+  }
+  .welcome-container{
+    z-index: 100;
+    margin:auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    .welcome--title,
+    .welcome--content,
+    .welcome--button{
+      flex:1;
+      display: flex;
+      align-items: center;
+      line-height: 2rem;
+    }
+    .welcome--title{
+      font-size: 2rem;
+      font-weight: bold;      
+      h1.title{
+        align-items: center;
+        color: #fff;
+        font-size: 2.5rem;
+        text-shadow: var(--color-primary) 0px 1rem  1rem;
+      }
+    }
+    .welcome--content{
+      font-size: 1.5rem;
+      font-weight: bold;
+      p.title{
+        color: var(--color-primary);  
+      }
+    }
+    .welcome--button{
+      font-size: 1.5rem;
+      font-weight: bold;
+      cursor: pointer;
+      gap: 2rem;
+      a.button,
+      button{
+        height: 3rem;
+        padding: 1rem 0.5rem;
+        margin: .5rem;
+
+      }
+
+    }
+  }
+}

@@ -6,6 +6,7 @@ import './App.scss';
 
 function App() {
   const { theme } = useSelector((state) => state.ideOption);
+
   return (
     <div className="App" data-theme={theme}>
       <Topper />

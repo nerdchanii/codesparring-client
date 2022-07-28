@@ -91,7 +91,7 @@ function SignUp() {
     dispatch(register({ username, email, password }));
   };
 
-  if (isLogin) return <Navigate to="/" />;
+  if (isLogin) return <Navigate to="/home" />;
   if (success) return <Navigate to="/login" />;
   return (
     <div className="wrapper">
