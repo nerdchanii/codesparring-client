@@ -8,8 +8,6 @@ import ProblemBody from './ProblemBody';
 import { getProblem } from '../../redux/reducers/problem.reducer';
 import { ACTION, actions } from '../../redux/reducers/code.reducer';
 
-// import somethign for makes backbutton
-
 function ProblemContainer() {
   const { id } = useParams();
   const dispatch = useDispatch();

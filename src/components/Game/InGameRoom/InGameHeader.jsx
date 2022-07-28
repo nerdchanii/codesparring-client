@@ -8,7 +8,9 @@ function InGameHeader(props) {
   return (
     <div className="InGameHeader">
       <div className="title">{title}</div>
-      <button onClick={() => navigate('/sparring')}>나가기</button>
+      <button className="tertiary" onClick={() => navigate('/sparring')}>
+        나가기
+      </button>
     </div>
   );
 }

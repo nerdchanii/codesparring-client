@@ -4,8 +4,8 @@ import { BiBlock } from 'react-icons/bi';
 
 function LeaveAccount({ onClickQuit }) {
   return (
-    <div className="LeaveAccount">
-      <button onClick={onClickQuit} className="button">
+    <div className="leave-account--container">
+      <button onClick={onClickQuit} className="button warning">
         <BiBlock />
         <span>탈퇴하기</span>
       </button>

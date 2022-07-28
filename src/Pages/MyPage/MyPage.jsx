@@ -1,13 +1,14 @@
 import React, { memo, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import Title from '../../components/design/Title';
 import LoginNeeded from '../../components/LoginNeeded';
-import MyAccount from '../../components/MyAccount/MyAccount';
+import UserProfile from '../../components/MyAccount/UserProfile';
 import { removeUser } from '../../redux/reducers/user.reducer';
 import LeaveAccount from './LeaveAccount';
 import './MyPage.scss';
 
 function MyPage() {
-  const { isLoggedIn: islogin, userId } = useSelector((state) => state.auth);
+  const { isLoggedIn: islogin, userId, profile } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const onClickQuit = useCallback(() => {
     // eslint-disable-next-line no-restricted-globals
@@ -21,9 +22,16 @@ function MyPage() {
   }
 
   return (
-    <div className="MyPage">
-      <MyAccount />
-      <LeaveAccount onClickQuit={onClickQuit} />
+    <div className="page mypage">
+      <div className="myaccount">
+        <div className="myaccount-topper">
+          <Title>My Account</Title>
+        </div>
+        <div className="myaccount-body">
+          <UserProfile email={profile.email} username={profile.username} />
+          <LeaveAccount onClickQuit={onClickQuit} />
+        </div>
+      </div>
     </div>
   );
 }

@@ -9,11 +9,13 @@
   .Section {
     margin: 0.3rem;
     padding: 1rem;
+    box-sizing: border-box;
     overflow: hidden;
-    border: 1px solid var(--color-primary);
-    border-radius: 10px;
+    border: 1px solid var(--color-background-sub);
+    border-radius: 4px;
     box-sizing: border-box;
     height: 100%;
+    
   }
 }
  

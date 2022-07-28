@@ -13,11 +13,8 @@ function InGameRoom(props) {
       <div className="InGameQuest">
         <InGameHeader title={roomInfo.name} />
         <InGameUserListContainer users={users} />
-        {problem.id ? (
-          <InGameProblemContianer data={problem} />
-        ) : (
-          <button onClick={onClickStart}>게임시작하기</button>
-        )}
+        {problem.id || <button onClick={onClickStart}>게임시작하기</button>}
+        {problem.id && <InGameProblemContianer data={problem} />}
       </div>
       <div className="InGameChat">{ChatComponet}</div>
     </div>

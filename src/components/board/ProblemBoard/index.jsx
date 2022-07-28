@@ -2,7 +2,7 @@ import React from 'react';
 import PropsTypes from 'prop-types';
 import ListHeader from '../List/ListHeader/ListHeader';
 import List from '../List';
-import Title from '../Title';
+import Title from '../../design/Title';
 import Column from '../Column';
 import '../Board.scss';
 import LinkedListItem from '../List/LinkedItem/LinkedListItem';
@@ -15,18 +15,18 @@ function ProblemBoard(props) {
   }
   return (
     <div className={`${className} board`}>
-      <Title>{title}</Title>
+      <Title className="center">{title}</Title>
       <ListHeader className="header">
-        {Object.keys(data[0]).map((col, idx) => (
-          <Column key={idx}>{col}</Column>
-        ))}
+        <Column flex={1}>번호</Column>
+        <Column flex={3}>문제명</Column>
+        <Column flex={1}>유형</Column>
       </ListHeader>
       <List className="list">
         {data.map((item, idx) => (
           <LinkedListItem className="item" link={item.id} key={idx}>
-            {Object.values(item).map((col, colIdx) => (
-              <Column key={colIdx}>{col}</Column>
-            ))}
+            <Column flex={1}>{idx + 1}</Column>
+            <Column flex={3}>{item.title}</Column>
+            <Column flex={1}>{item.type}</Column>
           </LinkedListItem>
         ))}
       </List>

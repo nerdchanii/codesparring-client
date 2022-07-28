@@ -1,59 +1,104 @@
 import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
-import { AiFillGithub } from 'react-icons/ai';
-import { IoSettingsOutline } from 'react-icons/io5';
-import { useDispatch, useSelector } from 'react-redux';
+import { AiFillGithub, AiOutlineSetting } from 'react-icons/ai';
+import { useSelector } from 'react-redux';
 import SettingContainer from '../../../components/ide/SettingsContainer';
-import { logout } from '../../../redux/reducers/auth.reducer';
+// import { logout } from '../../../redux/reducers/auth.reducer';
 
 function Navbar() {
   const [openSetting, setOpenSetting] = React.useState(false);
-  const islogin = useSelector((state) => state.auth.isLoggedIn);
-  const dispatch = useDispatch();
-  const onLogout = () => {
-    dispatch(logout());
+  const isLogin = useSelector((state) => state.auth.isLoggedIn);
+  // const dispatch = useDispatch();
+  // const onLogout = () => {
+  //   dispatch(logout());
+  // };
+  const toggleSettingVisible = () => {
+    setOpenSetting(!openSetting);
   };
+  if (isLogin) {
+    return (
+      <nav className="navbar">
+        <div className="navbar--left">
+          <a href="https://github.com/nerdchanii/codesparring-client/issues">
+            <AiFillGithub />
+          </a>
+          <Link className="button tertiary" to="/notice">
+            공지
+          </Link>
+          <Link className="button tertiary" to="/leaderboard">
+            랭킹
+          </Link>
+          <Link className="button tertiary" to="/sparring">
+            게임
+          </Link>
+          <Link className="button tertiary" to="/practice">
+            연습
+          </Link>
+          <Link className="button tertiary" to="/problem">
+            문제
+          </Link>
+        </div>
+        <div className="navbar--right">
+          <Link className="button tertiary" to="/mypage">
+            내 정보
+          </Link>
+          <Link className="button tertiary" to="/logout">
+            로그아웃
+          </Link>
+          <div className="setting--box">
+            <button
+              className="circle tertiary"
+              onClick={() => {
+                setOpenSetting(true);
+              }}
+            >
+              <AiOutlineSetting />
+            </button>
+            {openSetting && <SettingContainer className="popup" setshowing={setOpenSetting} />}
+          </div>
+        </div>
+      </nav>
+    );
+  }
 
   return (
-    <nav className="NavigatorContainer">
-      <div className="left">
+    <nav className="navbar">
+      <div className="navbar--left">
         <a href="https://github.com/nerdchanii/codesparring-client/issues">
           <AiFillGithub />
         </a>
-        <Link to="/notice">notice</Link>
-        <Link to="/leaderboard">leaderboard</Link>
-        <Link to="/sparring">sparring</Link>
-        <Link to="/practice">parctice</Link>
-        <Link to="/problem">problems</Link>
+        <Link className="button tertiary" to="/notice">
+          기본
+        </Link>
+        <Link className="button tertiary" to="/notice">
+          아웃라인
+        </Link>
+        <Link className="button tertiary" to="/leaderboard">
+          랭킹
+        </Link>
+        <Link className="button tertiary" to="/sparring">
+          게임판
+        </Link>
+        <Link className="button tertiary" to="/practice">
+          연습장
+        </Link>
+        <Link className="button tertiary" to="/problem">
+          문제
+        </Link>
       </div>
-      <div className="right">
+      <div className="navbar--right">
+        <Link className="button outline" to="/login">
+          로그인
+        </Link>
+        <Link className="button outline" to="/signup">
+          회원가입
+        </Link>
         <div className="setting--box">
-          <button
-            onClick={() => {
-              setOpenSetting(true);
-            }}
-          >
-            <IoSettingsOutline />
+          <button className="circle tertiary" onClick={toggleSettingVisible}>
+            <AiOutlineSetting />
           </button>
           {openSetting && <SettingContainer className="popup" setshowing={setOpenSetting} />}
         </div>
-        {islogin ? (
-          <>
-            <button>
-              <Link to="/mypage">MyAccount</Link>
-            </button>
-            <button onClick={onLogout}>Logout</button>
-          </>
-        ) : (
-          <>
-            <button className="textbutton">
-              <Link to="/login">Login</Link>
-            </button>
-            <button className="textbutton">
-              <Link to="/signup">Signup</Link>
-            </button>
-          </>
-        )}
       </div>
     </nav>
   );

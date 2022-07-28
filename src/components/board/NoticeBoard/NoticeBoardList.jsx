@@ -1,33 +1,34 @@
 import React from 'react';
-import { BiLabel } from 'react-icons/bi';
+import { AiOutlineTags } from 'react-icons/ai';
 
 import './Notice.scss';
 
 function NoticeBoardListItem(props) {
   const { item } = props;
-  const { id, label, title, contents, writer } = item;
+  const { id, label, title, contents } = item;
+  const [isOpen, setIsOpen] = React.useState(false);
+
+  const onClick = () => {
+    setIsOpen(!isOpen);
+  };
 
   return (
-    <article className="NoticeBoardItem">
-      <header className="item-title">
-        <div>{`${id}.${title}`}</div>
-        <div className="item-label">
-          {label.map((eachLabel, idx) => (
-            <span className="each-label" key={idx}>
-              <BiLabel />
-              {eachLabel}
-            </span>
-          ))}
-        </div>
-      </header>
-      <details>
-        <summary>자세히</summary>
-        <div className="item-body">{contents}</div>
-      </details>
-      <footer className="item-footer">
-        <div className="item-writer">{`wrtie by :${writer}`}</div>
-      </footer>
-    </article>
+    <div onClick={onClick} aria-hidden="true">
+      <article className="NoticeBoardItem">
+        <header className="item-title">
+          <p className="title">{`${id}.${title}`}</p>
+          <div className="item-label">
+            {label.map((eachLabel, idx) => (
+              <span className="each-label" key={idx}>
+                <AiOutlineTags />
+                {eachLabel}
+              </span>
+            ))}
+          </div>
+        </header>
+        {isOpen && <div className="item-body">{contents}</div>}
+      </article>
+    </div>
   );
 }
 

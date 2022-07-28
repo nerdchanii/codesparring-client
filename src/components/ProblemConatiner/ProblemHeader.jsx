@@ -8,7 +8,7 @@ function ProblemHeader({ data, backButton }) {
   return (
     <div className="ProblemHeader">
       <div className="Problem-title">{titleMessage}</div>
-      <button className="backButton" onClick={backButton}>
+      <button className="backButton tertiary" onClick={backButton}>
         뒤로가기
       </button>
     </div>

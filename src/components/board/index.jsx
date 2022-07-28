@@ -3,7 +3,7 @@ import PropsTypes from 'prop-types';
 import ListHeader from './List/ListHeader/ListHeader';
 import List from './List';
 import ListItem from './List/ListItem/ListItem';
-import Title from './Title';
+import Title from '../design/Title';
 import Column from './Column';
 import './Board.scss';
 

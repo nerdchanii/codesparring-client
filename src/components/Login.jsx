@@ -51,7 +51,9 @@ function Login() {
             className="Login--form--input"
           />
         </div>
-        <button type="submit">Login</button>
+        <button className="primary" type="submit">
+          Login
+        </button>
       </form>
       <div className="Login--form--register">
         <p>

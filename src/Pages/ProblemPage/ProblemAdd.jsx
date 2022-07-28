@@ -45,7 +45,9 @@ function ProblemAdd({ back }) {
   // form to sumbit Problem Add data to server and redirect to problem page
   return (
     <div className="ProblemAdd">
-      <button onClick={back}>뒤로가기</button>
+      <button className="tertiary" onClick={back}>
+        뒤로가기
+      </button>
       <div className="ProblemAdd-title">문제 추가</div>
       <div className="ProblemAdd-form">
         <form onSubmit={submitAdd}>
@@ -154,7 +156,7 @@ function ProblemAdd({ back }) {
           </div>
           <div className="verifycase--button--container">
             <button
-              className="addCaseButton"
+              className=" addCaseButton primary"
               type="button"
               onClick={() => setVerifycase([...verifycase, { input: '', output: '' }])}
             >
@@ -162,7 +164,7 @@ function ProblemAdd({ back }) {
             </button>
           </div>
           <div className="submitButtonContainer">
-            <button className="submitButton" type="submit">
+            <button className="submitButton primary" type="submit">
               문제 추가
             </button>
           </div>

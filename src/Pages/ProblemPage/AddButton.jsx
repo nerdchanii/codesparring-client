@@ -1,10 +1,10 @@
 import React from 'react';
 
-function AddButton({ buttonClick }) {
+function AddButton({ className, buttonClick }) {
   return (
-    <div className="AddButtonContainer">
+    <div className={className.concat(' AddButtonContainer')}>
       <button className="AddButton" onClick={buttonClick}>
-        문제 등록하기
+        문제등록
       </button>
     </div>
   );

@@ -1,32 +1,34 @@
-
-
 .WaitingRoomHeader {
   color: var(--color-primary);
   text-align: center;
   font-weight: bolder;
   font-size: 1.5rem;
-  margin: 1rem;
+
 
   .staticHeader {
-    display: flex;
-    flex-direction: row;
+    position: relative;
+    .title{
+      margin-bottom: 1rem;
+    }
+
+    .buttonContainer {
+      position: absolute;
+      right: 0.5rem;
+      top: 0;
+    }
   }
-
-  .WaitingRoomHeader-header {
-    color: var(--color-secondary);
-    flex: 1;
-  }
-
-  //.waitingRoomHeader-buttonContainer {
-
-
- 
 
   .MakeRoom {
+    margin: 0.5rem 0 0.5rem 0.5rem;
+    font-size: 1rem;
+    font-weight: bolder;
+    cursor: pointer;
+
     form {
       justify-content: center;
       display: flex;
       flex-direction: row;
+      gap: 1rem;
       div {
         display: flex;
         align-items: center;
@@ -41,68 +43,75 @@
         flex: 1;
       }
     }
-    margin: 0.5rem;
-    padding: 0.5rem;
-    font-size: 1rem;
-    font-weight: bolder;
-    cursor: pointer;
   }
 }
 
 .RoomList {
   display: flex;
   flex-direction: column;
-  margin: 1rem;
+  margin: .5rem;
   overflow: hidden;
   max-height: 100%;
 
   .ListHeader {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    color: var(--color-background-main);
+    background-color: var(--color-secondary);
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
     text-align: center;
     font-size: 1rem;
     font-weight: bold;
-    padding-bottom: 0.5rem;
+
     margin-bottom: 0.5rem;
-    border-bottom: 2px solid var(--color-primary);
+    .column {
+      width: 100%;
+      padding:.5rem 0;
+      color: inherit;
+      line-height: 2rem;
+      font-size: inherit;
+      height: 100%;
+      + p {
+        border-left: 1px solid var(--color-background-main);
+      }
+    }
   }
 
   .RoomListItemContainer {
-    margin-bottom: 10px;
     display: flex;
+    gap:.5rem;
     overflow-y: scroll;
-    scrollbar-color: white;
-    scrollbar-track-color: white;
     flex-direction: column;
     justify-content: space-between;
 
     // align-items: center;
     max-height: 100%;
 
-    .MouseOver {
-      background-color: var(--color-primary);
-    }
 
-    .RoomListItem .ItemLinkWrapper {
-      border: 2px solid var(--color-primary);
-      border-radius: 0.5rem;
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      align-items: center;
-      text-align: center;
-      font-size: 1.5rem;
-      padding-bottom: 1rem;
-      padding-top: 1rem;
-      font-size: 1rem;
-    }
-
-    .RoomListItem:hover {
-      color: var(--color-primary);
-      border: 2px solid var(--color-primary);
-      border-radius: 0.5rem;
-
-      a {
-        color: var(--color-primary);
+    .RoomListItem {
+      width: 100%;
+      height: 100%;
+      box-sizing: border-box;
+    
+      .ItemLinkWrapper {
+        box-sizing: border-box;
+        border-radius: 0.5rem;
+        display: flex;
+        flex: 1 1 auto;
+        align-items: center;
+        text-align: center;
+        font-size: 1.5rem;
+        line-height: 2rem;
+        padding:.5rem 0;
+        height: 100%;
+        p{
+          flex: 1;
+          color: inherit;
+          height: 100%;
+        }
+        
       }
     }
   }

@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { emitCreateRoom } from '../../../redux/reducers/room.reducer';
 import MESSAGE from '../../../config/message';
 
-function MakeRoom() {
+function MakeRoom({ className }) {
   const dispatch = useDispatch();
   const roomId = useSelector((state) => state.room?.id);
   const navigate = useNavigate();
@@ -25,12 +25,13 @@ function MakeRoom() {
   }, [roomId]);
 
   return (
-    <div className="MakeRoom">
-      <h3>Make Room</h3>
+    <div className={className ? 'MakeRoom'.concat(` ${className}`) : 'MakeRoom'}>
       <form id="MakeRoom-Form" onSubmit={handleSubmit}>
-        <div>Name:</div>
+        <div>방 이름</div>
         <input id="MakeRomm-Form" type="text" name="roomName" />
-        <button type="submit">create</button>
+        <button className="outline" type="submit">
+          생성
+        </button>
       </form>
     </div>
   );

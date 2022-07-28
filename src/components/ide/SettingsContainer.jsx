@@ -35,14 +35,14 @@ function SettingContainer(props) {
     <>
       <div className="Setting--background--wrapper" />
       <div ref={ref} className={`SettingContainer ${className}`}>
-        <div className="buttonContainer">
-          <button onClick={() => setshowing(false)}>
-            <AiOutlineClose />
-          </button>
-        </div>
+        <button className="tertiary" onClick={() => setshowing(false)}>
+          <AiOutlineClose />
+        </button>
+        <p className="title">설정</p>
         <div className="options">
-          <div>keybind</div>
+          <p>키맵설정</p>
           <Select
+            className="button outline"
             id="keybind"
             name="keybind"
             setType="keybind"
@@ -53,8 +53,9 @@ function SettingContainer(props) {
         </div>
 
         <div className="options">
-          <div>fontSize</div>
+          <p>폰트크기</p>
           <Select
+            className="button outline"
             id="fontSize"
             name="fontSize"
             setType="fontSize"
@@ -64,8 +65,9 @@ function SettingContainer(props) {
           />
         </div>
         <div className="options">
-          <div>theme</div>
+          <p>테마설정</p>
           <Select
+            className="button outline"
             id="theme"
             name="theme"
             setType="theme"
@@ -75,8 +77,9 @@ function SettingContainer(props) {
           />
         </div>
         <div className="options">
-          <div>lang</div>
+          <p>언어설정</p>
           <Select
+            className="button outline"
             id="language"
             name="language"
             setType="language"
