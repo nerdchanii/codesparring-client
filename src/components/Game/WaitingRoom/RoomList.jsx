@@ -1,6 +1,7 @@
 import React from 'react';
 import './WaitingRoom.scss';
 import { Link } from 'react-router-dom';
+import Column from '../../board/Column';
 
 function RoomListItem(props) {
   const { roomInfo } = props;
@@ -8,10 +9,10 @@ function RoomListItem(props) {
 
   return (
     <li style={{ cursor: 'pointer' }} className="RoomListItem">
-      <Link to={`/sparring/${id}`} className="ItemLinkWrapper">
-        <div className="RoomNumber">{roomNumber}</div>
-        <div className="Roomname">{name}</div>
-        <div className="inRoom">{users.length}</div>
+      <Link to={`/sparring/${id}`} className="button ItemLinkWrapper outline">
+        <p className="RoomNumber">{roomNumber}</p>
+        <p className="Roomname">{name}</p>
+        <p className="inRoom">{users.length}</p>
       </Link>
     </li>
   );
@@ -22,9 +23,9 @@ function RoomList({ rooms }) {
     return (
       <div className="RoomList">
         <div className="ListHeader">
-          <div>RoomNumber</div>
-          <div>name</div>
-          <div>inRoom</div>
+          <Column flex={1}>방번호</Column>
+          <Column flex={3}>이름</Column>
+          <Column flex={1}>참여인원</Column>
         </div>
         <ul className="RoomListItemContainer">
           {rooms.map((room) => (

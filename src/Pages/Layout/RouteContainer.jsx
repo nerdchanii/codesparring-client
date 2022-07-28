@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import SparringPage from '../SparringPage';
+import Logout from '../Logout';
 import Home from '../Home/Home';
 import MyPage from '../MyPage/MyPage';
 import PracticePage from '../PracticePage';
@@ -19,6 +20,7 @@ function RouteContainer() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/logout" element={<Logout />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/notice/*" element={<Notice />} />
         <Route path="/leaderboard" element={<LeaderBoardPage />} />

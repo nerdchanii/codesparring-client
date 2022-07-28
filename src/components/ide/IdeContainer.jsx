@@ -47,6 +47,7 @@ function IdeContainer() {
           <br />
           <CircularProgress color="primary" />
           <button
+            className="tertiary"
             onClick={() => {
               dispatch(actions[ACTION.LOADDING](false));
             }}

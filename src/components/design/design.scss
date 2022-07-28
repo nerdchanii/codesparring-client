@@ -1,0 +1,18 @@
+p.title{
+  line-height: 2rem;
+  font-size: 1.5rem;
+  margin: .5rem 0;
+  font-weight: 500;
+  border: 1px solid transparent;
+  box-sizing: border-box;
+  display: block;
+  color: var(--color-secondary);
+  
+  &.center{
+    text-align: center;
+  }
+  &.under-border{
+    border-bottom: 1px solid var(--color-secondary);
+  }
+}
+

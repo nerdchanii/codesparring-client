@@ -46,9 +46,26 @@
   display: flex;
   overflow: hidden;
   flex-direction: column;
+
+  span.correct{
+    &.false{
+      color: var(--color-error);
+    }
+    &.true{
+      color: var(--color-success);
+    }
+  }
+  span.prefix{
+    color: var(--color-text-default);
+    margin-right: 1rem;
+  }
+
+
   .title {
     max-height: fit-content;
-    padding: 0.5rem;
+    background-color: var(--color-secondary);
+    color: var(--color-background-main);
+    padding:.25rem;
   }
   .body {
     flex: 1;
@@ -58,25 +75,21 @@
     display: none;
   }
   .run {
+    position:absolute;
+    bottom: 0;
+    right: 0;
+
     height: fit-content;
-    padding: 10px;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
-    .button {
-      border-radius: 0.5rem;
-      font-weight: bold;
-      padding: 0.5rem 1rem;
-    }
-    .button:active {
-      box-shadow: var(--color-primary) 1px 1px 1px 1px;
-      border-radius: 0.5rem;
-      font-weight: bold;
-      padding: 0.5rem 1rem;
-    }
+    justify-content: flex-end;
+    gap:1rem;
+    
   }
-  
-  .correct .true{
-    color: var(--color-success);
+  .resultMessage{
+    margin: .5rem 0;
+    line-height: 1.2rem;
+    font-size: 1rem;
+
   }
 }

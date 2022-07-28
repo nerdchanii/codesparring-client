@@ -1,89 +1,156 @@
 
 
-.Topper {
-  display: flex;
-  padding: 0.5rem 1rem;
-  height: 2rem;
-  gap:3rem;
-  line-height: 1.5rem;
-  vertical-align: center;
-  border-bottom: var(--color-primary) 1px solid;
-  // border-bottom: 1px solid var(--color-primary);
-  * {
-    box-sizing: border-box;
-    text-decoration: none;
-    font-weight: bold;
-    font-family: 'arial';
-    text-align: center;
-    color: var(--color-primary);
-    font-size: 1rem;
-    display: inline-block;
-  }
-  a{
-    font-size:1rem;
-    display: inline-block;
-    vertical-align: center;
-    span{
-      height: 100%;
-      display: inline-flex;
-      align-self: center;
-    }
-  }
-  svg {
-    width: 1.5rem;
-    height: 1.5rem;
-    display: flex;
-    align-self: center;
-  }
-  h1 {
-    font-size:1.5rem;
-    a{ font-size: inherit; }
-    text-shadow: var(--color-primary) 0px 4px 4px;
-  }
-  nav {
-    flex: 1;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    gap: 1rem;
-  }
-  button {
-    font-size: 1rem;
-    padding:0;
-    height: 100%;
-    background: none;
-    border: 1px solid #cccccc00;
+// .Topper {
+//   box-sizing: border-box;
+//   display: flex;
+//   padding: 0.5rem 1rem;
+//   align-items: center;
+//   height: 3rem;
+//   gap:3rem;
+//   line-height: 1.5rem;
+//   h1{
+//     align-items: center;
+//   }
+//   * {
+//     box-sizing: border-box;
+//     text-decoration: none;
+//     font-weight: bold;
+//     font-family: 'arial';
+//     text-align: center;
+//     font-size: 1rem;
+//   }
+//   a{
+//     font-size:1rem;
+//     display: inline-block;
+//     vertical-align: center;
+//     span{
+//       height: 100%;
+//       display: inline-flex;
+//       align-self: center;
+//     }
+//   }
+//   svg {
+//     display: flex;
+//     align-self: center;
+//   }
+//   h1 {
+//     font-size:1.5rem;
+//     a{ font-size: inherit; }
+//     text-shadow: var(--color-primary) 0px 4px 4px;
+//   }
+//   nav {
+//     flex: 1;
+//     display: flex;
+//     flex-direction: row;
+//     height: 100%;
+//     align-items: center;
+//     gap: 1rem;
+//   }
+//   .left {
+//     flex: 1;
     
-    a {
-      display: inline;
-      text-decoration: none;
-      vertical-align: center;
-      text-align: center;
+//     display: flex;
+//     flex-direction: row;
+//     justify-content: flex-start;
+//     gap: 1rem;
+    
+//     height: inherit;
+//     align-items: inherit;
+    
+//   }  
+//   .right {
+//     height: inherit;
+//     display: flex;
+//     gap:1rem;
+//     align-items: inherit;
+//     svg:hover{
+//       -webkit-animation:spin 1000ms infinite linear;
+//       -moz-animation:spin 1000ms infinite linear;
+//       -ms-animation:spin 1000ms infinite linear;
+//       animation:spin 1000ms infinite linear;
+//     }
+
+    
+//   }
+
+//   .textbutton {
+    
+//     min-width: 5rem;
+//     a{
+
+//       align-items:center;
+
+
+//       font-stretch: semi-expanded;
+//     }
+//   }
+
+// }
+
+.topper{
+  box-sizing: border-box;
+  display: flex;
+  height: 4rem;
+  padding: 0 32px;
+  align-items: center;
+  svg{
+    width: 1rem;
+    height: 1rem;
+  }
+  //cursur: pointer;
+  a{cursor: pointer;}
+  .sitename{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin-right: 1rem;
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+    margin-bottom: unset;
+    text-shadow: var(--color-primary) 0px 4px 4px;
+    font-style: italic;
+    a{
+      display: inline-flex;
+      align-items: center;
+      font-size: inherit;
     }
   }
 
-  .left {
-    flex: 1;
+   
+
+  .navbar{  
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
-    gap: 1rem;
-  }  
-  .right {
+    align-items: center;
+    justify-content: space-between;
+    flex: 1 1 auto;
+    height: 100%;
+  .navbar--left,
+  .navbar--right{
     display: flex;
-    gap:1rem;
-  }
-
-  .textbutton {
-    padding: 0 0.5rem;
-    border: 1px solid var(--color-primary);
-    a{
-      height: 100%;
-      display: flex;
-      align-items:center;
-      justify-content: center;
-      
-      font-stretch: semi-expanded;
+    height: 100%;
+    align-items: inherit;
     }
+    .navbar--left{
+      a{
+        padding:.5rem 1rem;
+      }
+    }
+    .navbar--right{
+      margin-left:1rem;
+      height: 2rem;
+      a:not(:nth-last-child(1)){
+        margin-right:.5rem;
+      }
+      svg{
+        line-height: 0;
+        height: 1rem;
+        width: 1rem;
+      }
+    }
+
   }
+  
 }
+
+

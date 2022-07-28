@@ -58,8 +58,16 @@ const authSlice = createSlice({
       state.profile = action.payload.profile;
       state.token = action.payload.token;
       return state;
-    })
+    });
     builder.addCase(logout.fulfilled, (state) => {
+      state.isLoggedIn = false;
+      state.userId = null;
+      state.profile = {};
+      state.token = null;
+      return state;
+    });
+    builder.addCase(login.rejected, (state, action) => {
+      alert('로그인 실패: 이메일과 비밀번호를 확인해주세요.');
       state.isLoggedIn = false;
       state.userId = null;
       state.profile = {};

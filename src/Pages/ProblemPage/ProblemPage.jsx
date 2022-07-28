@@ -5,7 +5,6 @@ import ProblemContainer from '../../components/ProblemConatiner';
 import ProblemListContainers from '../../components/ProblemConatiner/ProblemListContainers';
 import ProblemAdd from './ProblemAdd';
 import './index.scss';
-import AddButton from './AddButton';
 import LoginNeeded from '../../components/LoginNeeded';
 
 function ProblemPage() {
@@ -31,7 +30,9 @@ function ProblemPage() {
   if (!editProblem) {
     return (
       <div className="ProblemPage">
-        <AddButton buttonClick={toggleEditMode} />
+        <button className="AddButtonContainer outline" onClick={toggleEditMode}>
+          문제등록
+        </button>
         <Routes>
           <Route path="" element={<ProblemListContainers />} />
           <Route path=":id" element={<ProblemContainer />} />

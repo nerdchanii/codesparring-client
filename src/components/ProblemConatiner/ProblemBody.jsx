@@ -32,24 +32,16 @@ function ProblemBody(props) {
           <p className="Problem-section-title">테스트 케이스</p>
         </div>
         <div>
-          <div className="Problem-section-body">
-            <div className="line">
-              <div className="line--leftside title">
-                <span className="input">인풋</span>
-              </div>
-              <div className="line--rightside title">
-                <span className="output">아웃풋</span>
-              </div>
+          <div className="testcase">
+            <div className="testcase--header">
+              <p className="input">인풋</p>
+              <p className="output">아웃풋</p>
             </div>
             {testInput.map((item, idx) => {
               return (
-                <div className="line">
-                  <div className="line--leftside">
-                    <span className="input">{item}</span>
-                  </div>
-                  <div className="line--rightside">
-                    <span className="output">{testOutput[idx]}</span>
-                  </div>
+                <div className="testcase--item">
+                  <span className="input">{item}</span>
+                  <span className="output">{testOutput[idx]}</span>
                 </div>
               );
             })}

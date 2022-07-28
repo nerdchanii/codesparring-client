@@ -8,34 +8,55 @@
   position: absolute;
 }
 .SettingContainer {
-  font-size: 1rem;
-  font-weight: 400;
   position: absolute;
   z-index: 20;
-  background: var(--color-background-main);
-  display: flex;
-  flex-direction: column;
-  transform: translate(-50%);
-  padding: 0.5rem;
+  top: 1.5rem;
+  right: 2rem;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  min-width: 20%;
 
-  .buttonContainer {
-    display: flex;
-    justify-content: flex-end;
-    button {
-      font-size: 1.2rem;
-      font-size: 1rem;
-      background: none;
-    }
+  background: var(--color-background-main);
+  button{
+    display: block;
+    margin-left: auto;
+    position: absolute;
+    top:1rem;
+    right:1rem;
+
+  }
+  
+  .title{
+    font-size: 1.5rem;
+    display: block;
+    line-height: 3;
+    margin-top:-.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    color:var(--color-secondary);
   }
   .options {
+    display: flex;
+    flex-direction: row;
     box-sizing: border-box;
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    font-size: 1.2rem;
-    label {
-      text-align: left;
-      color: var(--color-text-default);
+    font-size: 1rem;
+    align-items: center;
+    p,select {
+      flex: 1;
+      vertical-align: center;
+      font-size: 1rem;
+      box-sizing: border-box;
+      padding: 0.5rem;
+    }
+    p{
+      text-align: center;
+      margin-right: 1rem;
+    }
+    select {
+      min-width: 10rem;
+    }
+    & + .options{
+      margin-top:1rem;
     }
   }
 }

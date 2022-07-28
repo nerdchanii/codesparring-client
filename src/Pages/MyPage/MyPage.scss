@@ -1,35 +1,31 @@
-.MyPage {
-  margin: auto;
-  min-height: inherit;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-}
-
-.LeaveAccount{
-  button{
-    width: 100%;
-    border: 1px solid var(--color-secondary);
-    outline: none;
-    display: flex;
-    gap:1rem;
-    background-color: var(--color-background-sub);
-    &:hover {
-      background-color: var(--color-secondary);
-      color: var(--color-background-sub);
-    }   
-    svg{
-      width: 1.5rem;
-      height: 1.5rem;
-      fill: var(--color-secondary);
+.mypage {
+  width: 50%;
+  .myaccount {
+    
+    .myaccount-topper{
+      border-bottom: 1px solid var(--color-primary);
     }
-    span{
+
+    .myaccount-body {
       display: flex;
-      justify-content: center;
-      align-self: center;
-      color: var(--color-secondary);
+      flex-direction: row;
+      flex: 1 1 auto;
+      align-items: center;
+      .leave-account--container {
+        margin: 0 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        button {
+          align-items: center;
+          display: flex;
+          justify-content: center;
+          gap: 0.25rem;
+          font-size: 1rem;
+          line-height: 2rem;
+        }
+      }
     }
   }
-  
 }

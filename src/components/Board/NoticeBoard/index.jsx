@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getNotices } from '../../../redux/reducers/notice.reducer';
-import NoticeBoardHeader from './NoticeBoardHeader';
+import Title from '../../design/Title';
 import NoticeBoardList from './NoticeBoardList';
 
 function Notice() {
@@ -32,7 +32,7 @@ function Notice() {
   }
   return (
     <div className="Notice">
-      <NoticeBoardHeader />
+      <Title className="center">공지사항</Title>
       <NoticeBoardList notices={notices} />
     </div>
   );

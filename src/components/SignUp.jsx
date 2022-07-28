@@ -171,7 +171,9 @@ function SignUp() {
                 <p className="message true">비밀번호가 일치합니다.</p>
               ))}
           </div>
-          <button type="submit">SignUp</button>
+          <button className="outline" type="submit">
+            SignUp
+          </button>
         </form>
       </div>
     </div>

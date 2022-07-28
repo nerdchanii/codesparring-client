@@ -1,8 +1,23 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700');
+@import url('./css/buttons.scss');
 
 * {
   margin: 0;
   padding: 0;
+  scrollbar-width: none;
+}
+
+input,
+textarea,
+select {
+  border: 1px solid var(--color-primary);
+  outline: none;
+  background: var(--color-background-sub);
+  box-sizing: border-box;
+  border-radius: 0.5rem;
+  &:focus {
+    outline: none;
+  }
 }
 
 html {
@@ -22,111 +37,152 @@ body {
 }
 
 // github, monokai, xcode, dracula
-.App{
+.App {
   // prime, secondary, tertiary colors
-  --color-primary: #2f2972;
-  --color-secondary: #A6E22E; 
-  --color-tertiary: #CC2B1E;
-  // background
-  --color-background-main: #282a36;
-  --color-background-sub: #ededed;
-  --color-background-hover: #ededed50;
-  // text
-  --color-text-default: #000;
-  --color-text-emphasis: var(--color-secondary);
-  --color-text-highlight: var(--color-tertiary);
-  --color-border:var(--color-background-sub);
-  // result
-  --color-success: #50fa7b;
-  --color-warning: #ffb86c;
-  --color-error: #ff5555;
-}
+  // prime컬러와 prime컬러의 명암 업다운 +/- 2
+  --color-primary: #66d9ef;
+  --color-primary-hover: #84e0f2;
+  --color-primary-active: #00a2ff;
 
-.App[data-theme="github"] {
-  // prime, secondary, tertiary colors
-  --color-primary: #0086B3;
-  --color-secondary: #DD1144; 
-  --color-tertiary: #0086B3;
-  // background
-  --color-background-main: #f5f5f5;
-  --color-background-sub: #FFFFCC;
-  --color-background-hover: #FFFFCC50;
-  // text
-  --color-text-default: #000;
-  --color-text-emphasis: var(--color-secondary);
-  --color-text-highlight: var(--color-tertiary);
-  --color-border:var(--color-background-sub);
-  // result
-  --color-success: #50fa7b;
-  --color-warning: #ffb86c;
-  --color-error: #ff5555;
-}
+  --color-secondary: #a6e22e;
+  --color-tertiary: #f92672;
 
-.App[data-theme="monokai"] {
-  // prime, secondary, tertiary colors
-  --color-primary: #F92672;
-  --color-secondary: #A6E22E; 
-  --color-tertiary: #66D9EF;
   // background
   --color-background-main: #272822;
   --color-background-sub: #202020;
-  --color-background-hoveri: #20202050;
+  --color-background-hover: #20202050;
   // text
-  --color-text-default: #F8F8F2;
-  --color-text-emphasis: var(--color-secondary);
-  --color-text-highlight: var(--color-tertiary);
-  --color-border:var(--color-background-sub);
+  --color-text-default: #f8f8f2;
+
+  // button색상은 메인 컬러와 대비되는 색으로 사용
+
+  --color-button-text: #3b5c4d;
+  --color-button-text-default: #3b5c4d;
+  --color-button-text-hover: #30545c;
+  --color-button-text-active: #30302e;
+
   // result
   --color-success: #50fa7b;
   --color-warning: #ffb86c;
   --color-error: #ff5555;
+  --color-danger: red;
 
-
+  --color-brder: #eee;
+  --color-brder--dark: #222;
+  --color-brder--white: #eee;
 }
 
-.App[data-theme="dracula"] {
+.App[data-theme='github'] {
   // prime, secondary, tertiary colors
+  --color-primary: #346C81;
+  --color-primary-hover: #498a8d;
+  --color-primary-active: #2e6174; 
+
+  --color-secondary: #24292F;
+  --color-tertiary: #0086b3;
+  // background
+  --color-background-main: #f5f5f5;
+  --color-background-sub: #dcdcdc;
+  --color-background-hover: #f6f6f6;
+  // text
+  --color-text-default: #000;
+
+  --color-button-text: #EEE;
+  --color-button-text-default: #EEE;
+  --color-button-text-hover: #fff;
+  --color-button-text-active: #d6d6d6;
+  
+  --color-text-emphasis: var(--color-secondary);
+  --color-text-highlight: var(--color-tertiary);
+  --color-border: var(--color-background-main);
+  // result
+}
+
+.App[data-theme='monokai'] {
+  // prime, secondary, tertiary colors
+  // prime컬러와 prime컬러의 명암 업다운 +/- 2
+  --color-primary: #66d9ef;
+  --color-primary-hover: #84e0f2;
+  --color-primary-active: #00a2ff;
+
+  --color-secondary: #a6e22e;
+  --color-tertiary: #f92672;
+
+  // background
+
+  --color-background-main: #272822;
+  --color-background-sub: #202020;
+  --color-background-hover: #20202050;
+  // text
+  --color-text-default: #f8f8f2;
+
+  --color-button-text: #3b5c4d;
+  --color-button-text-default: #3b5c4d;
+  --color-button-text-hover: #30545c;
+  --color-button-text-active: #30302e;
+
+  --color-text-emphasis: var(--color-secondary);
+  --color-text-highlight: var(--color-tertiary);
+  --color-border: var(--color-background-main);
+  // result
+}
+
+.App[data-theme='dracula'] {
+  // prime, secondary, tertiary colors
+  // primary는 배경색과대비가 제일 높고, secondary는 배경색과대비가 다음로 높음
   --color-primary: #ff79c6;
-  --color-secondary: #8be9fd; 
+  --color-primary-hover: #e56cb2;
+  --color-primary-active: #ff86cb;
+
+  // --color-secondary: #A6E22E;
+  // --color-tertiary: #F92672;
+
+  --color-secondary: #8be9fd;
   --color-tertiary: #50fa7b;
+
   // background
   --color-background-main: #282a36;
   --color-background-sub: #44475a;
   --color-background-hover: #44475a90;
+
+  --color-button-text: #342a37;
+  --color-button-text-default: #342a37;
+  --color-button-text-hover: #342a37;
+  --color-button-text-active: #2e2531;
+
   // text
   --color-text-default: #f8f8f2;
   --color-text-emphasis: var(--color-secondary);
   --color-text-highlight: var(--color-tertiary);
-  --color-border:var(--color-background-sub);
+  --color-border: var(--color-background-main);
+
   // result
-  --color-success: #50fa7b;
-  --color-warning: #ffb86c;
-  --color-error: #ff5555;
-
-
 }
 
-.App[data-theme="xcode"]{
+.App[data-theme='xcode'] {
   // prime, secondary, tertiary colors
   --color-primary: #b7269f;
+  --color-primary-hover: #be3ba8;
+  --color-primary-active: #a4228f;
+
+
   --color-secondary: #3f067f;
-  --color-tertiary: #CC2B1E;
+  --color-tertiary: #cc2b1e;
   // background
   --color-background-main: #fff;
   --color-background-sub: #ededed;
   --color-background-hover: #ededed50;
+
+  //button
+  --color-button-text: #EEE;
+  --color-button-text-default: #EEE;
+  --color-button-text-hover: #fff;
+  --color-button-text-active: #d6d6d6;
+  
   // text
   --color-text-default: #000;
   --color-text-emphasis: var(--color-secondary);
   --color-text-highlight: var(--color-tertiary);
-  --color-border: var(--color-background-sub);
+  --color-border: var(--color-background-main);
   // result
-  --color-success: #50fa7b;
-  --color-warning: #ffb86c;
-  --color-error: #ff5555;
-
 }
-
-
-
-

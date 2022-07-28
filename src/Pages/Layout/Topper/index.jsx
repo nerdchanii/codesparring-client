@@ -5,10 +5,10 @@ import Navbar from './Navbar';
 
 function Topper() {
   return (
-    <header className="Topper">
-      <h1>
+    <header className="topper">
+      <div className="sitename">
         <Link to="/">codesparring</Link>
-      </h1>
+      </div>
       <Navbar />
     </header>
   );
