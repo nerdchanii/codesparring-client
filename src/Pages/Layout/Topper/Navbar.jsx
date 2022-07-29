@@ -62,6 +62,9 @@ function Navbar() {
         <a href="https://github.com/nerdchanii/codesparring-client/issues">
           <AiFillGithub />
         </a>
+        <Link className="button tertiary" to="/notice">
+          공지
+        </Link>
         <Link className="button tertiary" to="/leaderboard">
           랭킹
         </Link>
@@ -76,7 +79,7 @@ function Navbar() {
         </Link>
       </div>
       <div className="navbar--right">
-        <Link className="button outline" to="/login">
+        <Link className="button primary" to="/login">
           로그인
         </Link>
         <Link className="button outline" to="/signup">
