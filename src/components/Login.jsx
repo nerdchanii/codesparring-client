@@ -2,7 +2,7 @@ import React, { memo, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { login } from '../redux/reducers/auth.reducer';
-import { ACTION, actions } from '../redux/reducers/user.reducer';
+import { actions } from '../redux/reducers/user.reducer';
 import './Login.scss';
 
 function Login() {

@@ -1,11 +1,10 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './Problem.scss';
+import TestCaseItem from './TestCaseItem';
 
 function ProblemBody(props) {
   const { data } = props;
   const { testOutput, testInput, description, requirement } = data;
-
-  useEffect(() => {}, []);
 
   if (!data) {
     return <div>Error!</div>;
@@ -40,8 +39,8 @@ function ProblemBody(props) {
             {testInput.map((item, idx) => {
               return (
                 <div className="testcase--item">
-                  <span className="input">{item}</span>
-                  <span className="output">{testOutput[idx]}</span>
+                  <TestCaseItem className="input">{item}</TestCaseItem>
+                  <TestCaseItem className="output">{testOutput[idx]}</TestCaseItem>
                 </div>
               );
             })}

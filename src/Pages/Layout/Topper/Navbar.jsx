@@ -3,15 +3,10 @@ import { Link } from 'react-router-dom';
 import { AiFillGithub, AiOutlineSetting } from 'react-icons/ai';
 import { useSelector } from 'react-redux';
 import SettingContainer from '../../../components/ide/SettingsContainer';
-// import { logout } from '../../../redux/reducers/auth.reducer';
 
 function Navbar() {
   const [openSetting, setOpenSetting] = React.useState(false);
   const isLogin = useSelector((state) => state.auth.isLoggedIn);
-  // const dispatch = useDispatch();
-  // const onLogout = () => {
-  //   dispatch(logout());
-  // };
   const toggleSettingVisible = () => {
     setOpenSetting(!openSetting);
   };
@@ -67,12 +62,6 @@ function Navbar() {
         <a href="https://github.com/nerdchanii/codesparring-client/issues">
           <AiFillGithub />
         </a>
-        <Link className="button tertiary" to="/notice">
-          기본
-        </Link>
-        <Link className="button tertiary" to="/notice">
-          아웃라인
-        </Link>
         <Link className="button tertiary" to="/leaderboard">
           랭킹
         </Link>
