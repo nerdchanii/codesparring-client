@@ -9,7 +9,7 @@ import Code from './Code';
 
 
 
-import { API_BASE_URL, API_DEFAULT_TIMEOUT } from './constants';
+import { API_DEFAULT_TIMEOUT } from './constants';
 
 
 
@@ -19,7 +19,7 @@ const AUTH_REQUIRED_LIST = [/users/, /problems/, /games/, /codes/];
 class Apis {
   constructor() {
     this._axios = axios.create({
-      baseURL: API_BASE_URL,
+      baseURL: process.env.REACT_APP_API_BASE_URL,
       timeout: API_DEFAULT_TIMEOUT,
     });
     this.setAccessToken(JSON.parse(localStorage.getItem('auth'))?.token || null);

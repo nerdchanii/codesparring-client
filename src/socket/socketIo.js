@@ -39,7 +39,7 @@ class SocketIo {
      * @type {SOCKET_EVENT} event;
      */
     this.event = SOCKET_EVENT;
-    this._socket = io(['websocket', 'polling']);
+    this._socket = io(process.env.REACT_APP_SOCKET_END_POINT, ['websocket', 'polling']);
     const auth = localStorage.getItem('auth');
     if (!!auth) {
       this.setAuth({ auth: JSON.parse(auth) });
@@ -192,7 +192,7 @@ class SocketIo {
 
 
 
-    this._socket = io({
+    this._socket = io(process.env.REACT_APP_SOCKET_END_POINT, {
       auth: {
         username: auth.profile.username,
         token: `Bearer ${auth.token}`
