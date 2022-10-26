@@ -1,6 +1,14 @@
 import React from 'react';
 import AceEditor from 'react-ace';
-import 'ace-builds/webpack-resolver';
+import 'ace-builds/src-noconflict/mode-c_cpp';
+import 'ace-builds/src-noconflict/mode-javascript';
+import 'ace-builds/src-noconflict/mode-python';
+import 'ace-builds/src-noconflict/mode-java';
+
+import 'ace-builds/src-noconflict/theme-monokai';
+import 'ace-builds/src-noconflict/theme-github';
+import 'ace-builds/src-noconflict/theme-xcode';
+import 'ace-builds/src-noconflict/theme-dracula';
 
 import './Ide.scss';
 import 'brace/ext/language_tools';
